@@ -1,0 +1,1045 @@
+body, html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #fafbfc;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar, main {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #2563eb;
+  padding: 0 32px;
+  height: 56px;
+  border-bottom: 1.5px solid #e3e8f0;
+  box-shadow: 0 2px 16px rgba(39,99,255,0.04);
+  border-radius: 0 0 18px 18px;
+  margin: 0;
+  opacity: 1;
+  visibility: visible;
+}
+.logo {
+  font-weight: 500;
+  font-size: 1.2em;
+  letter-spacing: 1.5px;
+  color: #2563eb;
+  text-shadow: 0 2px 8px #2563eb22;
+}
+.nav-tabs {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+}
+.nav-tabs::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--indicator-left, 0);
+  width: var(--indicator-width, 0);
+  height: var(--indicator-height, 0);
+  background: #2563eb;
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+}
+.tab {
+  position: relative;
+  margin-left: 24px;
+  cursor: pointer;
+  padding: 8px 12px 6px 12px;
+  border: none;
+  background: transparent;
+  color: #222;
+  font-weight: 400;
+  font-size: 1em;
+  border-radius: 0;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+.tab.active {
+  color: #2563eb;
+}
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+}
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+main {
+  position: relative;
+  flex: 1;
+  max-width: 900px;
+  margin: 20px auto 0 auto;
+  padding: 0 16px;
+  min-height: 400px;
+  opacity: 1;
+  visibility: visible;
+}
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 16px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+#about .card-list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  gap: 24px;
+  padding-bottom: 0;
+}
+#about .card {
+  flex: 1 1 0;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(39,99,255,0.06);
+  border: 1.5px solid #e3e8f0;
+  padding: 24px 20px;
+  min-width: 200px;
+  flex: 1 1 240px;
+  max-width: 300px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  transform: translateY(0);
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
+  border-color: #2563eb;
+}
+.card h3 {
+  margin-top: 0;
+  color: #2563eb;
+  font-size: 1.08em;
+  font-weight: 500;
+  text-shadow: 0 2px 8px #2563eb22;
+}
+.card p {
+  color: #444;
+  font-size: 0.98em;
+  margin-bottom: 0.5em;
+}
+.card-desc {
+  margin: 16px 0 0 0;
+  color: #444;
+  font-size: 0.98em;
+  line-height: 1.7;
+  text-align: center;
+}
+.gallery-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+.gallery-list img {
+  width: 160px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px #2563eb11;
+  border: 1.5px solid #e3e8f0;
+  background: #fff;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.95);
+}
+.gallery-list img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
+}
+.music-player {
+  margin-top: 24px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 12px;
+  box-shadow: 0 2px 16px #2563eb11;
+  border: 1.5px solid #e3e8f0;
+  max-width: 340px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.music-player:hover {
+  border: 1.5px solid #2563eb;
+  box-shadow: 0 4px 24px #2563eb33, 0 0 0 2px #38bdf822;
+}
+footer {
+  margin-top: 1rem;
+  text-align: center;
+  color: #888;
+  font-size: 0.95em;
+  padding: 0.8rem 0;
+  background: transparent;
+  border: none;
+}
+@media (max-width: 700px) {
+  main {
+    max-width: 100%;
+    margin: 16px auto 0 auto;
+    padding: 0 4px;
+  }
+  .card-list {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .gallery-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .gallery-list img {
+    width: 96vw;
+    max-width: 320px;
+    height: 28vw;
+    max-height: 160px;
+  }
+  .navbar {
+    padding: 0 8px;
+    height: 48px;
+  }
+  #about .card-list {
+    gap: 12px;
+  }
+  #about .card {
+    max-width: 90vw;
+    min-width: 70vw;
+  }
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.card-link:active, .card-link:focus {
+  background: #f2f6fa;
+  border-color: #2563eb;
+  outline: none;
+}
+.card-title-highlight {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.card-link:hover .card-title-highlight {
+  color: #1746a2;
+}
+
+/* About Me 页面样式 */
+.about-me-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.profile-image {
+  flex: 0 0 280px;
+  margin-top: 0; /* 确保图片顶部对齐 */
+}
+
+.profile-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+  flex: 1;
+  margin-top: 0; /* 确保文字顶部对齐 */
+}
+
+.profile-info h2 {
+  margin-top: 0; /* 移除标题顶部间距 */
+  margin-bottom: 0.8rem;
+  color: #2563eb;
+}
+
+.profile-info p {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+.skills {
+  margin-top: 1rem;
+}
+
+.skills h3 {
+  margin-bottom: 0.8rem;
+  color: #2563eb;
+}
+
+.skills ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.skills li {
+  display: inline-block;
+  margin: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #f3f4f6;
+  border-radius: 20px;
+  color: #4b5563;
+}
+
+/* 博客详情页弹窗样式 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 20px 0;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: 20px auto;
+  padding: 2.5rem;
+  width: 80%;
+  max-width: 1000px;
+  min-height: 200px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.close-button {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #666;
+  background: rgba(255, 255, 255, 0.9);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  z-index: 1001;
+}
+
+.close-button:hover {
+  color: #000;
+  background: #fff;
+  transform: scale(1.1);
+}
+
+.blog-detail-content {
+  margin-top: 1rem;
+  line-height: 1.8;
+  color: #333;
+  padding-bottom: 2rem;
+}
+
+.blog-detail-content h2 {
+  color: #2563eb;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.blog-detail-content h3 {
+  color: #2563eb;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.4rem;
+}
+
+.blog-detail-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.blog-detail-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.blog-detail-content img:hover {
+  transform: scale(1.02);
+}
+
+.blog-detail-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-detail-content li {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  main {
+    margin: 10px auto 0 auto;
+    padding: 0 8px;
+    min-height: 300px;
+  }
+
+  .about-me-content {
+    flex-direction: column;
+    padding: 0.8rem;
+  }
+
+  .profile-image {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 10px auto;
+    padding: 1.5rem;
+  }
+
+  .close-button {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+
+  .blog-detail-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .blog-detail-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .blog-detail-content p,
+  .blog-detail-content li {
+    font-size: 1rem;
+  }
+
+  footer {
+    margin-top: 0.8rem;
+    padding: 0.6rem 0;
+  }
+}
+
+#blog .card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#blog .card {
+  flex: 0 1 320px;
+  max-width: 100%;
+  min-width: 240px;
+}
+
+@media (max-width: 768px) {
+  #blog .card {
+    flex: 0 1 calc(50% - 24px);
+  }
+}
+
+@media (max-width: 480px) {
+  #blog .card {
+    flex: 0 1 100%;
+  }
+}
+
+/* 图片查看器样式 */
+.image-viewer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.image-viewer.active {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: 1;
+}
+
+.image-viewer img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.image-viewer.active img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.image-viewer .close-button {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.image-viewer.active .close-button {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.image-viewer .close-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .image-viewer .close-button {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.8rem;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* 为卡片添加交错动画 */
+#blog .card:nth-child(1) { transition-delay: 0.1s; }
+#blog .card:nth-child(2) { transition-delay: 0.15s; }
+/* 添加页面动画 */
+.tab-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tab-content.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.tab-content.active .card-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 为卡片添加交错动画 */
+#blog .card:nth-child(1) { transition-delay: 0.1s; }
+#blog .card:nth-child(2) { transition-delay: 0.2s; }
+#blog .card:nth-child(3) { transition-delay: 0.3s; }
+
+.gallery-list img {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.3s ease;
+}
+
+.tab-content.active .gallery-list img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 为图片添加交错动画 */
+.gallery-list img:nth-child(1) { transition-delay: 0.1s; }
+.gallery-list img:nth-child(2) { transition-delay: 0.2s; }
+.gallery-list img:nth-child(3) { transition-delay: 0.3s; }
+
+/* 优化卡片悬停动画 */
+.card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
+}
+
+/* 优化图片悬停动画 */
+.gallery-list img {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-list img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
+}
+
+/* 初始化指示器样式 */
+.nav-tabs {
+  --indicator-width: 0;
+  --indicator-height: 2px;
+  --indicator-left: 0;
+  --indicator-bottom: 0;
+}
+
+@keyframes enterFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 图片查看器切换按钮样式 */
+.image-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(37,99,235,0.15);
+  cursor: pointer;
+  z-index: 1002;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  padding: 0;
+}
+.image-nav-btn svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+#prev-image { left: 32px; }
+#next-image { right: 32px; }
+.image-nav-btn:hover {
+  background: #2563eb;
+  box-shadow: 0 4px 24px #2563eb33;
+}
+.image-nav-btn:hover svg path {
+  stroke: #fff;
+}
+
+/* 博客tab目录靠左且不跳动 */
+.blog-layout {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  display: flex;
+}
+
+.blog-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;              /* 顶部对齐 */
+  width: 220px;
+  min-width: 220px;
+  height: 100vh;        /* 占满整个视口高度 */
+  z-index: 10;
+  margin-left: 0 !important;
+  border-radius: 0 14px 14px 0;
+  box-shadow: 0 2px 12px #2563eb11;
+  background: #f8fafc;
+  padding: 36px 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.blog-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-menu-item {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 14px 18px;
+  margin-bottom: 8px;
+  border-radius: 14px 0 0 14px;
+  cursor: pointer;
+  color: #2563eb;
+  background: #f3f6fa;
+  font-weight: 500;
+  font-size: 1.08em;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog-menu-item.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+.blog-content-area {
+  flex: 1;
+  padding: 36px 0 36px 32px;
+  margin-left: 220px;
+}
+
+.blog-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+.blog-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(39,99,255,0.08);
+  border: 1.5px solid #e3e8f0;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+}
+.blog-card h3 {
+  margin: 0 0 8px 0;
+  color: #2563eb;
+  font-size: 1.13em;
+  font-weight: 600;
+}
+.blog-card p {
+  color: #444;
+  font-size: 1.05em;
+  margin: 0;
+}
+
+/* 微信二维码弹窗样式重写 */
+.wechat-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0,0,0,0.7);
+}
+
+.wechat-modal-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  max-width: 320px;
+  width: 90vw;
+  padding: 28px 20px 18px 20px;
+  box-sizing: border-box;
+}
+
+.wechat-modal-content img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.10);
+  display: block;
+  margin: 0 auto 12px auto;
+}
+
+.wechat-modal-content .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 2rem;
+  color: #2563eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+}
+
+@media (max-width: 400px) {
+  .wechat-modal-content {
+    max-width: 98vw;
+    padding: 12px 2vw 8px 2vw;
+  }
+  .wechat-modal-content img {
+    max-width: 80vw;
+  }
+}
+
+/* Contacts 卡片成长条竖向排列 */
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+  margin-top: 32px;
+}
+.contact-card {
+  width: 420px;
+  max-width: 90vw;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(39,99,255,0.08);
+  border: 1.5px solid #e3e8f0;
+  padding: 28px 32px 22px 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+  cursor: pointer;
+  justify-content: space-between;
+  overflow: visible;
+}
+.contact-card .contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contact-card .arrow-icon {
+  margin-left: 18px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.contact-card:hover .arrow-icon {
+  transform: translateX(6px) scale(1.1);
+}
+.contact-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.18);
+  border-color: #2563eb;
+  background: #f5f8ff;
+}
+.contact-card h3 {
+  margin: 0 0 8px 0;
+  color: #2563eb;
+  font-size: 1.15em;
+  font-weight: 600;
+}
+.contact-card p, .contact-card a {
+  color: #444;
+  font-size: 1.05em;
+  margin: 0;
+  word-break: break-all;
+}
+.contact-card a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-card a:hover {
+  color: #1746a2;
+  text-decoration: underline;
+}
+
+/* 微信二维码悬浮显示 */
+.wechat-card {
+  position: relative;
+}
+.wechat-qrcode {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 1.5px solid #e3e8f0;
+  box-shadow: 0 4px 24px rgba(37,99,235,0.13);
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 20;
+  min-width: 120px;
+  min-height: 120px;
+  animation: fadeInQrcode 0.25s;
+}
+.wechat-card:hover .wechat-qrcode {
+  display: block;
+}
+.wechat-qrcode img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+@keyframes fadeInQrcode {
+  from { opacity: 0; transform: translateY(-60%) scale(0.95); }
+  to { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+/* 博客卡片横向居中排列 */
+.blog-list {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 320px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+  transition: min-height 0.2s;
+}
+
+/* 微信二维码弹窗 */
+.wechat-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+.wechat-modal.active {
+  display: flex;
+}
+.wechat-modal-content {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.wechat-modal-content img {
+  width: 60vw;
+  max-width: 420px;
+  height: auto;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+}
+.wechat-modal-content .close-btn {
+  position: absolute;
+  top: 32px;
+  right: 48px;
+  font-size: 2.5rem;
+  color: #2563eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* 去除contacts中Instagram和Email的下划线 */
+.contacts-list a,
+.contact-card a,
+.contact-card .contact-info h3,
+.contact-card .contact-info p {
+  text-decoration: none !important;
+}
+
+@media (min-width: 900px) {
+  .blog-sidebar {
+    min-width: 180px;
+  }
+  .blog-menu {
+    min-height: 220px;
+  }
+} 

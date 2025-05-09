@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的个人网站</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-tabs">
+      <li class="tab active" data-tab="about-me">About Me</li>
+      <li class="tab" data-tab="about">Experience</li>
+      <li class="tab" data-tab="blog">Blogs</li>
+      <li class="tab" data-tab="gallery">Passions</li>
+      <li class="tab" data-tab="contacts">Contacts</li>
+    </ul>
+  </nav>
+  <main>
+    <section id="about-me" class="tab-content active">
+      <div class="about-me-content">
+        <div class="profile-image">
+          <img src="cu.jpg" alt="个人照片">
+        </div>
+        <div class="profile-info">
+          <h2>你好，我是Cu</h2>
+          <p>一名热爱技术的软件工程师，专注于移动应用开发。</p>
+          <p>喜欢探索新技术，热爱开源，热爱生活。</p>
+          <p>正在努力成为全栈工程师。</p>
+
+          <div class="skills">
+            <h3>技能特长</h3>
+            <ul>
+              <li>Android开发</li>
+              <li>跨平台开发</li>
+              <li>性能优化</li>
+              <li>全栈开发</li>
+              <li>旅游</li>
+              <li>音乐</li>
+              <li>游戏</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="tab-content">
+      <div class="card-list">
+        <div class="card" onclick="window.open('https://www.meituan.com/', '_blank')">
+          <h3>美团 Meituan</h3>
+          <p>软件开发工程师</p>
+          <p>2022.5 - 2025.4</p>
+          <div class="card-desc">主要负责 <a onclick="window.open('https://www.dianping.com/', '_blank')" style="color:#2563eb;">大众点评</a> Android平台与跨平台开发。</div>
+        </div>
+        <div class="card" onclick="window.open('https://www.iqiyi.com', '_blank')">
+          <h3>爱奇艺 iQIYI</h3>
+          <p>软件开发工程师</p>
+          <p>2025.5 - 至今</p>
+          <div class="card-desc">主要负责 <a onclick="window.open('https://app.iqiyi.com/tv/player/', '_blank')" style="color:#2563eb;">奇异果海外版</a> Android TV平台与跨平台开发。</div>
+        </div>
+      </div>
+    </section>
+    <section id="blog" class="tab-content">
+      <div class="blog-layout">
+        <aside class="blog-sidebar">
+          <ul class="blog-menu">
+            <li class="blog-menu-item active" data-category="all">全部</li>
+            <li class="blog-menu-item" data-category="travel">旅行随笔</li>
+            <li class="blog-menu-item" data-category="tech">技术成长</li>
+          </ul>
+        </aside>
+        <section class="blog-content-area">
+          <div class="blog-card-list" data-category="all">
+            <div class="blog-card" data-category="travel" onclick="showBlogDetail('travel-1')">
+              <h3>旅行随笔</h3>
+              <p>记录我的旅行见闻与心得。</p>
+            </div>
+            <div class="blog-card" data-category="tech" onclick="showBlogDetail('tech-1')">
+              <h3>技术成长</h3>
+              <p>分享我的学习与成长经历。</p>
+            </div>
+          </div>
+          <div class="blog-card-list" data-category="travel" style="display:none;">
+            <div class="blog-card" data-category="travel" onclick="showBlogDetail('travel-1')">
+              <h3>旅行随笔</h3>
+              <p>记录我的旅行见闻与心得。</p>
+            </div>
+          </div>
+          <div class="blog-card-list" data-category="tech" style="display:none;">
+            <div class="blog-card" data-category="tech" onclick="showBlogDetail('tech-1')">
+              <h3>技术成长</h3>
+              <p>分享我的学习与成长经历。</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section id="gallery" class="tab-content">
+      <div class="gallery-list">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="风景1" onclick="showFullImage(this.src)">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400" alt="风景2" onclick="showFullImage(this.src)">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
+      </div>
+    </section>
+    <section id="contacts" class="tab-content">
+      <div class="contacts-list">
+        <a class="contact-card" href="https://www.instagram.com/cu_yotong/" target="_blank">
+          <div class="contact-info">
+            <h3>Instagram</h3>
+            <p>@cu_yotong</p>
+          </div>
+          <span class="arrow-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5l8 7-8 7" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a class="contact-card" href="mailto:cuyooh@gmail.com">
+          <div class="contact-info">
+            <h3>Email</h3>
+            <p>cuyooh@gmail.com</p>
+          </div>
+          <span class="arrow-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5l8 7-8 7" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <div class="contact-card wechat-card" onclick="showWeChatModal(event)">
+          <div class="contact-info">
+            <h3>WeChat</h3>
+            <p>cuyooh2077</p>
+          </div>
+          <span class="arrow-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5l8 7-8 7" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </div>
+      <div class="wechat-modal" id="wechat-modal">
+        <div class="wechat-modal-content">
+          <button class="close-btn" onclick="closeWeChatModal()">&times;</button>
+          <img src="wechat_qr.png" alt="WeChat二维码">
+          <div style="margin-top:8px;color:#2563eb;font-weight:500;">微信号：cuyooh2077</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 博客详情页弹窗 -->
+  <div id="blog-detail-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeBlogDetail()">&times;</span>
+      <div id="blog-detail-content">
+        <!-- 博客详情内容将通过JavaScript动态插入 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 图片查看器 -->
+  <div id="image-viewer" class="image-viewer">
+    <span class="close-button" onclick="closeImageViewer()">&times;</span>
+    <button id="prev-image" class="image-nav-btn" aria-label="上一张">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="none"/>
+        <path d="M17.5 21L10.5 14L17.5 7" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <img id="full-image" src="" alt="大图">
+    <button id="next-image" class="image-nav-btn" aria-label="下一张">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="none"/>
+        <path d="M10.5 7L17.5 14L10.5 21" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <footer>
+    <div>© 2025 by Cu. All rights reserved.</div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html> 
