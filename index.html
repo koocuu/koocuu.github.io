@@ -12,15 +12,24 @@
 <body>
   <nav class="navbar">
     <ul class="nav-tabs">
-      <li class="tab active" data-tab="about-me">About Me</li>
-      <li class="tab" data-tab="about">Experience</li>
+      <li class="tab home-tab active" data-tab="home">Home</li>
+      <li class="tab" data-tab="about-me">About Me</li>
       <li class="tab" data-tab="blog">Blogs</li>
       <li class="tab" data-tab="gallery">Passions</li>
       <li class="tab" data-tab="contacts">Contacts</li>
     </ul>
   </nav>
   <main>
-    <section id="about-me" class="tab-content active">
+    <section id="home" class="tab-content active">
+      <div class="home-hero">
+        <h1 class="home-title" id="home-title">Hello，我叫Cu</h1>
+        <div class="home-buttons">
+          <button class="home-btn" id="to-experience">Experience</button>
+          <button class="home-btn" id="to-blog">Blogs</button>
+        </div>
+      </div>
+    </section>
+    <section id="about-me" class="tab-content">
       <div class="about-me-content">
         <div class="profile-image">
           <img src="cu.jpg" alt="个人照片">
@@ -33,35 +42,37 @@
 
           <div class="skills">
             <h3>技能特长</h3>
-            <ul>
-              <li>Android开发</li>
-              <li>跨平台开发</li>
-              <li>性能优化</li>
-              <li>全栈开发</li>
-              <li>旅游</li>
-              <li>音乐</li>
-              <li>游戏</li>
-            </ul>
+            <div class="skills-tags">
+              <span class="skill-tag">Android开发</span>
+              <span class="skill-tag">跨平台开发</span>
+              <span class="skill-tag">性能优化</span>
+              <span class="skill-tag">全栈开发</span>
+              <span class="skill-tag">旅游</span>
+              <span class="skill-tag">音乐</span>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-    <section id="about" class="tab-content">
       <div class="card-list">
         <div class="card" onclick="window.open('https://www.meituan.com/', '_blank')">
           <h3>美团 Meituan</h3>
-          <p>软件开发工程师</p>
-          <p>2022.5 - 2025.4</p>
+          <div class="card-row">
+            <span>软件开发工程师</span>
+            <span class="card-time">2022.5 - 2025.4</span>
+          </div>
           <div class="card-desc">主要负责 <a onclick="window.open('https://www.dianping.com/', '_blank')" style="color:#2563eb;">大众点评</a> Android平台与跨平台开发。</div>
         </div>
         <div class="card" onclick="window.open('https://www.iqiyi.com', '_blank')">
           <h3>爱奇艺 iQIYI</h3>
-          <p>软件开发工程师</p>
-          <p>2025.5 - 至今</p>
+          <div class="card-row">
+            <span>软件开发工程师</span>
+            <span class="card-time">2025.5 - 至今</span>
+          </div>
           <div class="card-desc">主要负责 <a onclick="window.open('https://app.iqiyi.com/tv/player/', '_blank')" style="color:#2563eb;">奇异果海外版</a> Android TV平台与跨平台开发。</div>
         </div>
       </div>
     </section>
+
     <section id="blog" class="tab-content">
       <div class="blog-layout">
         <aside class="blog-sidebar">
@@ -128,7 +139,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5l8 7-8 7" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
-        <div class="contact-card wechat-card" onclick="showWeChatModal(event)">
+        <div class="contact-card wechat-card">
           <div class="contact-info">
             <h3>WeChat</h3>
             <p>cuyooh2077</p>
@@ -136,13 +147,9 @@
           <span class="arrow-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5l8 7-8 7" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
-        </div>
-      </div>
-      <div class="wechat-modal" id="wechat-modal">
-        <div class="wechat-modal-content">
-          <button class="close-btn" onclick="closeWeChatModal()">&times;</button>
-          <img src="wechat_qr.png" alt="WeChat二维码">
-          <div style="margin-top:8px;color:#2563eb;font-weight:500;">微信号：cuyooh2077</div>
+          <div class="wechat-qrcode">
+            <img src="wechat_qr.png" alt="WeChat二维码">
+          </div>
         </div>
       </div>
     </section>

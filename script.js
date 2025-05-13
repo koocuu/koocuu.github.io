@@ -10,9 +10,73 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   updateTabIndicator();
+  
+  // 初始化博客分类
+  if (document.querySelectorAll('.blog-menu-item').length) {
+    document.querySelectorAll('.blog-menu-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.blog-menu-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        const category = this.getAttribute('data-category');
+        document.querySelectorAll('.blog-card-list').forEach(list => {
+          if (category === 'all') {
+            list.style.display = (list.getAttribute('data-category') === 'all') ? '' : 'none';
+          } else {
+            list.style.display = (list.getAttribute('data-category') === category) ? '' : 'none';
+          }
+        });
+      });
+    });
+  }
+  
+  // 初始化标签页切换
+  document.querySelectorAll('.nav-tabs li').forEach(tab => {
+    tab.addEventListener('click', function() {
+      const target = this.getAttribute('data-tab');
+      switchTab(target);
+    });
+  });
+
+  // 遮罩关闭
+  const wechatModal = document.getElementById('wechat-modal');
+  if (wechatModal) {
+    wechatModal.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeWeChatModal();
+      }
+    });
+  }
+  // 关闭按钮关闭
+  const wechatCloseBtn = document.querySelector('.wechat-modal-content .close-btn');
+  if (wechatCloseBtn) {
+    wechatCloseBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeWeChatModal();
+    });
+  }
+
+  // Home tab交互
+  const homeTitle = document.getElementById('home-title');
+  if (homeTitle) {
+    homeTitle.addEventListener('click', function() {
+      switchTab('about-me');
+    });
+  }
+  const toExp = document.getElementById('to-experience');
+  if (toExp) {
+    toExp.addEventListener('click', function() {
+      switchTab('about');
+    });
+  }
+  const toBlog = document.getElementById('to-blog');
+  if (toBlog) {
+    toBlog.addEventListener('click', function() {
+      switchTab('blog');
+    });
+  }
 });
 
-// 页面加载后初始化指示器
+// 更新标签页指示器
 function updateTabIndicator() {
   const navTabs = document.querySelector('.nav-tabs');
   const activeTab = document.querySelector('.nav-tabs li.active');
@@ -23,30 +87,6 @@ function updateTabIndicator() {
     navTabs.style.setProperty('--indicator-bottom', '0px');
   }
 }
-
-// 标签页切换功能
-document.querySelectorAll('.nav-tabs li').forEach(tab => {
-  tab.addEventListener('click', function() {
-    const target = this.getAttribute('data-tab');
-    const tabs = document.querySelectorAll('.nav-tabs li');
-    const contents = document.querySelectorAll('.tab-content');
-    
-    // 更新标签状态
-    tabs.forEach(t => t.classList.remove('active'));
-    this.classList.add('active');
-    
-    // 更新内容显示
-    contents.forEach(content => {
-      content.classList.remove('active');
-      if (content.id === target) {
-        content.classList.add('active');
-      }
-    });
-    
-    // 平滑更新指示器
-    updateTabIndicator();
-  });
-});
 
 // 博客详情页功能
 const blogDetails = {
@@ -99,12 +139,13 @@ function closeBlogDetail() {
   document.body.style.overflow = 'auto'; // 恢复背景滚动
 }
 
-// 点击模态框外部关闭
+// 点击遮罩关闭，仅针对微信弹窗
 window.onclick = function(event) {
-  const modal = document.getElementById('blog-detail-modal');
-  if (event.target == modal) {
-    closeBlogDetail();
+  const wechatModal = document.getElementById('wechat-modal');
+  if (event.target === wechatModal) {
+    closeWeChatModal();
   }
+  // 其他模态框关闭逻辑可继续添加
 }
 
 // ========== 图片大图页切换功能 ========== //
@@ -141,15 +182,18 @@ function closeImageViewer() {
   document.body.style.overflow = 'auto';
 }
 
+// 图片导航按钮事件
 document.getElementById('prev-image').onclick = function(e) {
   e.stopPropagation();
   if (currentImageIndex > 0) showFullImageByIndex(currentImageIndex - 1);
 };
+
 document.getElementById('next-image').onclick = function(e) {
   e.stopPropagation();
   if (currentImageIndex < galleryImages.length - 1) showFullImageByIndex(currentImageIndex + 1);
 };
 
+// 键盘导航
 document.addEventListener('keydown', function(e) {
   const viewer = document.getElementById('image-viewer');
   if (viewer.classList.contains('active')) {
@@ -163,110 +207,43 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// ========== 博客tab分类切换功能（重写） ========== //
-if (document.querySelectorAll('.blog-menu-item').length) {
-  document.querySelectorAll('.blog-menu-item').forEach(item => {
-    item.addEventListener('click', function() {
-      document.querySelectorAll('.blog-menu-item').forEach(i => i.classList.remove('active'));
-      this.classList.add('active');
-      const category = this.getAttribute('data-category');
-      document.querySelectorAll('.blog-card-list').forEach(list => {
-        if (category === 'all') {
-          list.style.display = (list.getAttribute('data-category') === 'all') ? '' : 'none';
-        } else {
-          list.style.display = (list.getAttribute('data-category') === category) ? '' : 'none';
-        }
-      });
-    });
-  });
+// 微信二维码展示功能
+function showWeChatModal(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  const modal = document.getElementById('wechat-modal');
+  modal.style.display = 'flex';
+  setTimeout(() => {
+    modal.classList.add('active');
+  }, 10);
+  document.body.style.overflow = 'hidden';
 }
 
-// ========== 其余tab和指示器功能（保持不变） ========== //
-function updateTabIndicator() {
-  const navTabs = document.querySelector('.nav-tabs');
-  const activeTab = document.querySelector('.nav-tabs li.active');
-  if (navTabs && activeTab) {
-    navTabs.style.setProperty('--indicator-width', `${activeTab.offsetWidth}px`);
-    navTabs.style.setProperty('--indicator-left', `${activeTab.offsetLeft}px`);
-    navTabs.style.setProperty('--indicator-height', '2px');
-    navTabs.style.setProperty('--indicator-bottom', '0px');
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  // 初始化标签页内容
-  const defaultTab = document.querySelector('.nav-tabs li.active');
-  if (defaultTab) {
-    const target = defaultTab.getAttribute('data-tab');
-    const targetContent = document.getElementById(target);
-    if (targetContent) {
-      targetContent.classList.add('active');
-    }
-  }
-  updateTabIndicator();
-});
-
-document.querySelectorAll('.nav-tabs li').forEach(tab => {
-  tab.addEventListener('click', function() {
-    const target = this.getAttribute('data-tab');
-    const tabs = document.querySelectorAll('.nav-tabs li');
-    const contents = document.querySelectorAll('.tab-content');
-    tabs.forEach(t => t.classList.remove('active'));
-    this.classList.add('active');
-    contents.forEach(content => {
-      content.classList.remove('active');
-      if (content.id === target) {
-        content.classList.add('active');
-      }
-    });
-    updateTabIndicator();
-  });
-});
-
-// ========== 博客详情页和图片查看器关闭功能（保持不变） ========== //
-function showBlogDetail(blogId) {
-  const modal = document.getElementById('blog-detail-modal');
-  const content = document.getElementById('blog-detail-content');
-  const blog = blogDetails[blogId];
-  if (blog) {
-    content.innerHTML = blog.content;
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeBlogDetail() {
-  const modal = document.getElementById('blog-detail-modal');
-  modal.style.display = 'none';
+function closeWeChatModal() {
+  const modal = document.getElementById('wechat-modal');
+  modal.classList.remove('active');
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 300);
   document.body.style.overflow = 'auto';
 }
 
-window.onclick = function(event) {
-  const viewer = document.getElementById('image-viewer');
-  const modal = document.getElementById('blog-detail-modal');
-  if (event.target == viewer) {
-    closeImageViewer();
-  }
-  if (event.target == modal) {
-    closeBlogDetail();
-  }
-}
-
-// 微信二维码弹窗功能
-function showWeChatModal(event) {
-  event.stopPropagation();
-  document.getElementById('wechat-modal').classList.add('active');
-}
-function closeWeChatModal() {
-  document.getElementById('wechat-modal').classList.remove('active');
-}
-document.addEventListener('click', function(e) {
-  const modal = document.getElementById('wechat-modal');
-  const modalContent = document.querySelector('.wechat-modal-content');
-  if (modal && modal.classList.contains('active')) {
-    // 只允许点击遮罩关闭，点击内容不关闭
-    if (e.target === modal) {
-      closeWeChatModal();
+function switchTab(tabName) {
+  // 切换tab按钮
+  document.querySelectorAll('.nav-tabs li').forEach(tab => {
+    if (tab.getAttribute('data-tab') === tabName) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
     }
-  }
-}); 
+  });
+  // 切换内容
+  document.querySelectorAll('.tab-content').forEach(content => {
+    if (content.id === tabName) {
+      content.classList.add('active');
+    } else {
+      content.classList.remove('active');
+    }
+  });
+  updateTabIndicator();
+} 
