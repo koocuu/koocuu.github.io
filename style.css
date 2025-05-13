@@ -9,7 +9,7 @@ body {
   min-height: 100vh;
   height: 100%;
   position: relative;
-  background: url('bg.jpg') center center/cover no-repeat;
+  background: url('./bg.jpg') center center/cover no-repeat;
   background-attachment: fixed;
   color: #222;
   display: flex;
