@@ -15,7 +15,6 @@
       <li class="tab home-tab active" data-tab="home">Home</li>
       <li class="tab" data-tab="about-me">About Me</li>
       <li class="tab" data-tab="blog">Blogs</li>
-      <li class="tab" data-tab="gallery">Passions</li>
       <li class="tab" data-tab="contacts">Contacts</li>
     </ul>
   </nav>
@@ -24,7 +23,6 @@
       <div class="home-hero">
         <h1 class="home-title" id="home-title">Hello，我叫Cu</h1>
         <div class="home-buttons">
-          <button class="home-btn" id="to-experience">Experience</button>
           <button class="home-btn" id="to-blog">Blogs</button>
         </div>
       </div>
@@ -53,22 +51,46 @@
           </div>
         </div>
       </div>
-      <div class="card-list">
-        <div class="card" onclick="window.open('https://www.meituan.com/', '_blank')">
-          <h3>美团 Meituan</h3>
-          <div class="card-row">
-            <span>软件开发工程师</span>
-            <span class="card-time">2022.5 - 2025.4</span>
+      <div class="card-list experience-list">
+        <div class="exp-card">
+          <div class="exp-card-logo">
+            <img src="https://placehold.co/64x64/2563eb/fff?text=M" alt="Meituan Logo">
           </div>
-          <div class="card-desc">主要负责 <a onclick="window.open('https://www.dianping.com/', '_blank')" style="color:#2563eb;">大众点评</a> Android平台与跨平台开发。</div>
+          <div class="exp-card-content">
+            <div class="exp-card-header">
+              <span class="exp-company">美团 Meituan</span>
+              <span class="exp-title">软件开发工程师</span>
+              <span class="exp-time">2022.5 - 2025.4</span>
+            </div>
+            <div class="exp-desc">主要负责 <a href="https://www.dianping.com/" target="_blank" style="color:#38bdf8;">大众点评</a> Android平台与跨平台开发。</div>
+            <div class="exp-tags">
+              <span class="exp-tag">Android开发</span>
+              <span class="exp-tag">跨平台开发</span>
+            </div>
+          </div>
+          <div class="exp-card-bglogo">
+            <img src="https://placehold.co/120x120/2563eb/fff?text=M" alt="Meituan Watermark">
+          </div>
         </div>
-        <div class="card" onclick="window.open('https://www.iqiyi.com', '_blank')">
-          <h3>爱奇艺 iQIYI</h3>
-          <div class="card-row">
-            <span>软件开发工程师</span>
-            <span class="card-time">2025.5 - 至今</span>
+        <div class="exp-card">
+          <div class="exp-card-logo">
+            <img src="https://placehold.co/64x64/2563eb/fff?text=Q" alt="iQIYI Logo">
           </div>
-          <div class="card-desc">主要负责 <a onclick="window.open('https://app.iqiyi.com/tv/player/', '_blank')" style="color:#2563eb;">奇异果海外版</a> Android TV平台与跨平台开发。</div>
+          <div class="exp-card-content">
+            <div class="exp-card-header">
+              <span class="exp-company">爱奇艺 iQIYI</span>
+              <span class="exp-title">软件开发工程师</span>
+              <span class="exp-time">2025.5 - 至今</span>
+            </div>
+            <div class="exp-desc">主要负责 <a href="https://app.iqiyi.com/tv/player/" target="_blank" style="color:#38bdf8;">奇异果海外版</a> Android TV平台与跨平台开发。</div>
+            <div class="exp-tags">
+              <span class="exp-tag">Android TV</span>
+              <span class="exp-tag">跨平台开发</span>
+            </div>
+          </div>
+          <div class="exp-card-bglogo">
+            <img src="https://placehold.co/120x120/2563eb/fff?text=Q" alt="iQIYI Watermark">
+          </div>
         </div>
       </div>
     </section>
@@ -106,17 +128,6 @@
             </div>
           </div>
         </section>
-      </div>
-    </section>
-    <section id="gallery" class="tab-content">
-      <div class="gallery-list">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="风景1" onclick="showFullImage(this.src)">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400" alt="风景2" onclick="showFullImage(this.src)">
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400" alt="风景3" onclick="showFullImage(this.src)">
       </div>
     </section>
     <section id="contacts" class="tab-content">
@@ -165,27 +176,6 @@
     </div>
   </div>
 
-  <!-- 图片查看器 -->
-  <div id="image-viewer" class="image-viewer">
-    <span class="close-button" onclick="closeImageViewer()">&times;</span>
-    <button id="prev-image" class="image-nav-btn" aria-label="上一张">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="14" cy="14" r="14" fill="none"/>
-        <path d="M17.5 21L10.5 14L17.5 7" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <img id="full-image" src="" alt="大图">
-    <button id="next-image" class="image-nav-btn" aria-label="下一张">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="14" cy="14" r="14" fill="none"/>
-        <path d="M10.5 7L17.5 14L10.5 21" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
-
-  <footer>
-    <div>© 2025 by Cu. All rights reserved.</div>
-  </footer>
   <script src="./script.js"></script>
 </body>
 </html> 
