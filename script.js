@@ -148,65 +148,6 @@ window.onclick = function(event) {
   // 其他模态框关闭逻辑可继续添加
 }
 
-// ========== 图片大图页切换功能 ========== //
-const galleryImages = Array.from(document.querySelectorAll('.gallery-list img'));
-let currentImageIndex = 0;
-
-function showFullImageByIndex(index) {
-  if (index < 0 || index >= galleryImages.length) return;
-  currentImageIndex = index;
-  const viewer = document.getElementById('image-viewer');
-  const fullImage = document.getElementById('full-image');
-  const src = galleryImages[index].src.replace('w=400', 'w=1200');
-  fullImage.src = src;
-  viewer.style.display = 'flex';
-  setTimeout(() => {
-    viewer.classList.add('active');
-  }, 10);
-  document.body.style.overflow = 'hidden';
-}
-
-function showFullImage(src) {
-  const index = galleryImages.findIndex(img => img.src === src);
-  if (index !== -1) {
-    showFullImageByIndex(index);
-  }
-}
-
-function closeImageViewer() {
-  const viewer = document.getElementById('image-viewer');
-  viewer.classList.remove('active');
-  setTimeout(() => {
-    viewer.style.display = 'none';
-  }, 300);
-  document.body.style.overflow = 'auto';
-}
-
-// 图片导航按钮事件
-document.getElementById('prev-image').onclick = function(e) {
-  e.stopPropagation();
-  if (currentImageIndex > 0) showFullImageByIndex(currentImageIndex - 1);
-};
-
-document.getElementById('next-image').onclick = function(e) {
-  e.stopPropagation();
-  if (currentImageIndex < galleryImages.length - 1) showFullImageByIndex(currentImageIndex + 1);
-};
-
-// 键盘导航
-document.addEventListener('keydown', function(e) {
-  const viewer = document.getElementById('image-viewer');
-  if (viewer.classList.contains('active')) {
-    if (e.key === 'ArrowLeft') {
-      if (currentImageIndex > 0) showFullImageByIndex(currentImageIndex - 1);
-    } else if (e.key === 'ArrowRight') {
-      if (currentImageIndex < galleryImages.length - 1) showFullImageByIndex(currentImageIndex + 1);
-    } else if (e.key === 'Escape') {
-      closeImageViewer();
-    }
-  }
-});
-
 // 微信二维码展示功能
 function showWeChatModal(event) {
   event.preventDefault();

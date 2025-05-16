@@ -14,6 +14,7 @@ body {
   color: #222;
   display: flex;
   flex-direction: column;
+  padding-bottom: 60px; /* 给footer留空间，防止内容被遮挡 */
 }
 
 .navbar, main {
@@ -54,6 +55,10 @@ body {
   justify-content: center;
   width: 100%;
   background: transparent;
+  --indicator-width: 0;
+  --indicator-height: 2px;
+  --indicator-left: 0;
+  --indicator-bottom: 0;
 }
 .nav-tabs::after {
   content: '';
@@ -108,9 +113,8 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 16px;
   min-height: 0;
 }
 .card-list {
@@ -181,28 +185,10 @@ main {
   text-align: center;
 }
 .gallery-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 16px;
+  display: none;
 }
 .gallery-list img {
-  width: 160px;
-  height: 110px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px #2563eb11;
-  border: 1.5px solid #e3e8f0;
-  background: #fff;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  position: relative;
-  opacity: 0;
-  transform: scale(0.95);
-}
-.gallery-list img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
+  display: none;
 }
 .music-player {
   margin-top: 24px;
@@ -219,13 +205,21 @@ main {
   box-shadow: 0 4px 24px #2563eb33, 0 0 0 2px #38bdf822;
 }
 footer {
-  margin-top: 1rem;
+  margin-top: auto;
   text-align: center;
   color: #888;
   font-size: 0.95em;
   padding: 0.8rem 0;
   background: transparent;
   border: none;
+  width: 100%;
+  border-top: 1.5px solid #e3e8f0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 -2px 16px rgba(39,99,255,0.04);
 }
 @media (max-width: 700px) {
   main {
@@ -284,13 +278,14 @@ footer {
 
 /* About Me 页面样式 */
 #about-me .about-me-content {
+  max-width: 1000px;
+  margin: 16px auto 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 2rem;
-  max-width: 1000px;
-  margin: 40px auto 0 auto;
   padding: 2rem 2.5rem 2rem 2.5rem;
   background: rgba(255,255,255,0.92);
   border-radius: 18px;
@@ -336,17 +331,13 @@ footer {
   padding: 0 0 0 1.2em;
 }
 #about-me .card-list {
-  max-width: 1000px;
-  margin: 40px auto 0 auto;
-  padding: 2rem 2.5rem 2rem 2.5rem;
-  background: rgba(255,255,255,0.92);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  justify-content: center;
+  flex-direction: column;
   align-items: stretch;
+}
+#about-me .card {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
 }
 #about-me .card:first-child {
   margin-left: 20px;
@@ -360,7 +351,7 @@ footer {
   border-radius: 10px;
   box-shadow: 0 2px 16px rgba(39,99,255,0.06);
   border: 1.5px solid #e3e8f0;
-  padding: 24px 20px;
+  padding: 20px 20px;
   width: 280px;
   max-width: 320px;
   min-width: 220px;
@@ -606,78 +597,10 @@ footer {
 /* 图片查看器样式 */
 .image-viewer {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
-.image-viewer.active {
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.9);
-  opacity: 1;
-}
-
-.image-viewer img {
-  max-width: 90%;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-  transform: scale(0.9);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.image-viewer.active img {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.image-viewer .close-button {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.5);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  opacity: 0;
-  transform: scale(0.8);
-}
-
-.image-viewer.active .close-button {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.image-viewer .close-button:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-  .image-viewer .close-button {
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.8rem;
-    width: 36px;
-    height: 36px;
-  }
+.image-nav-btn {
+  display: none;
 }
 
 /* 为卡片添加交错动画 */
@@ -764,40 +687,6 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* 图片查看器切换按钮样式 */
-.image-nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.85);
-  border: none;
-  border-radius: 50%;
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 12px rgba(37,99,235,0.15);
-  cursor: pointer;
-  z-index: 1002;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  padding: 0;
-}
-.image-nav-btn svg {
-  display: block;
-  width: 28px;
-  height: 28px;
-}
-#prev-image { left: 32px; }
-#next-image { right: 32px; }
-.image-nav-btn:hover {
-  background: #2563eb;
-  box-shadow: 0 4px 24px #2563eb33;
-}
-.image-nav-btn:hover svg path {
-  stroke: #fff;
 }
 
 /* 博客tab目录靠左且不跳动 */
@@ -1223,7 +1112,8 @@ footer {
   justify-content: center;
   padding: 0;
   background: none;
-  animation: homeBgFadeIn 1.2s cubic-bezier(0.4,0,0.2,1);
+  filter: blur(8px);
+  transition: filter 1.2s cubic-bezier(0.4,0,0.2,1);
   box-shadow: 0 8px 32px rgba(37,99,235,0.10);
   overflow-y: auto;
 }
@@ -1234,9 +1124,24 @@ body #home.tab-content {
   padding-right: 0;
 }
 
+#home.tab-content.active {
+  filter: blur(0);
+}
+
 @keyframes homeBgFadeIn {
-  from { opacity: 0; filter: blur(8px); }
-  to { opacity: 1; filter: blur(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes blurFadeIn {
+  from { 
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+  to { 
+    opacity: 1;
+    backdrop-filter: blur(0);
+  }
 }
 .home-hero {
   text-align: center;
@@ -1370,4 +1275,152 @@ body #home.tab-content {
   margin-left: 0;
   white-space: nowrap;
   margin-left: auto;
+}
+
+/* 工作经历浅色卡片风格 */
+.experience-list {
+  max-width: 1000px;
+  margin: 16px auto 0 auto;
+  padding: 0 !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.exp-card {
+  width: 100%;
+  max-width: none;
+  padding: 2rem 2.5rem 2rem 2.5rem;
+  background: rgba(255,255,255,0.92);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), box-shadow 0.28s;
+  cursor: pointer;
+  margin: 16 auto;
+}
+.exp-card:hover {
+  transform: scale(1.035);
+  box-shadow: 0 8px 48px 0 #2563eb22, 0 0 0 2px #38bdf822;
+  z-index: 2;
+}
+.exp-card-logo {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f3f6fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 28px;
+  box-shadow: 0 2px 12px #2563eb11;
+  overflow: hidden;
+}
+.exp-card-logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.exp-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+.exp-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 10px;
+  justify-content: flex-start;
+  position: relative;
+}
+.exp-company {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 1px;
+}
+.exp-title {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #2563eb;
+  background: #e8f1fd;
+  border-radius: 8px;
+  padding: 2px 12px;
+  margin-left: 8px;
+}
+.exp-desc {
+  color: #444;
+  font-size: 1.08rem;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+.exp-tags {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.exp-tag {
+  display: inline-block;
+  background: #f3f6fa;
+  color: #2563eb;
+  border-radius: 18px;
+  padding: 6px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  box-shadow: 0 2px 8px #2563eb11;
+  border: 1.2px solid #e3e8f0;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.exp-tag:hover {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+.exp-time {
+  color: #2563eb;
+  font-size: 0.98em;
+  margin-left: auto;
+  margin-top: 0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.exp-card-bglogo {
+  position: absolute;
+  right: 32px;
+  bottom: 18px;
+  opacity: 0.06;
+  z-index: 0;
+  pointer-events: none;
+}
+.exp-card-bglogo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.2);
+}
+@media (max-width: 900px) {
+  .experience-list, .exp-card {
+    max-width: 98vw;
+  }
+  .exp-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 8px 24px 8px;
+  }
+  .exp-card-logo {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+  .exp-card-bglogo {
+    right: 12px;
+    bottom: 12px;
+  }
 } 
