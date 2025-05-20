@@ -71,29 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const toBlog = document.getElementById('to-blog');
   if (toBlog) {
     toBlog.addEventListener('click', function() {
-      switchTab('blog');
+      switchTab('blog-tab');
     });
   }
-
-  // 在tab切换逻辑中添加blog-tab的处理
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      const tabId = tab.getAttribute('data-tab');
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
-      });
-      document.querySelectorAll('.tab').forEach(t => {
-        t.classList.remove('active');
-      });
-      tab.classList.add('active');
-      if (tabId === 'blog-tab') {
-        document.getElementById('blog-tab').style.display = 'block';
-      } else {
-        document.getElementById('blog-tab').style.display = 'none';
-        document.getElementById(tabId).classList.add('active');
-      }
-    });
-  });
 });
 
 // 更新标签页指示器
@@ -198,6 +178,7 @@ function switchTab(tabName) {
       tab.classList.remove('active');
     }
   });
+  
   // 切换内容
   document.querySelectorAll('.tab-content').forEach(content => {
     if (content.id === tabName) {
@@ -206,5 +187,13 @@ function switchTab(tabName) {
       content.classList.remove('active');
     }
   });
+
+  // 特殊处理blog-tab
+  if (tabName === 'blog-tab') {
+    document.getElementById('blog-tab').style.display = 'block';
+  } else {
+    document.getElementById('blog-tab').style.display = 'none';
+  }
+
   updateTabIndicator();
 } 

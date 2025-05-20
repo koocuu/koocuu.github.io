@@ -1,21 +1,13 @@
-# Hexo 源码和依赖（只保留 blog 目录下的静态文件）
+# Hexo
 /blog/node_modules/
-/blog/source/
-/blog/scaffolds/
-/blog/themes/
-/blog/.git/
 /blog/.deploy_git/
 /blog/db.json
-/blog/package.json
 /blog/package-lock.json
-/blog/_config.yml
-/blog/_config.landscape.yml
-/blog/public/
 
-# 其它临时和系统文件
-*.log
+# 系统文件
 .DS_Store
 Thumbs.db
+*.log
 
 # 可选：忽略主站未用到的图片、脚本等（如有）
 # /unused_images/
