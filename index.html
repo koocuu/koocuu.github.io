@@ -95,41 +95,6 @@
       </div>
     </section>
 
-    <section id="blog" class="tab-content">
-      <div class="blog-layout">
-        <aside class="blog-sidebar">
-          <ul class="blog-menu">
-            <li class="blog-menu-item active" data-category="all">全部</li>
-            <li class="blog-menu-item" data-category="travel">旅行随笔</li>
-            <li class="blog-menu-item" data-category="tech">技术成长</li>
-          </ul>
-        </aside>
-        <section class="blog-content-area">
-          <div class="blog-card-list" data-category="all">
-            <div class="blog-card" data-category="travel" onclick="showBlogDetail('travel-1')">
-              <h3>旅行随笔</h3>
-              <p>记录我的旅行见闻与心得。</p>
-            </div>
-            <div class="blog-card" data-category="tech" onclick="showBlogDetail('tech-1')">
-              <h3>技术成长</h3>
-              <p>分享我的学习与成长经历。</p>
-            </div>
-          </div>
-          <div class="blog-card-list" data-category="travel" style="display:none;">
-            <div class="blog-card" data-category="travel" onclick="showBlogDetail('travel-1')">
-              <h3>旅行随笔</h3>
-              <p>记录我的旅行见闻与心得。</p>
-            </div>
-          </div>
-          <div class="blog-card-list" data-category="tech" style="display:none;">
-            <div class="blog-card" data-category="tech" onclick="showBlogDetail('tech-1')">
-              <h3>技术成长</h3>
-              <p>分享我的学习与成长经历。</p>
-            </div>
-          </div>
-        </section>
-      </div>
-    </section>
     <section id="contacts" class="tab-content">
       <div class="contacts-list">
         <a class="contact-card" href="https://www.instagram.com/cu_yotong/" target="_blank">
@@ -166,19 +131,14 @@
     </section>
   </main>
 
-  <!-- 博客详情页弹窗 -->
-  <div id="blog-detail-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-button" onclick="closeBlogDetail()">&times;</span>
-      <div id="blog-detail-content">
-        <!-- 博客详情内容将通过JavaScript动态插入 -->
-      </div>
-    </div>
-  </div>
-
   <!-- 在合适的位置添加blog tab内容 -->
   <div id="blog-tab" style="display:none;">
-    <iframe src="https://koocuu.github.io/blog/" style="width:100%;height:100vh;border:none;"></iframe>
+    <iframe 
+      src="https://cuisawesome.top/koocuu-blog" 
+      style="width: 100%; height: 100vh; border: none; overflow: hidden;"
+      frameborder="0"
+      scrolling="yes"
+    ></iframe>
   </div>
 
   <script src="./script.js"></script>
