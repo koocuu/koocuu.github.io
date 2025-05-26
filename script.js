@@ -63,6 +63,25 @@ document.addEventListener('DOMContentLoaded', function() {
       switchTab('contacts');
     });
   }
+
+  // 处理iframe内的链接点击
+  const blogIframe = document.getElementById('blog-iframe');
+  if (blogIframe) {
+    blogIframe.onload = function() {
+      try {
+        // 尝试访问iframe内容
+        const iframeDoc = blogIframe.contentDocument || blogIframe.contentWindow.document;
+        
+        // 为iframe内的所有链接添加target属性
+        const links = iframeDoc.getElementsByTagName('a');
+        for (let link of links) {
+          link.target = 'blog-frame';
+        }
+      } catch (e) {
+        console.log('无法修改iframe内容，可能是因为跨域限制');
+      }
+    };
+  }
 });
 
 // 更新标签页指示器
@@ -76,9 +95,6 @@ function updateTabIndicator() {
     navTabs.style.setProperty('--indicator-bottom', '0px');
   }
 }
-
-// 记录上一次激活的tab
-let lastActiveTab = null;
 
 function switchTab(tabName) {
   // 切换tab按钮
@@ -101,18 +117,11 @@ function switchTab(tabName) {
 
   // 特殊处理blog-tab
   if (tabName === 'blog-tab') {
-    const blogTabDiv = document.getElementById('blog-tab');
-    blogTabDiv.style.display = 'block';
-    const blogIframe = blogTabDiv.querySelector('iframe');
-    // 如果上一次也是blog-tab，则重置iframe src
-    if (lastActiveTab === 'blog-tab' && blogIframe) {
-      blogIframe.src = 'https://cuisawesome.top/koocuu-blog';
-    }
+    document.getElementById('blog-tab').style.display = 'block';
   } else {
     document.getElementById('blog-tab').style.display = 'none';
   }
 
-  lastActiveTab = tabName;
   updateTabIndicator();
 }
 
