@@ -56,6 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
       switchTab('blog-tab');
     });
   }
+  
+  const toContact = document.getElementById('to-contact');
+  if (toContact) {
+    toContact.addEventListener('click', function() {
+      switchTab('contacts');
+    });
+  }
 });
 
 // 更新标签页指示器
