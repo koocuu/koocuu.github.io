@@ -112,15 +112,174 @@ main {
   box-sizing: border-box;
 }
 
+/* 工作经历列表样式 */
 .experience-list {
   max-width: 800px;
-  margin: 0 auto !important;
-  padding: 0 !important;
   width: 100%;
+  margin: 0 auto;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
   box-sizing: border-box;
+}
+
+/* 工作经历卡片样式 */
+.exp-card {
+  width: 100%;
+  padding: 2rem 2.5rem;
+  background: rgba(255,255,255,0.92);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), box-shadow 0.28s;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.exp-card:hover {
+  transform: scale(1.035);
+  box-shadow: 0 8px 48px 0 #2563eb22, 0 0 0 2px #38bdf822;
+  z-index: 2;
+}
+
+.exp-card-logo {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f3f6fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 28px;
+  box-shadow: 0 2px 12px #2563eb11;
+  overflow: hidden;
+}
+
+.exp-card-logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.exp-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.exp-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 10px;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.exp-company {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 1px;
+}
+
+.exp-title {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #2563eb;
+  background: #e8f1fd;
+  border-radius: 8px;
+  padding: 2px 12px;
+  margin-left: 8px;
+}
+
+.exp-desc {
+  color: #444;
+  font-size: 1.08rem;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+
+.exp-tags {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.exp-tag {
+  display: inline-block;
+  background: #f3f6fa;
+  color: #2563eb;
+  border-radius: 18px;
+  padding: 6px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  box-shadow: 0 2px 8px #2563eb11;
+  border: 1.2px solid #e3e8f0;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.exp-tag:hover {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.exp-time {
+  color: #2563eb;
+  font-size: 0.98em;
+  margin-left: auto;
+  margin-top: 0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.exp-card-bglogo {
+  position: absolute;
+  right: 32px;
+  bottom: 18px;
+  opacity: 0.06;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.exp-card-bglogo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.2);
+}
+
+/* 移动端样式 */
+@media (max-width: 700px) {
+  .experience-list {
+    padding: 0 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .exp-card {
+    padding: 1.5rem;
+    flex-direction: column;
+  }
+  
+  .exp-card-logo {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+  
+  .exp-card-bglogo {
+    right: 12px;
+    bottom: 12px;
+  }
 }
 
 /* Contacts 页面 */
@@ -1137,173 +1296,6 @@ body #home.tab-content {
   margin-left: 0;
   white-space: nowrap;
   margin-left: auto;
-}
-
-/* 工作经历浅色卡片风格 */
-.exp-card {
-  width: 100%;
-  max-width: 100%;
-  padding: 2rem 2.5rem;
-  background: rgba(255,255,255,0.92);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  overflow: hidden;
-  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), box-shadow 0.28s;
-  cursor: pointer;
-  margin: 0;
-  box-sizing: border-box;
-}
-.exp-card:hover {
-  transform: scale(1.035);
-  box-shadow: 0 8px 48px 0 #2563eb22, 0 0 0 2px #38bdf822;
-  z-index: 2;
-}
-.exp-card-logo {
-  flex: 0 0 64px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: #f3f6fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 28px;
-  box-shadow: 0 2px 12px #2563eb11;
-  overflow: hidden;
-}
-.exp-card-logo img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.exp-card-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-}
-.exp-card-header {
-  display: flex;
-  align-items: baseline;
-  gap: 18px;
-  margin-bottom: 10px;
-  justify-content: flex-start;
-  position: relative;
-}
-.exp-company {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #222;
-  letter-spacing: 1px;
-}
-.exp-title {
-  font-size: 1.08rem;
-  font-weight: 500;
-  color: #2563eb;
-  background: #e8f1fd;
-  border-radius: 8px;
-  padding: 2px 12px;
-  margin-left: 8px;
-}
-.exp-desc {
-  color: #444;
-  font-size: 1.08rem;
-  margin-bottom: 18px;
-  line-height: 1.7;
-}
-.exp-tags {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 8px;
-}
-.exp-tag {
-  display: inline-block;
-  background: #f3f6fa;
-  color: #2563eb;
-  border-radius: 18px;
-  padding: 6px 18px;
-  font-size: 1em;
-  font-weight: 500;
-  box-shadow: 0 2px 8px #2563eb11;
-  border: 1.2px solid #e3e8f0;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-}
-.exp-tag:hover {
-  background: #2563eb;
-  color: #fff;
-  border-color: #2563eb;
-}
-.exp-time {
-  color: #2563eb;
-  font-size: 0.98em;
-  margin-left: auto;
-  margin-top: 0;
-  font-weight: 500;
-  white-space: nowrap;
-}
-.exp-card-bglogo {
-  position: absolute;
-  right: 32px;
-  bottom: 18px;
-  opacity: 0.06;
-  z-index: 0;
-  pointer-events: none;
-}
-.exp-card-bglogo img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  filter: grayscale(1) brightness(1.2);
-}
-@media (max-width: 900px) {
-  .experience-list, .exp-card {
-    max-width: 800px;
-  }
-  .exp-card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem;
-    margin: 0;
-  }
-  .exp-card-logo {
-    margin-right: 0;
-    margin-bottom: 16px;
-  }
-  .exp-card-bglogo {
-    right: 12px;
-    bottom: 12px;
-  }
-}
-
-@media (max-width: 700px) {
-  .experience-list {
-    padding: 0 !important;
-    margin: 0 auto !important;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .exp-card {
-    padding: 1.5rem;
-    margin: 0;
-    width: calc(100% - 24px);
-    box-sizing: border-box;
-  }
-  
-  .exp-card-logo {
-    margin-right: 0;
-    margin-bottom: 16px;
-  }
-  
-  .exp-card-bglogo {
-    right: 12px;
-    bottom: 12px;
-  }
 }
 
 .profile-contact-btn {
