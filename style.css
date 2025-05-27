@@ -1476,7 +1476,7 @@ body #home.tab-content {
 /* 移动端contacts tab，微信卡片点击后，网页会缩小变为电脑样式弹窗 */
 @media (max-width: 768px) {
   #contacts .contact-card.wechat-card {
-    pointer-events: none;
+    /* pointer-events: none; */ /* 已移除 */
   }
   /* 其他移动端contacts tab样式 */
   #contacts.tab-content {
