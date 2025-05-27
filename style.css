@@ -880,10 +880,19 @@ footer {
     padding: 1.2rem 0.5rem 0 0.5rem;
   }
   #about-me .profile-image {
-    max-width: 80px;
+    max-width: 100%;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
   }
   #about-me .profile-image img {
+    width: 80px;
     height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  #about-me .profile-info {
+    margin-left: 1.5rem;
   }
   #about-me .card-list {
     flex-direction: column;
@@ -899,6 +908,14 @@ footer {
     min-width: 0;
     width: 95%;
     margin: 0 auto;
+  }
+
+  .profile-contact-btn {
+    width: 80%;
+    max-width: 200px;
+    margin-top: 0;
+    padding: 10px 0;
+    font-size: 0.95em;
   }
 }
 

@@ -68,23 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const wechatCard = document.querySelector('.contact-card.wechat-card');
   if (wechatCard) {
     wechatCard.addEventListener('click', function(event) {
+      console.log('微信卡片被点击');
+      console.log('当前窗口宽度:', window.innerWidth);
       if (window.innerWidth <= 768) {
-        // 移动端：复制微信号并提示
-        console.log('尝试复制微信号');
-        const wechatId = 'cuyooh2077';
-        navigator.clipboard.writeText(wechatId).then(() => {
-          console.log('微信号已复制');
-          // 显示复制成功提示
-          showCopySuccessMessage('微信号已复制');
-        }).catch(err => {
-          console.error('复制失败:', err);
-          // 可选：显示复制失败提示
-          // showCopySuccessMessage('复制失败', true);
-        });
+        console.log('微信卡片在移动端点击，不做操作');
         event.preventDefault();
         event.stopPropagation();
       } else {
-        // PC 端：显示弹窗
+        console.log('显示二维码弹窗 (PC端)');
         showWechatModal(event);
       }
     });
