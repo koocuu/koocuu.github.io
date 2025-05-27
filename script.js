@@ -142,7 +142,10 @@ function switchTab(tabName) {
     // 只有在之前就已经在blog tab时才重置iframe到首页
     const blogIframe = document.getElementById('blog-iframe');
     if (blogIframe && wasOnBlogTab) {
-      blogIframe.src = 'https://cuisawesome.top/koocuu-blog';
+      // 确保在移动端也能正常工作
+      setTimeout(() => {
+        blogIframe.src = 'https://cuisawesome.top/koocuu-blog';
+      }, 0);
     }
   } else {
     document.getElementById('blog-tab').style.display = 'none';
