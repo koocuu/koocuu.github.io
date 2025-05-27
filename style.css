@@ -1180,9 +1180,11 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
 .wechat-modal.active {
   display: flex;
 }
+
 .wechat-modal-content {
   background: transparent;
   box-shadow: none;
@@ -1196,6 +1198,7 @@ footer {
   height: 100vh;
   position: relative;
 }
+
 .wechat-modal-content img {
   width: 60vw;
   max-width: 420px;
@@ -1204,6 +1207,7 @@ footer {
   margin-bottom: 18px;
   box-shadow: 0 8px 32px rgba(37,99,235,0.18);
 }
+
 .wechat-modal-content .close-btn {
   position: absolute;
   top: 32px;
@@ -1214,6 +1218,45 @@ footer {
   border: none;
   cursor: pointer;
   z-index: 10;
+}
+
+/* 移动端微信弹窗样式 */
+@media (max-width: 700px) {
+  .wechat-modal {
+    background: rgba(0,0,0,0.75);
+  }
+
+  .wechat-modal-content {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .wechat-modal-content img {
+    width: 85vw;
+    max-width: 320px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .wechat-modal-content .close-btn {
+    top: 16px;
+    right: 16px;
+    font-size: 2rem;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .wechat-modal-content .close-btn:active {
+    background: rgba(0,0,0,0.5);
+  }
 }
 
 /* Home tab 炫酷首页样式 */
