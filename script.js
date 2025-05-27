@@ -114,6 +114,9 @@ function updateTabIndicator() {
 }
 
 function switchTab(tabName) {
+  // 检查是否已经在blog tab
+  const wasOnBlogTab = document.querySelector('.nav-tabs li[data-tab="blog-tab"]').classList.contains('active');
+  
   // 切换tab按钮
   document.querySelectorAll('.nav-tabs li').forEach(tab => {
     if (tab.getAttribute('data-tab') === tabName) {
@@ -134,7 +137,13 @@ function switchTab(tabName) {
 
   // 特殊处理blog-tab
   if (tabName === 'blog-tab') {
-    document.getElementById('blog-tab').style.display = 'block';
+    const blogTab = document.getElementById('blog-tab');
+    blogTab.style.display = 'block';
+    // 只有在之前就已经在blog tab时才重置iframe到首页
+    const blogIframe = document.getElementById('blog-iframe');
+    if (blogIframe && wasOnBlogTab) {
+      blogIframe.src = 'https://cuisawesome.top/koocuu-blog';
+    }
   } else {
     document.getElementById('blog-tab').style.display = 'none';
   }
