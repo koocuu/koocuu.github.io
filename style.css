@@ -1471,4 +1471,44 @@ body #home.tab-content {
     width: 180px;
     margin-top: 8px;
   }
+}
+
+/* 移动端contacts tab，微信卡片点击后，网页会缩小变为电脑样式弹窗 */
+@media (max-width: 768px) {
+  #contacts .contact-card.wechat-card {
+    pointer-events: none;
+  }
+  /* 其他移动端contacts tab样式 */
+  #contacts.tab-content {
+    /* ... existing styles ... */
+  }
+
+  .contact-card {
+    padding: 20px 24px;
+  }
+
+  .contacts-list {
+    padding: 20px 12px;
+    gap: 20px;
+  }
+
+  .navbar {
+    top: 8px;
+    padding: 0 20px;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.9);
+    width: auto;
+    min-width: 340px;
+    max-width: 90%;
+  }
+  
+  .tab {
+    padding: 5px 12px;
+    font-size: 0.9em;
+    letter-spacing: 0.3px;
+  }
+  
+  .nav-tabs {
+    gap: 8px;
+  }
 } 

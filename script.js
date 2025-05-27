@@ -68,15 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const wechatCard = document.querySelector('.contact-card.wechat-card');
   if (wechatCard) {
     wechatCard.addEventListener('click', function(event) {
-      // 在移动端尺寸下阻止默认行为和弹窗显示
+      // 判断屏幕宽度
       if (window.innerWidth <= 768) {
-        event.preventDefault();
-        event.stopPropagation();
-        console.log('微信卡片在移动端禁用点击'); // 可选：添加日志方便调试
-        return;
+        // 移动端：执行 Deep Link 跳转
+        window.location.href = 'weixin://dl/chat?username=cuyooh2077';
+      } else {
+        // PC 端：显示弹窗
+        showWechatModal(event);
       }
-      // 在非移动端尺寸下显示弹窗
-      showWeChatModal(event);
     });
   }
 
@@ -150,7 +149,7 @@ window.onclick = function(event) {
 }
 
 // 微信二维码展示功能
-function showWeChatModal(event) {
+function showWechatModal(event) {
   event.preventDefault();
   event.stopPropagation();
   const modal = document.getElementById('wechat-modal');
