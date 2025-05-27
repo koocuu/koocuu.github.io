@@ -64,6 +64,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // 为微信卡片添加点击事件
+  const wechatCard = document.querySelector('.contact-card.wechat-card');
+  if (wechatCard) {
+    wechatCard.addEventListener('click', function(event) {
+      showWeChatModal(event);
+    });
+  }
+
   // 处理iframe内的链接点击
   const blogIframe = document.getElementById('blog-iframe');
   if (blogIframe) {
