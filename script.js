@@ -68,11 +68,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const wechatCard = document.querySelector('.contact-card.wechat-card');
   if (wechatCard) {
     wechatCard.addEventListener('click', function(event) {
-      // 判断屏幕宽度
       if (window.innerWidth <= 768) {
-        // 移动端：跳转到微信二维码图片
-        console.log('尝试跳转到微信二维码图片');
-        window.location.href = './wechat_qr.png';
+        // 移动端：复制微信号并提示
+        console.log('尝试复制微信号');
+        const wechatId = 'cuyooh2077';
+        navigator.clipboard.writeText(wechatId).then(() => {
+          console.log('微信号已复制');
+          // 显示复制成功提示
+          showCopySuccessMessage('微信号已复制');
+        }).catch(err => {
+          console.error('复制失败:', err);
+          // 可选：显示复制失败提示
+          // showCopySuccessMessage('复制失败', true);
+        });
         event.preventDefault();
         event.stopPropagation();
       } else {
@@ -170,4 +178,27 @@ function closeWeChatModal() {
     modal.style.display = 'none';
   }, 300);
   document.body.style.overflow = 'auto';
+}
+
+// 添加复制成功提示的函数
+function showCopySuccessMessage(message, isError = false) {
+  const messageElement = document.createElement('div');
+  messageElement.textContent = message;
+  messageElement.style.cssText = 'position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px 15px; border-radius: 5px; z-index: 10000; font-size: 14px; opacity: 0; transition: opacity 0.3s ease-in-out;';
+  
+  if (isError) {
+    messageElement.style.backgroundColor = 'rgba(200, 0, 0, 0.7)';
+  }
+
+  document.body.appendChild(messageElement);
+
+  // 延迟显示和隐藏
+  setTimeout(() => {
+    messageElement.style.opacity = '1';
+  }, 50);
+
+  setTimeout(() => {
+    messageElement.style.opacity = '0';
+    messageElement.addEventListener('transitionend', () => messageElement.remove());
+  }, 2000); // 2秒后隐藏
 } 
