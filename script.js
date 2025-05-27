@@ -70,9 +70,9 @@ document.addEventListener('DOMContentLoaded', function() {
     wechatCard.addEventListener('click', function(event) {
       // 判断屏幕宽度
       if (window.innerWidth <= 768) {
-        // 移动端：执行 Deep Link 跳转
-        console.log('尝试跳转到微信');
-        window.location.href = 'weixin://dl/chat?username=cuyooh2077';
+        // 移动端：跳转到微信二维码图片
+        console.log('尝试跳转到微信二维码图片');
+        window.location.href = './wechat_qr.png';
         event.preventDefault();
         event.stopPropagation();
       } else {
