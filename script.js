@@ -68,6 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const wechatCard = document.querySelector('.contact-card.wechat-card');
   if (wechatCard) {
     wechatCard.addEventListener('click', function(event) {
+      // 在移动端尺寸下阻止默认行为和弹窗显示
+      if (window.innerWidth <= 768) {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('微信卡片在移动端禁用点击'); // 可选：添加日志方便调试
+        return;
+      }
+      // 在非移动端尺寸下显示弹窗
       showWeChatModal(event);
     });
   }
