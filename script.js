@@ -71,7 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
       // 判断屏幕宽度
       if (window.innerWidth <= 768) {
         // 移动端：执行 Deep Link 跳转
+        console.log('尝试跳转到微信');
         window.location.href = 'weixin://dl/chat?username=cuyooh2077';
+        event.preventDefault();
+        event.stopPropagation();
       } else {
         // PC 端：显示弹窗
         showWechatModal(event);
