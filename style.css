@@ -10,7 +10,7 @@ body {
   padding: 0;
   min-height: 100%;
   font-family: 'Roboto', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  background: url('./bg.jpg') center center/cover no-repeat;
+  background: url('./bg1.jpg') center center/cover no-repeat;
   background-attachment: fixed;
   color: #222;
   display: flex;
