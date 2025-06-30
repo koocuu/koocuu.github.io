@@ -403,9 +403,13 @@ main {
 
 .contacts-subtitle {
   font-size: 1.1rem;
-  color: #e0e7ef;
-  margin-bottom: 0;
-  text-shadow: 0 1px 4px #2563eb55;
+  color: #128ec3;
+  background: rgba(255,255,255,0.75);
+  border-radius: 8px;
+  padding: 4px 14px;
+  text-shadow: 0 2px 8px #2563eb22;
+  font-weight: 500;
+  display: inline-block;
 }
 
 .contacts-list {
