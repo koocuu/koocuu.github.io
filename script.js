@@ -205,3 +205,34 @@ function showCopySuccessMessage(message, isError = false) {
     messageElement.addEventListener('transitionend', () => messageElement.remove());
   }, 2000); // 2秒后隐藏
 } 
+
+
+// ===== 博客路由监听与自动切换 =====
+function handleBlogRoute() {
+  const path = window.location.pathname;
+  const blogMatch = path.match(/^\/blog\/(.+)/);
+  if (blogMatch) {
+    // 切换到 blog tab
+    switchTab('blog-tab');
+    // 设置 iframe src
+    const blogId = blogMatch[1];
+    const blogIframe = document.getElementById('blog-iframe');
+    if (blogIframe) {
+      blogIframe.src = 'https://cuisawesome.top/koocuu-blog/' + blogId;
+    }
+  }
+}
+
+window.addEventListener('DOMContentLoaded', handleBlogRoute);
+window.addEventListener('popstate', handleBlogRoute);
+
+// 点击 blog tab 时自动 pushState 到 /blog/
+document.querySelectorAll('.nav-tabs li[data-tab="blog-tab"], #to-blog').forEach(el => {
+  el.addEventListener('click', function() {
+    if (!window.location.pathname.startsWith('/blog/')) {
+      history.pushState({}, '', '/blog/');
+      handleBlogRoute();
+    }
+  });
+}); 
+
