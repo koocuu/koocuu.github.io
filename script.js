@@ -207,31 +207,69 @@ function showCopySuccessMessage(message, isError = false) {
 } 
 
 
-// ===== 博客路由监听与自动切换 =====
-function handleBlogRoute() {
+// ===== 通用URL锚定tab能力与博客tab首页回退修复 =====
+function handleRoute() {
   const path = window.location.pathname;
-  const blogMatch = path.match(/^\/blog\/(.+)/);
-  if (blogMatch) {
-    // 切换到 blog tab
+
+  // 1. 处理 /blog/xxx 文章详情
+  const blogDetailMatch = path.match(/^\/blog\/(.+)/);
+  if (blogDetailMatch) {
     switchTab('blog-tab');
-    // 设置 iframe src
-    const blogId = blogMatch[1];
     const blogIframe = document.getElementById('blog-iframe');
     if (blogIframe) {
-      blogIframe.src = 'https://cuisawesome.top/koocuu-blog/' + blogId;
+      blogIframe.src = 'https://cuisawesome.top/koocuu-blog/' + blogDetailMatch[1];
     }
+    return;
   }
+
+  // 2. 处理 /blog 博客首页
+  if (path === '/blog' || path === '/blog/') {
+    switchTab('blog-tab');
+    const blogIframe = document.getElementById('blog-iframe');
+    if (blogIframe) {
+      blogIframe.src = 'https://cuisawesome.top/koocuu-blog';
+    }
+    return;
+  }
+
+  // 3. 处理 /contacts
+  if (path === '/contacts' || path === '/contacts/') {
+    switchTab('contacts');
+    return;
+  }
+
+  // 4. 处理 /about-me
+  if (path === '/about-me' || path === '/about-me/') {
+    switchTab('about-me');
+    return;
+  }
+
+  // 5. 默认 Home
+  switchTab('home');
 }
 
-window.addEventListener('DOMContentLoaded', handleBlogRoute);
-window.addEventListener('popstate', handleBlogRoute);
+window.addEventListener('DOMContentLoaded', handleRoute);
+window.addEventListener('popstate', handleRoute);
 
-// 点击 blog tab 时自动 pushState 到 /blog/
-document.querySelectorAll('.nav-tabs li[data-tab="blog-tab"], #to-blog').forEach(el => {
-  el.addEventListener('click', function() {
-    if (!window.location.pathname.startsWith('/blog/')) {
-      history.pushState({}, '', '/blog/');
-      handleBlogRoute();
+// tab点击时自动pushState并切换tab
+// 先移除原有的tab点击监听，防止重复绑定
+const navTabs = document.querySelectorAll('.nav-tabs li');
+navTabs.forEach(tab => {
+  const newTab = tab.cloneNode(true);
+  tab.parentNode.replaceChild(newTab, tab);
+});
+
+document.querySelectorAll('.nav-tabs li').forEach(tab => {
+  tab.addEventListener('click', function() {
+    const tabName = this.getAttribute('data-tab');
+    let url = '/';
+    if (tabName === 'blog-tab') url = '/blog';
+    else if (tabName === 'contacts') url = '/contacts';
+    else if (tabName === 'about-me') url = '/about-me';
+    // 只有当当前url不是目标url时才pushState
+    if (window.location.pathname !== url) {
+      history.pushState({}, '', url);
+      handleRoute();
     }
   });
 }); 
