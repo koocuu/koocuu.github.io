@@ -431,8 +431,7 @@ main {
   right: 0;
   bottom: 0;
   z-index: 10;
-  /* background: rgba(28, 30, 35, 0.95); */
-  background:#fff;
+  background: #fff !important;
 
   backdrop-filter: blur(12px) saturate(120%);
   -webkit-backdrop-filter: blur(12px) saturate(120%);
