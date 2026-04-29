@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import SiteNav from '@components/SiteNav.astro';
+import PostCard from '@components/PostCard.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { copy, languages, normalizeLang } from '@data/i18n';
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+
+const lang = normalizeLang(Astro.params.lang);
+const t = copy[lang];
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
+const allPosts = await getCollection('blog');
+const categories = Array.from(
+  new Set(allPosts.flatMap((post) => post.data.categories)),
+).filter(Boolean);
+---
+
+<BaseLayout lang={lang} title="Cu" description={lang === 'zh' ? 'Cu 的个人网站和博客。' : 'Cu personal website and blog.'}>
+  <SiteNav lang={lang} />
+  <main>
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">{t.home.eyebrow}</p>
+        <h1>{t.home.title}</h1>
+        <p class="hero-lede">{t.home.headline}</p>
+        <p class="hero-note">{t.home.note}</p>
+        <div class="hero-actions">
+          <a class="button primary" href={`/${lang}/blog/`}>{t.home.readBlog}</a>
+          <a class="button ghost" href={`/${lang}/about/`}>{t.home.viewProfile}</a>
+        </div>
+        <div class="hero-metrics" aria-label="Site highlights">
+          <span><strong>{allPosts.length}</strong> {t.home.posts}</span>
+          <span><strong>{categories.length}</strong> {t.home.categories}</span>
+          <span><strong>2</strong> {t.home.companies}</span>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <img src="/images/cu.jpg" alt="Cu portrait" />
+      </div>
+    </section>
+
+    <section class="section-shell principle-grid">
+      {t.principles.map((item) => (
+        <article class="principle-card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="section-shell">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">{t.home.writingEyebrow}</p>
+          <h2>{t.home.writingTitle}</h2>
+        </div>
+        <a class="text-link" href={`/${lang}/blog/`}>{t.home.allPosts}</a>
+      </div>
+      <p class="section-intro">{t.home.writingIntro}</p>
+      <div class="post-grid">
+        {posts.map((post) => (
+          <PostCard
+            href={`/${lang}/blog/${post.id.replace(/\.md$/, '')}/`}
+            title={post.data.title}
+            date={post.data.date}
+            description={post.data.description}
+            tags={post.data.tags}
+          />
+        ))}
+      </div>
+    </section>
+
+    <section class="section-shell home-cta">
+      <p class="eyebrow">{t.home.next}</p>
+      <h2>{t.home.nextTitle}</h2>
+      <div class="hero-actions">
+        <a class="button primary" href={`/${lang}/about/`}>{t.home.about}</a>
+        <a class="button ghost" href={`/${lang}/contact/`}>{t.home.contact}</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

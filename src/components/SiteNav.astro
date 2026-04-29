@@ -1,0 +1,28 @@
+---
+import { alternateLang, copy, normalizeLang, type Lang } from '@data/i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const lang = normalizeLang(Astro.props.lang);
+const t = copy[lang];
+const otherLang = alternateLang(lang);
+const currentPath = Astro.url.pathname.replace(/^\/(en|zh)/, '') || '/';
+const otherHref = `/${otherLang}${currentPath}`;
+const navItems = [
+  { href: `/${lang}/blog/`, label: t.nav.blog },
+  { href: `/${lang}/about/`, label: t.nav.about },
+  { href: `/${lang}/contact/`, label: t.nav.contact },
+];
+---
+
+<header class="site-header">
+  <a class="brand" href={`/${lang}/`} aria-label="Cu home">Cu</a>
+  <div class="nav-cluster">
+    <nav class="site-nav" aria-label="Primary navigation">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a class="lang-switch" href={otherHref}>{t.nav.switch}</a>
+  </div>
+</header>

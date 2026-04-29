@@ -1,0 +1,60 @@
+---
+import SiteNav from '@components/SiteNav.astro';
+import ExperienceCard from '@components/ExperienceCard.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { copy, languages, normalizeLang } from '@data/i18n';
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+
+const lang = normalizeLang(Astro.params.lang);
+const t = copy[lang];
+---
+
+<BaseLayout lang={lang} title={t.about.title} description={t.about.description}>
+  <SiteNav lang={lang} />
+  <main>
+    <section class="page-title section-shell about-title">
+      <div>
+        <p class="eyebrow">{t.about.eyebrow}</p>
+        <h1>{t.about.heading}</h1>
+      </div>
+      <img src="/images/cu.jpg" alt="Cu portrait" />
+    </section>
+
+    <section class="section-shell split-section">
+      <div>
+        <p class="eyebrow">{t.about.profileEyebrow}</p>
+        <h2>{t.about.profileTitle}</h2>
+      </div>
+      <div class="section-copy">
+        <p>{t.about.summary}</p>
+        <div class="tag-row large">
+          {t.profile.skills.map((skill) => <span>{skill}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell principle-grid">
+      {t.principles.map((item) => (
+        <article class="principle-card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="section-shell">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">{t.about.experienceEyebrow}</p>
+          <h2>{t.about.experienceTitle}</h2>
+        </div>
+      </div>
+      <div class="experience-list">
+        {t.experiences.map((item) => <ExperienceCard {...item} />)}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

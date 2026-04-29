@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import SiteNav from '@components/SiteNav.astro';
+import PostCard from '@components/PostCard.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { copy, languages, normalizeLang } from '@data/i18n';
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+
+const lang = normalizeLang(Astro.params.lang);
+const t = copy[lang];
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout lang={lang} title={t.blog.title} description={t.blog.description}>
+  <SiteNav lang={lang} />
+  <main>
+    <section class="page-title section-shell">
+      <p class="eyebrow">{t.blog.eyebrow}</p>
+      <h1>{t.blog.heading}</h1>
+    </section>
+
+    <section class="section-shell">
+      <div class="post-list">
+        {posts.map((post) => (
+          <PostCard
+            href={`/${lang}/blog/${post.id.replace(/\.md$/, '')}/`}
+            title={post.data.title}
+            date={post.data.date}
+            description={post.data.description}
+            tags={post.data.tags}
+          />
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

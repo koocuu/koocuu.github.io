@@ -1,0 +1,21 @@
+---
+const fallback = '/en/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cu</title>
+    <script is:inline>
+      const lang = navigator.language || navigator.userLanguage || '';
+      const target = lang.toLowerCase().startsWith('zh') ? '/zh/' : '/en/';
+      window.location.replace(target);
+    </script>
+    <meta http-equiv="refresh" content={`0;url=${fallback}`} />
+  </head>
+  <body>
+    <a href={fallback}>Continue to Cu</a>
+  </body>
+</html>

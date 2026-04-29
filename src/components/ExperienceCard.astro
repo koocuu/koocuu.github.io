@@ -1,0 +1,28 @@
+---
+interface Props {
+  company: string;
+  title: string;
+  time: string;
+  logo: string;
+  link: string;
+  description: string;
+  tags: string[];
+}
+
+const { company, title, time, logo, link, description, tags } = Astro.props;
+---
+
+<article class="experience-card">
+  <img class="experience-logo" src={logo} alt={`${company} logo`} loading="lazy" />
+  <div class="experience-body">
+    <div class="experience-heading">
+      <a href={link} target="_blank" rel="noreferrer">{company}</a>
+      <span>{title}</span>
+      <time>{time}</time>
+    </div>
+    <p>{description}</p>
+    <div class="tag-row">
+      {tags.map((tag) => <span>{tag}</span>)}
+    </div>
+  </div>
+</article>

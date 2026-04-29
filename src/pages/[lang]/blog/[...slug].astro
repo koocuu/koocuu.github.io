@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import SiteNav from '@components/SiteNav.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { copy, languages, normalizeLang, type Lang } from '@data/i18n';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return languages.flatMap((lang) =>
+    posts.map((post) => ({
+      params: { lang, slug: post.id.replace(/\.md$/, '') },
+      props: { post, lang },
+    })),
+  );
+}
+
+const lang = normalizeLang(Astro.props.lang as Lang);
+const t = copy[lang];
+const { post } = Astro.props;
+const { Content } = await render(post);
+const formattedDate = new Intl.DateTimeFormat(lang === 'zh' ? 'zh-CN' : 'en', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+}).format(post.data.date);
+---
+
+<BaseLayout lang={lang} title={post.data.title} description={post.data.description}>
+  <SiteNav lang={lang} />
+  <main>
+    <article class="article-shell">
+      <header class="article-header">
+        <a class="text-link" href={`/${lang}/blog/`}>{t.blog.back}</a>
+        <h1>{post.data.title}</h1>
+        <div class="article-meta">
+          <time>{formattedDate}</time>
+          {post.data.categories.map((category) => <span>{category}</span>)}
+        </div>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
