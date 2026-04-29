@@ -13,7 +13,7 @@ const lang = normalizeLang(Astro.params.lang);
 const t = copy[lang];
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 2);
+  .slice(0, 3);
 const allPosts = await getCollection('blog');
 const categories = Array.from(
   new Set(allPosts.flatMap((post) => post.data.categories)),

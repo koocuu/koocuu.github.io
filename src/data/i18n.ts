@@ -48,7 +48,7 @@ export const copy = {
       summary:
         'I am moving from strong client-side engineering toward full-stack and AI-native product building: mobile apps, web experiences, lightweight backend systems, LLM workflows, and ideas that can become real tools.',
       experienceEyebrow: 'Experience',
-      experienceTitle: 'Work with product gravity.',
+      experienceTitle: 'Engineering experience on products with tens of millions of DAU.',
     },
     blog: {
       title: 'Blog',
@@ -144,7 +144,7 @@ export const copy = {
       summary:
         '我正在从扎实的客户端工程，走向全栈和 AI 原生产品构建：移动端、Web、轻量后端、LLM 工作流，以及能真正落地的工具想法。',
       experienceEyebrow: '经历',
-      experienceTitle: '靠近产品现场的工程经验。',
+      experienceTitle: '千万级 DAU 产品里的工程经验。',
     },
     blog: {
       title: '博客',
