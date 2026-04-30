@@ -11,8 +11,8 @@ const otherLang = alternateLang(lang);
 const currentPath = Astro.url.pathname.replace(/^\/(en|zh)/, '') || '/';
 const otherHref = `/${otherLang}${currentPath}`;
 const navItems = [
-  { href: `/${lang}/blog/`, label: t.nav.blog },
   { href: `/${lang}/about/`, label: t.nav.about },
+  { href: `/${lang}/blog/`, label: t.nav.blog },
   { href: `/${lang}/contact/`, label: t.nav.contact },
 ];
 ---

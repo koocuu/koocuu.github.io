@@ -20,7 +20,7 @@ const t = copy[lang];
         <p class="eyebrow">{t.about.eyebrow}</p>
         <h1>{t.about.heading}</h1>
       </div>
-      <img src="/images/cu.jpg" alt="Cu portrait" />
+      <img class="about-avatar" src="/images/about-atmosphere.jpg" alt="Cu portrait" />
     </section>
 
     <section class="section-shell split-section">
@@ -36,13 +36,21 @@ const t = copy[lang];
       </div>
     </section>
 
-    <section class="section-shell principle-grid">
-      {t.principles.map((item) => (
-        <article class="principle-card">
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-        </article>
-      ))}
+    <section class="section-shell">
+      <div class="section-header compact">
+        <div>
+          <p class="eyebrow">{t.about.cardsEyebrow}</p>
+          <h2>{t.about.cardsTitle}</h2>
+        </div>
+      </div>
+      <div class="principle-grid">
+        {t.aboutCards.map((item) => (
+          <article class="principle-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
     </section>
 
     <section class="section-shell experience-section" id="experience">

@@ -14,10 +14,6 @@ const t = copy[lang];
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
-const allPosts = await getCollection('blog');
-const categories = Array.from(
-  new Set(allPosts.flatMap((post) => post.data.categories)),
-).filter(Boolean);
 ---
 
 <BaseLayout lang={lang} title="Cu" description={lang === 'zh' ? 'Cu 的个人网站和博客。' : 'Cu personal website and blog.'}>
@@ -26,31 +22,35 @@ const categories = Array.from(
     <section class="hero section-shell">
       <div class="hero-copy">
         <p class="eyebrow">{t.home.eyebrow}</p>
-        <h1>{t.home.title}</h1>
+        <div class="hero-title-row">
+          <h1>{t.home.title}</h1>
+          <a class="text-link hero-title-link" href={`/${lang}/about/`}>{t.home.viewProfile}</a>
+        </div>
         <p class="hero-lede">{t.home.headline}</p>
         <p class="hero-note">{t.home.note}</p>
-        <div class="hero-actions">
-          <a class="button primary" href={`/${lang}/blog/`}>{t.home.readBlog}</a>
-          <a class="button ghost" href={`/${lang}/about/`}>{t.home.viewProfile}</a>
-        </div>
-        <div class="hero-metrics" aria-label="Site highlights">
-          <a href={`/${lang}/blog/`}><strong>{allPosts.length}</strong> {t.home.posts}</a>
-          <a href={`/${lang}/blog/`}><strong>{categories.length}</strong> {t.home.categories}</a>
-          <a href={`/${lang}/about/#experience`}><strong>2</strong> {t.home.companies}</a>
-        </div>
       </div>
       <div class="hero-portrait">
         <img src="/images/cu.jpg" alt="Cu portrait" />
       </div>
     </section>
 
-    <section class="section-shell principle-grid">
-      {t.principles.map((item) => (
+    <section class="section-shell">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">{t.home.servicesEyebrow}</p>
+          <h2>{t.home.servicesTitle}</h2>
+        </div>
+        <a class="text-link" href={`/${lang}/contact/`}>{t.home.contact}</a>
+      </div>
+      <p class="section-intro">{t.home.servicesIntro}</p>
+      <div class="principle-grid">
+      {t.services.map((item) => (
         <article class="principle-card">
           <h3>{item.title}</h3>
           <p>{item.description}</p>
         </article>
       ))}
+      </div>
     </section>
 
     <section class="section-shell">
@@ -72,15 +72,6 @@ const categories = Array.from(
             tags={post.data.tags}
           />
         ))}
-      </div>
-    </section>
-
-    <section class="section-shell home-cta">
-      <p class="eyebrow">{t.home.next}</p>
-      <h2>{t.home.nextTitle}</h2>
-      <div class="hero-actions">
-        <a class="button primary" href={`/${lang}/about/`}>{t.home.about}</a>
-        <a class="button ghost" href={`/${lang}/contact/`}>{t.home.contact}</a>
       </div>
     </section>
   </main>
