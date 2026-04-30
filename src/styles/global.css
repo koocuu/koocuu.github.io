@@ -219,7 +219,7 @@ h3 {
   margin-top: 28px;
 }
 
-.hero-metrics span {
+.hero-metrics a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -231,6 +231,12 @@ h3 {
   color: var(--muted);
   font-size: 0.92rem;
   font-weight: 700;
+}
+
+.hero-metrics a:hover {
+  border-color: #b9d2cc;
+  background: #eef7f4;
+  color: var(--accent-strong);
 }
 
 .hero-metrics strong {
@@ -409,6 +415,11 @@ h3 {
 .experience-body p {
   margin-bottom: 12px;
   color: var(--muted);
+}
+
+.experience-section .section-header h2 {
+  max-width: 760px;
+  font-size: clamp(1.85rem, 3vw, 2.55rem);
 }
 
 .post-grid {

@@ -34,9 +34,9 @@ const categories = Array.from(
           <a class="button ghost" href={`/${lang}/about/`}>{t.home.viewProfile}</a>
         </div>
         <div class="hero-metrics" aria-label="Site highlights">
-          <span><strong>{allPosts.length}</strong> {t.home.posts}</span>
-          <span><strong>{categories.length}</strong> {t.home.categories}</span>
-          <span><strong>2</strong> {t.home.companies}</span>
+          <a href={`/${lang}/blog/`}><strong>{allPosts.length}</strong> {t.home.posts}</a>
+          <a href={`/${lang}/blog/`}><strong>{categories.length}</strong> {t.home.categories}</a>
+          <a href={`/${lang}/about/#experience`}><strong>2</strong> {t.home.companies}</a>
         </div>
       </div>
       <div class="hero-portrait">

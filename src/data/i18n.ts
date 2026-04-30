@@ -42,7 +42,7 @@ export const copy = {
       title: 'About',
       description: 'About Cu, engineering focus, and work experience.',
       eyebrow: 'About',
-      heading: 'From Android craft to full-stack and AI-native products.',
+      heading: 'Full-stack and AI product engineering.',
       profileEyebrow: 'Profile',
       profileTitle: 'A developer profile for building, teaching, consulting, and experimenting in public.',
       summary:
@@ -138,7 +138,7 @@ export const copy = {
       title: '关于',
       description: '关于 Cu、工程方向和工作经历。',
       eyebrow: '关于',
-      heading: '从 Android 工程能力，走向全栈和 AI 原生产品。',
+      heading: '全栈与 AI 产品工程。',
       profileEyebrow: '个人定位',
       profileTitle: '一个面向构建、教学、咨询和公开实验的开发者名片。',
       summary:
