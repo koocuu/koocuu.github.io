@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://cuisawesome.top',
+  site: 'https://koocuu.com',
   output: 'static',
 });
