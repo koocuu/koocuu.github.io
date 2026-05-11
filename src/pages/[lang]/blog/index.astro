@@ -11,7 +11,7 @@ export function getStaticPaths() {
 
 const lang = normalizeLang(Astro.params.lang);
 const t = copy[lang];
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('blog', ({ data }) => !(data as { private?: boolean }).private)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 ---

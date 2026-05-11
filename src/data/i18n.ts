@@ -29,10 +29,14 @@ export const copy = {
       servicesTitle: 'Useful engineering, from idea to shipped product.',
       servicesIntro:
         'I care about products with real needs: clear product judgment, solid client-side engineering, and AI workflows that reduce repetitive work.',
+      projectsEyebrow: 'Projects',
+      projectsTitle: 'Small products, real problems.',
+      projectsIntro:
+        'A place for tools I am building myself: AI-native experiments, product ideas, and workflows that turn vague friction into usable systems.',
       writingEyebrow: 'Writing',
       writingTitle: 'Recent notes',
       writingIntro:
-        'A small public trail of technical judgment, life fragments, travel, AI observations, and lessons learned the hard way.',
+        'Public thinking on engineering, products, AI, and the small patterns I keep noticing in life.',
       allPosts: 'All posts',
       about: 'About',
       contact: 'Contact',
@@ -55,8 +59,8 @@ export const copy = {
       title: 'Blog',
       description: "Cu's notes, essays, and travel writing.",
       eyebrow: 'Blog',
-      heading: 'Notes from work, travel, games, and AI.',
-      lede: 'Also, the strange business of being alive.',
+      heading: 'Public thinking, not a private diary.',
+      lede: 'Notes on engineering, products, AI, and the small patterns I keep noticing in life.',
       back: 'Back to blog',
     },
     contact: {
@@ -118,6 +122,18 @@ export const copy = {
           'Available for technical direction, architecture review, course collaboration, and helping individuals plan learning paths and career growth.',
       },
     ],
+    projects: [
+      {
+        title: 'Low-Regret Decision Assistant',
+        status: 'Private Beta',
+        href: 'https://decision.koocuu.com',
+        description:
+          'An AI decision-structuring tool. Paste a messy dilemma, and it organizes options, emotions, and risks, then suggests one low-regret action.',
+        note:
+          'The goal is not to choose for you, but to turn overthinking into a decision process that can be recorded and reviewed.',
+        access: 'Password required. For personal use and small-group testing.',
+      },
+    ],
     profile: {
       skills: ['Full-stack', 'AI Engineering', 'Android', 'Android TV', 'Compose', 'Cross-end', 'LLM Apps', 'Performance', 'Writing'],
     },
@@ -161,9 +177,12 @@ export const copy = {
       servicesEyebrow: '可以合作',
       servicesTitle: '从想法到落地，做真正能用的工程。',
       servicesIntro: '我关注有真实需求的产品：清晰的产品判断、扎实的客户端工程，以及能减少重复劳动的 AI 工作流。',
+      projectsEyebrow: '项目',
+      projectsTitle: '小产品，解决真实问题。',
+      projectsIntro: '这里放我自己做的工具：AI 原生实验、产品想法，以及把模糊痛点整理成可用流程的小系统。',
       writingEyebrow: '写作',
       writingTitle: '最近记录',
-      writingIntro: '技术判断、生活片段、旅行见闻、AI 观察，还有踩坑之后的复盘。',
+      writingIntro: '关于工程、产品、AI，以及我在生活里反复观察到的小规律。',
       allPosts: '全部文章',
       about: '关于',
       contact: '联系',
@@ -186,8 +205,8 @@ export const copy = {
       title: '博客',
       description: 'Cu 的技术笔记、随笔和旅行记录。',
       eyebrow: '博客',
-      heading: '关于工作、旅行、游戏和 AI 的笔记。',
-      lede: '以及，作为一个人活着这件怪事。',
+      heading: '公开思考，不是私人日记。',
+      lede: '关于工程、产品、AI，以及我在生活里反复观察到的小规律。',
       back: '返回博客',
     },
     contact: {
@@ -237,6 +256,18 @@ export const copy = {
       {
         title: '咨询与合作',
         description: '接受技术方向咨询、架构评审、课程合作，帮助个人规划学习路径和职业发展。',
+      },
+    ],
+    projects: [
+      {
+        title: '低后悔决策助手',
+        status: '小范围内测',
+        href: 'https://decision.koocuu.com',
+        description:
+          '一个 AI 决策整理工具。用户输入一段纠结，它会自动整理出选项、情绪和风险，并给出一个低后悔行动。',
+        note:
+          '项目目标不是替用户做选择，而是把“想太多”变成一个可记录、可复盘的决策流程。',
+        access: '当前需要访问密码，仅供个人使用和小范围测试。',
       },
     ],
     profile: {

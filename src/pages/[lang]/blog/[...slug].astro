@@ -5,7 +5,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { copy, languages, normalizeLang, type Lang } from '@data/i18n';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog', ({ data }) => !(data as { private?: boolean }).private);
   return languages.flatMap((lang) =>
     posts.map((post) => ({
       params: { lang, slug: post.id.replace(/\.md$/, '') },

@@ -11,7 +11,7 @@ export function getStaticPaths() {
 
 const lang = normalizeLang(Astro.params.lang);
 const t = copy[lang];
-const posts = (await getCollection('blog'))
+const posts = (await getCollection('blog', ({ data }) => !(data as { private?: boolean }).private))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 ---
@@ -31,6 +31,34 @@ const posts = (await getCollection('blog'))
       </div>
       <div class="hero-portrait">
         <img src="/images/cu.jpg" alt="Cu portrait" />
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">{t.home.projectsEyebrow}</p>
+          <h2>{t.home.projectsTitle}</h2>
+        </div>
+      </div>
+      <p class="section-intro">{t.home.projectsIntro}</p>
+      <div class="project-grid">
+        {t.projects.map((project) => (
+          <article class="project-card">
+            <div class="project-card-header">
+              <div>
+                <p class="project-status">{project.status}</p>
+                <h3>{project.title}</h3>
+              </div>
+              <a class="text-link" href={project.href} target="_blank" rel="noreferrer">
+                {lang === 'zh' ? '访问' : 'Visit'}
+              </a>
+            </div>
+            <p>{project.description}</p>
+            <p class="project-note">{project.note}</p>
+            <p class="project-access">{project.access}</p>
+          </article>
+        ))}
       </div>
     </section>
 
