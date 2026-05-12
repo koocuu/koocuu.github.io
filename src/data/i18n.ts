@@ -59,8 +59,8 @@ export const copy = {
       title: 'Blog',
       description: "Cu's notes, essays, and travel writing.",
       eyebrow: 'Blog',
-      heading: 'Public thinking, not a private diary.',
-      lede: 'Notes on engineering, products, AI, and the small patterns I keep noticing in life.',
+      heading: 'Notes from work, travel, games, and AI.',
+      lede: 'Also, the strange business of being alive.',
       back: 'Back to blog',
     },
     contact: {
@@ -205,8 +205,8 @@ export const copy = {
       title: '博客',
       description: 'Cu 的技术笔记、随笔和旅行记录。',
       eyebrow: '博客',
-      heading: '公开思考，不是私人日记。',
-      lede: '关于工程、产品、AI，以及我在生活里反复观察到的小规律。',
+      heading: '关于工作、旅行、游戏和 AI 的笔记。',
+      lede: '以及，作为一个人活着这件怪事。',
       back: '返回博客',
     },
     contact: {
