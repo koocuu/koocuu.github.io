@@ -96,7 +96,8 @@ img {
   font-weight: 650;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav a.active {
   background: #eef4f2;
   color: var(--accent-strong);
 }
@@ -507,8 +508,13 @@ h3 {
   gap: 14px;
 }
 
+.post-card {
+  height: 100%;
+}
+
 .post-card a {
   display: flex;
+  height: 100%;
   min-height: 210px;
   flex-direction: column;
   padding: 22px;
@@ -531,6 +537,10 @@ h3 {
 .post-card p {
   flex: 1;
   color: var(--muted);
+}
+
+.post-card .tag-row {
+  margin-top: auto;
 }
 
 .page-title {
