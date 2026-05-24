@@ -1,7 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
 import SiteNav from '@components/SiteNav.astro';
-import PostCard from '@components/PostCard.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { copy, languages, normalizeLang } from '@data/i18n';
 
@@ -11,9 +9,6 @@ export function getStaticPaths() {
 
 const lang = normalizeLang(Astro.params.lang);
 const t = copy[lang];
-const posts = (await getCollection('blog', ({ data }) => !(data as { private?: boolean }).private))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
 ---
 
 <BaseLayout lang={lang} title="Cu" description={lang === 'zh' ? 'Cu 的个人网站和博客。' : 'Cu personal website and blog.'}>
@@ -87,19 +82,36 @@ const posts = (await getCollection('blog', ({ data }) => !(data as { private?: b
           <p class="eyebrow">{t.home.writingEyebrow}</p>
           <h2>{t.home.writingTitle}</h2>
         </div>
-        <a class="text-link" href={`/${lang}/blog/`}>{t.home.allPosts}</a>
       </div>
       <p class="section-intro">{t.home.writingIntro}</p>
-      <div class="post-grid">
-        {posts.map((post) => (
-          <PostCard
-            href={`/${lang}/blog/${post.id.replace(/\.md$/, '')}/`}
-            title={post.data.title}
-            date={post.data.date}
-            description={post.data.description}
-            tags={post.data.tags}
-          />
-        ))}
+      <div class="writing-channel-grid">
+        {t.writingChannels.map((channel) => {
+          const href = channel.href ? `/${lang}${channel.href}` : undefined;
+          const qr = (channel as { qr?: string }).qr;
+          const content = (
+            <>
+              <div>
+                <p class="channel-label">{channel.label}</p>
+                <h3>{channel.title}</h3>
+              </div>
+              <p>{channel.description}</p>
+              <span class:list={['channel-action', { 'has-qr': qr }]}>
+                {channel.action}
+                {qr && <img class="channel-qr" src={qr} alt={`${channel.title} QR code`} loading="lazy" />}
+              </span>
+            </>
+          );
+
+          return href ? (
+            <a class="writing-channel-card" href={href}>
+              {content}
+            </a>
+          ) : (
+            <article class="writing-channel-card">
+              {content}
+            </article>
+          );
+        })}
       </div>
     </section>
   </main>

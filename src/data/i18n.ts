@@ -34,9 +34,9 @@ export const copy = {
       projectsIntro:
         'A place for tools I am building myself: AI-native experiments, product ideas, and workflows that turn vague friction into usable systems.',
       writingEyebrow: 'Writing',
-      writingTitle: 'Recent notes',
+      writingTitle: 'Writing and public notes',
       writingIntro:
-        'Public thinking on engineering, products, AI, and the small patterns I keep noticing in life.',
+        'Besides code and projects, I keep a few long-running places for ideas: technical notes, real-world observations, and AI-assisted fiction experiments.',
       allPosts: 'All posts',
       about: 'About',
       contact: 'Contact',
@@ -134,6 +134,29 @@ export const copy = {
         access: 'Password required. For personal use and small-group testing.',
       },
     ],
+    writingChannels: [
+      {
+        title: 'Blog',
+        label: 'Personal Blog',
+        description: 'Technical notes, AI, investing, reading notes, and thoughts worth keeping.',
+        href: '/blog/',
+        action: 'Read posts',
+      },
+      {
+        title: '棱角计划',
+        label: 'WeChat Official Account',
+        description: 'Real-world growth, career choices, AI, investing frameworks, and an engineer’s view of the times.',
+        action: 'Scan on WeChat',
+        qr: '/images/wechat-lengjiao-qr.jpg',
+      },
+      {
+        title: '碳基灵感收容所',
+        label: 'WeChat Official Account',
+        description: 'An AI co-creation fiction lab for cosmic short stories, strange premises, and carbon-based imagination.',
+        action: 'Scan on WeChat',
+        qr: '/images/wechat-carbon-qr.jpg',
+      },
+    ],
     profile: {
       skills: ['Full-stack', 'AI Engineering', 'Android', 'Android TV', 'Compose', 'Cross-end', 'LLM Apps', 'Performance', 'Writing'],
     },
@@ -181,8 +204,8 @@ export const copy = {
       projectsTitle: '小产品，解决真实问题。',
       projectsIntro: '这里放我自己做的工具：AI 原生实验、产品想法，以及把模糊痛点整理成可用流程的小系统。',
       writingEyebrow: '写作',
-      writingTitle: '最近记录',
-      writingIntro: '关于工程、产品、AI，以及我在生活里反复观察到的小规律。',
+      writingTitle: '内容创作与公开记录',
+      writingIntro: '除了代码和项目，我也在写一些长期内容：技术笔记、现实观察，以及 AI 共创的幻想实验。',
       allPosts: '全部文章',
       about: '关于',
       contact: '联系',
@@ -268,6 +291,29 @@ export const copy = {
         note:
           '项目目标不是替用户做选择，而是把“想太多”变成一个可记录、可复盘的决策流程。',
         access: '当前需要访问密码，仅供个人使用和小范围测试。',
+      },
+    ],
+    writingChannels: [
+      {
+        title: 'Blog',
+        label: '个人博客',
+        description: '技术、AI、投资、读书笔记，以及值得长期沉淀的想法。',
+        href: '/blog/',
+        action: '阅读博客',
+      },
+      {
+        title: '棱角计划',
+        label: '微信公众号',
+        description: '现实成长、职业选择、AI 时代观察、投资框架和工程师视角。',
+        action: '微信扫码',
+        qr: '/images/wechat-lengjiao-qr.jpg',
+      },
+      {
+        title: '碳基灵感收容所',
+        label: '微信公众号',
+        description: '由人类灵感种子与 AI 共创的幻想短篇实验室，收容宇宙感和奇异设定。',
+        action: '微信扫码',
+        qr: '/images/wechat-carbon-qr.jpg',
       },
     ],
     profile: {
