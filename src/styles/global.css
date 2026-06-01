@@ -359,12 +359,10 @@ h3 {
 .project-card {
   min-height: 240px;
   padding: 26px;
-  border: 1px solid var(--line);
+  border: 1px solid #d8e3df;
   border-radius: var(--radius);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(238, 247, 244, 0.72)),
-    rgba(255, 255, 255, 0.86);
-  box-shadow: 0 14px 42px rgba(32, 29, 22, 0.06);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 14px 38px rgba(32, 29, 22, 0.055);
 }
 
 .project-card-header {
