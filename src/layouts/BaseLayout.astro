@@ -13,6 +13,9 @@ const {
   lang = 'en',
 } = Astro.props;
 const pageTitle = 'AI, Codes & Notes';
+const counterLabels = lang === 'zh'
+  ? { views: '访问', visitors: '访客', viewUnit: '次', visitorUnit: '人' }
+  : { views: 'Views', visitors: 'Visitors', viewUnit: '', visitorUnit: '' };
 ---
 
 <!doctype html>
@@ -30,5 +33,17 @@ const pageTitle = 'AI, Codes & Notes';
   </head>
   <body>
     <slot />
+    <footer class="site-footer" aria-label={lang === 'zh' ? '网站统计' : 'Site statistics'}>
+      <span id="busuanzi_container_site_pv">
+        {counterLabels.views}
+        <strong id="busuanzi_value_site_pv">-</strong>{counterLabels.viewUnit}
+      </span>
+      <span class="footer-dot" aria-hidden="true">/</span>
+      <span id="busuanzi_container_site_uv">
+        {counterLabels.visitors}
+        <strong id="busuanzi_value_site_uv">-</strong>{counterLabels.visitorUnit}
+      </span>
+    </footer>
+    <script is:inline async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   </body>
 </html>
