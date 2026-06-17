@@ -34,15 +34,18 @@ const counterLabels = lang === 'zh'
   <body>
     <slot />
     <footer class="site-footer" aria-label={lang === 'zh' ? '网站统计' : 'Site statistics'}>
-      <span id="busuanzi_container_site_pv">
-        {counterLabels.views}
-        <strong id="busuanzi_value_site_pv">-</strong>{counterLabels.viewUnit}
-      </span>
-      <span class="footer-dot" aria-hidden="true">/</span>
-      <span id="busuanzi_container_site_uv">
-        {counterLabels.visitors}
-        <strong id="busuanzi_value_site_uv">-</strong>{counterLabels.visitorUnit}
-      </span>
+      <div class="footer-stats">
+        <span id="busuanzi_container_site_pv">
+          {counterLabels.views}
+          <strong id="busuanzi_value_site_pv">-</strong>{counterLabels.viewUnit}
+        </span>
+        <span class="footer-dot" aria-hidden="true">/</span>
+        <span id="busuanzi_container_site_uv">
+          {counterLabels.visitors}
+          <strong id="busuanzi_value_site_uv">-</strong>{counterLabels.visitorUnit}
+        </span>
+      </div>
+      <p class="footer-copyright">© 2026 koocuu.com. All rights reserved.</p>
     </footer>
     <script is:inline>
       (() => {

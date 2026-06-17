@@ -135,14 +135,23 @@ main {
 
 .site-footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 4px;
   max-width: var(--content);
   margin: -34px auto 34px;
   padding: 0 22px;
   color: var(--muted);
   font-size: 0.88rem;
+}
+
+.footer-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .site-footer strong {
@@ -153,6 +162,12 @@ main {
 
 .footer-dot {
   color: #b2afa6;
+}
+
+.footer-copyright {
+  margin: 0;
+  color: #8d8981;
+  font-size: 0.78rem;
 }
 
 .section-shell,
@@ -873,6 +888,10 @@ a.writing-channel-card:focus-visible .channel-action {
     margin: -24px auto 28px;
     padding: 0 12px;
     font-size: 0.82rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.74rem;
   }
 
   .hero,
