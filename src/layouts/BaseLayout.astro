@@ -44,6 +44,26 @@ const counterLabels = lang === 'zh'
         <strong id="busuanzi_value_site_uv">-</strong>{counterLabels.visitorUnit}
       </span>
     </footer>
-    <script is:inline async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script is:inline>
+      (() => {
+        const busuanziSrc = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+
+        const loadCounter = () => {
+          document.querySelectorAll('script[data-cu-busuanzi]').forEach((script) => script.remove());
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = busuanziSrc;
+          script.dataset.cuBusuanzi = 'true';
+          document.body.appendChild(script);
+        };
+
+        if (!window.__cuBusuanziReady) {
+          window.__cuBusuanziReady = true;
+          document.addEventListener('astro:page-load', loadCounter);
+        }
+
+        loadCounter();
+      })();
+    </script>
   </body>
 </html>
