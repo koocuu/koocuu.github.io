@@ -50,9 +50,59 @@ const counterLabels = lang === 'zh'
     <script is:inline>
       (() => {
         const busuanziSrc = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        const counterIds = ['busuanzi_value_site_pv', 'busuanzi_value_site_uv'];
 
-        const loadCounter = () => {
-          document.querySelectorAll('script[data-cu-busuanzi]').forEach((script) => script.remove());
+        const readCounterValues = () => {
+          const values = {};
+          counterIds.forEach((id) => {
+            const text = document.getElementById(id)?.textContent?.trim();
+            if (text && text !== '-') {
+              values[id] = text;
+            }
+          });
+          return values;
+        };
+
+        const cacheCounterValues = () => {
+          const values = readCounterValues();
+          if (Object.keys(values).length) {
+            window.__cuBusuanziCounts = {
+              ...(window.__cuBusuanziCounts || {}),
+              ...values,
+            };
+          }
+        };
+
+        const applyCachedValues = () => {
+          const values = window.__cuBusuanziCounts;
+          if (!values) return;
+          Object.entries(values).forEach(([id, value]) => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.textContent = value;
+            }
+          });
+        };
+
+        const observeCounterValues = () => {
+          window.__cuBusuanziObserver?.disconnect();
+          const observer = new MutationObserver(cacheCounterValues);
+          counterIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) {
+              observer.observe(el, { childList: true, characterData: true, subtree: true });
+            }
+          });
+          window.__cuBusuanziObserver = observer;
+        };
+
+        const refreshCounterDisplay = () => {
+          applyCachedValues();
+          observeCounterValues();
+        };
+
+        const loadCounterOnce = () => {
+          if (document.querySelector('script[data-cu-busuanzi]')) return;
           const script = document.createElement('script');
           script.async = true;
           script.src = busuanziSrc;
@@ -62,10 +112,15 @@ const counterLabels = lang === 'zh'
 
         if (!window.__cuBusuanziReady) {
           window.__cuBusuanziReady = true;
-          document.addEventListener('astro:page-load', loadCounter);
+          document.addEventListener('astro:page-load', refreshCounterDisplay);
         }
 
-        loadCounter();
+        refreshCounterDisplay();
+
+        if (!window.__cuBusuanziCounted) {
+          window.__cuBusuanziCounted = true;
+          loadCounterOnce();
+        }
       })();
     </script>
   </body>
