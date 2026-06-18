@@ -24,15 +24,15 @@ const isHome = currentPath === '/';
 ---
 
 <header class="site-header">
-  <a class:list={['brand', { active: isHome }]} href={`/${lang}/`} aria-label="Cu home">Cu</a>
+  <a class:list={['brand', { active: isHome }]} href={`/${lang}/`} aria-label="Cu home" data-astro-prefetch="viewport">Cu</a>
   <div class="nav-cluster">
     <nav class="site-nav" aria-label="Primary navigation">
       {navItems.map((item) => (
-        <a class:list={{ active: isActive(item.href) }} aria-current={isActive(item.href) ? 'page' : undefined} href={item.href}>
+        <a class:list={{ active: isActive(item.href) }} aria-current={isActive(item.href) ? 'page' : undefined} href={item.href} data-astro-prefetch="viewport">
           {item.label}
         </a>
       ))}
     </nav>
-    <a class="lang-switch" href={otherHref}>{t.nav.switch}</a>
+    <a class="lang-switch" href={otherHref} data-astro-prefetch="hover">{t.nav.switch}</a>
   </div>
 </header>

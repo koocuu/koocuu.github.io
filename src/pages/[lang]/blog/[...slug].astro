@@ -30,7 +30,7 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'zh' ? 'zh-CN' : 'en', {
   <main>
     <article class="article-shell">
       <header class="article-header">
-        <a class="text-link" href={`/${lang}/blog/`}>{t.blog.back}</a>
+        <a class="text-link" href={`/${lang}/blog/`} data-astro-prefetch="hover">{t.blog.back}</a>
         <h1>{post.data.title}</h1>
         <div class="article-meta">
           <time>{formattedDate}</time>

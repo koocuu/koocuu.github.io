@@ -20,7 +20,10 @@ const t = copy[lang];
         <p class="eyebrow">{t.about.eyebrow}</p>
         <h1>{t.about.heading}</h1>
       </div>
-      <img class="about-avatar" src="/images/about-atmosphere.jpg" alt="Cu portrait" />
+      <picture class="about-avatar">
+        <source srcset="/images/about-atmosphere-720.webp" type="image/webp" />
+        <img src="/images/about-atmosphere-720.jpg" alt="Cu portrait" width="720" height="1080" loading="lazy" decoding="async" />
+      </picture>
     </section>
 
     <section class="section-shell split-section">

@@ -16,7 +16,7 @@ const formattedDate = new Intl.DateTimeFormat('zh-CN', {
 ---
 
 <article class="post-card">
-  <a href={href}>
+  <a href={href} data-astro-prefetch="hover">
     <time>{formattedDate}</time>
     <h3>{title}</h3>
     {description && <p>{description}</p>}
