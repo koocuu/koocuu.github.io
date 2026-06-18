@@ -799,7 +799,8 @@ a.writing-channel-card:focus-visible .channel-action {
   right: 16px;
   bottom: calc(100% + 12px);
   display: none;
-  width: clamp(220px, 18vw, 300px);
+  width: clamp(190px, 15vw, 250px);
+  height: auto;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);

@@ -73,10 +73,7 @@ async function optimizeFixedAssets() {
     ['cu.jpg', 'cu-540.jpg', jpeg, { width: 540, quality: 80 }],
     ['about-atmosphere.jpg', 'about-atmosphere-720.webp', webp, { width: 720, quality: 78 }],
     ['about-atmosphere.jpg', 'about-atmosphere-720.jpg', jpeg, { width: 720, quality: 82 }],
-    ['wechat_qr.png', 'wechat_qr-square.png', png, {
-      width: 720,
-      extract: { left: 112, top: 380, width: 882, height: 882 },
-    }],
+    ['wechat_qr.png', 'wechat_qr-card.png', png, { width: 560 }],
   ];
 
   for (const [source, target, transform, options] of jobs) {
