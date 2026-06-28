@@ -125,13 +125,13 @@ export const copy = {
     projects: [
       {
         title: 'Low-Regret Decision Assistant',
-        status: 'Private Beta',
+        status: 'Live',
         href: 'https://decision.koocuu.com',
         description:
-          'An AI decision-structuring tool. Paste a messy dilemma, and it organizes options, emotions, and risks, then suggests one low-regret action.',
+          'An AI decision tool wrapped in a warm, friendly shell: break a dilemma into options, risks, and a low-regret action, then review it later so personal decisions gradually settle into an observable profile.',
         note:
-          'The goal is not to choose for you, but to turn overthinking into a decision process that can be recorded and reviewed.',
-        access: 'Password required. For personal use and small-group testing.',
+          'It does not choose for you — it turns overthinking into a recordable, reviewable process. Live on Web, mobile Web, and Android.',
+        access: 'Publicly live — try it online or download the Android build.',
       },
     ],
     writingChannels: [
@@ -283,14 +283,14 @@ export const copy = {
     ],
     projects: [
       {
-        title: '低后悔决策助手',
-        status: '小范围内测',
+        title: '决策助手',
+        status: '已上线',
         href: 'https://decision.koocuu.com',
         description:
-          '一个 AI 决策整理工具。用户输入一段纠结，它会自动整理出选项、情绪和风险，并给出一个低后悔行动。',
+          '一个带“小羊暖外壳”的 AI 低后悔决策工具：把一段纠结拆成选项、风险和低后悔行动，再通过事后复盘，让个人决策逐步沉淀成可观察的画像。',
         note:
-          '项目目标不是替用户做选择，而是把“想太多”变成一个可记录、可复盘的决策流程。',
-        access: '当前需要访问密码，仅供个人使用和小范围测试。',
+          '它不替用户做选择，而是把“想太多”变成一个可记录、可复盘的决策流程。',
+        access: '已正式上线，可直接 Web 在线体验，也可下载 Android 包。',
       },
     ],
     writingChannels: [

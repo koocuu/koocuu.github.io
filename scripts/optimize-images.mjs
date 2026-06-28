@@ -63,14 +63,29 @@ async function png(input, output, options = {}) {
   await pipeline.png({ compressionLevel: 9, adaptiveFiltering: true }).toFile(output);
 }
 
+async function avif(input, output, options = {}) {
+  await ensureDir(path.dirname(output));
+  let pipeline = sharp(input).rotate();
+  if (options.width || options.height) {
+    pipeline = pipeline.resize({
+      width: options.width,
+      height: options.height,
+      fit: options.fit || 'inside',
+      withoutEnlargement: true,
+    });
+  }
+  await pipeline.avif({ quality: options.quality ?? 50, effort: 4 }).toFile(output);
+}
+
 async function optimizeFixedAssets() {
   const jobs = [
-    ['bg1.jpg', 'bg1-1920.webp', webp, { width: 1920, quality: 76 }],
-    ['bg1.jpg', 'bg1-900.webp', webp, { width: 900, quality: 72 }],
+    ['cu.jpg', 'cu-900.avif', avif, { width: 900, quality: 50 }],
+    ['cu.jpg', 'cu-540.avif', avif, { width: 540, quality: 48 }],
     ['cu.jpg', 'cu-900.webp', webp, { width: 900, quality: 78 }],
     ['cu.jpg', 'cu-540.webp', webp, { width: 540, quality: 76 }],
     ['cu.jpg', 'cu-900.jpg', jpeg, { width: 900, quality: 82 }],
     ['cu.jpg', 'cu-540.jpg', jpeg, { width: 540, quality: 80 }],
+    ['about-atmosphere.jpg', 'about-atmosphere-720.avif', avif, { width: 720, quality: 50 }],
     ['about-atmosphere.jpg', 'about-atmosphere-720.webp', webp, { width: 720, quality: 78 }],
     ['about-atmosphere.jpg', 'about-atmosphere-720.jpg', jpeg, { width: 720, quality: 82 }],
     ['wechat_qr.png', 'wechat_qr-card.png', png, { width: 560 }],

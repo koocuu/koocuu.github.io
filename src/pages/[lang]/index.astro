@@ -17,15 +17,17 @@ const t = copy[lang];
     <section class="hero section-shell">
       <div class="hero-copy">
         <p class="eyebrow">{t.home.eyebrow}</p>
-        <div class="hero-title-row">
-          <h1>{t.home.title}</h1>
-          <a class="text-link hero-title-link" href={`/${lang}/about/`} data-astro-prefetch="hover">{t.home.viewProfile}</a>
-        </div>
-        <p class="hero-lede">{t.home.headline}</p>
+        <h1 class="hero-headline">{t.home.headline}</h1>
         <p class="hero-note">{t.home.note}</p>
+        <div class="hero-cta">
+          <a class="button primary" href={`/${lang}/blog/`} data-astro-prefetch="hover">{t.home.readBlog}</a>
+          <a class="button ghost" href={`/${lang}/about/`} data-astro-prefetch="hover">{t.home.viewProfile}</a>
+        </div>
       </div>
       <div class="hero-portrait">
         <picture>
+          <source srcset="/images/cu-540.avif" media="(max-width: 640px)" type="image/avif" />
+          <source srcset="/images/cu-900.avif" type="image/avif" />
           <source srcset="/images/cu-540.webp" media="(max-width: 640px)" type="image/webp" />
           <source srcset="/images/cu-900.webp" type="image/webp" />
           <source srcset="/images/cu-540.jpg" media="(max-width: 640px)" type="image/jpeg" />
@@ -81,7 +83,7 @@ const t = copy[lang];
       </div>
     </section>
 
-    <section class="section-shell">
+    <section class="section-shell writing-section">
       <div class="section-header">
         <div>
           <p class="eyebrow">{t.home.writingEyebrow}</p>
@@ -89,17 +91,17 @@ const t = copy[lang];
         </div>
       </div>
       <p class="section-intro">{t.home.writingIntro}</p>
-      <div class="writing-channel-grid">
+      <div class="writing-list">
         {t.writingChannels.map((channel) => {
           const href = channel.href ? `/${lang}${channel.href}` : undefined;
           const qr = (channel as { qr?: string }).qr;
           const content = (
             <>
-              <div>
+              <div class="writing-item-body">
                 <p class="channel-label">{channel.label}</p>
                 <h3>{channel.title}</h3>
+                <p class="writing-item-desc">{channel.description}</p>
               </div>
-              <p>{channel.description}</p>
               <span class:list={['channel-action', { 'has-qr': qr }]}>
                 {channel.action}
                 {qr && <img class="channel-qr" src={qr} alt={`${channel.title} QR code`} loading="lazy" />}
@@ -108,11 +110,11 @@ const t = copy[lang];
           );
 
           return href ? (
-            <a class="writing-channel-card" href={href} data-astro-prefetch="hover">
+            <a class="writing-item" href={href} data-astro-prefetch="hover">
               {content}
             </a>
           ) : (
-            <article class="writing-channel-card">
+            <article class="writing-item">
               {content}
             </article>
           );
