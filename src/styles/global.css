@@ -652,6 +652,7 @@ a.writing-item {
 .text-link {
   color: var(--accent-strong);
   font-weight: 800;
+  white-space: nowrap;
   text-decoration: underline;
   text-decoration-color: rgba(13, 79, 79, 0.28);
   text-decoration-thickness: 2px;
