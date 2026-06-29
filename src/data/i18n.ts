@@ -124,14 +124,14 @@ export const copy = {
     ],
     projects: [
       {
-        title: 'Low-Regret Decision Assistant',
+        title: 'Decision Assistant',
         status: 'Live',
         href: 'https://decision.koocuu.com',
         description:
-          'An AI decision tool wrapped in a warm, friendly shell: break a dilemma into options, risks, and a low-regret action, then review it later so personal decisions gradually settle into an observable profile.',
+          'An AI low-regret decision tool with a warm, friendly "little-lamb" shell: it breaks a dilemma into options, risks, and a low-regret action, then lets you review it afterward, so personal decisions gradually settle into an observable profile.',
         note:
-          'It does not choose for you — it turns overthinking into a recordable, reviewable process. Live on Web, mobile Web, and Android.',
-        access: 'Publicly live — try it online or download the Android build.',
+          'It does not choose for you — it turns overthinking into a recordable, reviewable decision process.',
+        access: 'Officially live — try it on the Web, or download the Android build.',
       },
     ],
     writingChannels: [
