@@ -5,9 +5,11 @@ interface Props {
   date: Date;
   description?: string;
   tags?: string[];
+  /** view-transition-name shared with the article page h1, so the title morphs across pages. */
+  transitionName?: string;
 }
 
-const { href, title, date, description, tags = [] } = Astro.props;
+const { href, title, date, description, tags = [], transitionName } = Astro.props;
 const formattedDate = new Intl.DateTimeFormat('zh-CN', {
   year: 'numeric',
   month: '2-digit',
@@ -18,7 +20,7 @@ const formattedDate = new Intl.DateTimeFormat('zh-CN', {
 <article class="post-card">
   <a href={href} data-astro-prefetch="hover">
     <time>{formattedDate}</time>
-    <h3>{title}</h3>
+    <h3 transition:name={transitionName}>{title}</h3>
     {description && <p>{description}</p>}
     {tags.length > 0 && (
       <div class="tag-row">

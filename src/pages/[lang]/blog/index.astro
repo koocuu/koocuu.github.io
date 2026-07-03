@@ -14,6 +14,9 @@ const t = copy[lang];
 const posts = (await getCollection('blog', ({ data }) => !(data as { private?: boolean }).private)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
+
+// Stable view-transition-name shared with the article page (must be a valid CSS ident: no spaces/punctuation).
+const titleTransitionName = (slug: string) => `post-${slug.replace(/[^\p{L}\p{N}]+/gu, '-')}`;
 ---
 
 <BaseLayout lang={lang} title={t.blog.title} description={t.blog.description}>
@@ -34,6 +37,7 @@ const posts = (await getCollection('blog', ({ data }) => !(data as { private?: b
             date={post.data.date}
             description={post.data.description}
             tags={post.data.tags}
+            transitionName={titleTransitionName(post.id.replace(/\.md$/, ''))}
           />
         ))}
       </div>

@@ -9,6 +9,21 @@ export function getStaticPaths() {
 
 const lang = normalizeLang(Astro.params.lang);
 const t = copy[lang];
+
+// Split the headline for the staggered type-settling animation: Latin words stay whole,
+// CJK animates per character, and punctuation is glued to the previous token so it can
+// never land at the start of a line (kinsoku shori).
+const rawTokens = t.home.headline.match(/[A-Za-z0-9]+|\s+|./gu) ?? [];
+const mergedTokens: string[] = [];
+for (const tok of rawTokens) {
+  if (mergedTokens.length > 0 && /^[^\p{L}\p{N}\s]+$/u.test(tok)) {
+    mergedTokens[mergedTokens.length - 1] += tok;
+  } else {
+    mergedTokens.push(tok);
+  }
+}
+let chIndex = 0;
+const heroTokens = mergedTokens.map((tok) => (/^\s+$/.test(tok) ? { tok, i: -1 } : { tok, i: chIndex++ }));
 ---
 
 <BaseLayout lang={lang} title="Cu" description={lang === 'zh' ? 'Cu 的个人网站和博客。' : 'Cu personal website and blog.'}>
@@ -17,7 +32,11 @@ const t = copy[lang];
     <section class="hero section-shell">
       <div class="hero-copy">
         <p class="eyebrow">{t.home.eyebrow}</p>
-        <h1 class="hero-headline">{t.home.headline}</h1>
+        <h1 class="hero-headline" aria-label={t.home.headline}>
+          {heroTokens.map(({ tok, i }) =>
+            i < 0 ? tok : <span class="hh-ch" aria-hidden="true" style={`--ch-i:${i}`}>{tok}</span>
+          )}
+        </h1>
         <p class="hero-note">{t.home.note}</p>
         <div class="hero-cta">
           <a class="button primary" href={`/${lang}/blog/`} data-astro-prefetch="hover">{t.home.readBlog}</a>
