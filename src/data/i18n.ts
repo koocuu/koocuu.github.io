@@ -126,14 +126,90 @@ export const copy = {
       {
         title: 'Decision Assistant',
         status: 'Live',
+        slug: 'decision-assistant',
         href: 'https://decision.koocuu.com',
         description:
           'An AI low-regret decision tool with a warm, friendly "little-lamb" shell: it breaks a dilemma into options, risks, and a low-regret action, then lets you review it afterward, so personal decisions gradually settle into an observable profile.',
         note:
           'It does not choose for you — it turns overthinking into a recordable, reviewable decision process.',
         access: 'Officially live — try it on the Web, or download the Android build.',
+        visitLabel: 'Visit',
+        caseLabel: 'Case study',
       },
     ],
+    decisionCase: {
+      title: 'Decision Assistant',
+      description:
+        'Case study: an AI low-regret decision tool that turns overthinking into a recordable, reviewable process.',
+      eyebrow: 'Project case',
+      heading: 'Decision Assistant',
+      lede:
+        'A shipped AI product for everyday dilemmas: pour out the mess, get a low-regret next step, then review it later — so decisions stop vanishing into chat history.',
+      status: 'Live',
+      liveUrl: 'https://decision.koocuu.com',
+      blogSlug: '我用 AI Agent 做了一个低后悔决策助手，但我发现最难的不是代码',
+      tryLabel: 'Try the product',
+      blogLabel: 'Read the full retrospective',
+      contactLabel: 'Talk about a build',
+      backLabel: 'Back to home',
+      problem: {
+        eyebrow: 'Problem',
+        title: 'The hard part is not more information — it is convergence.',
+        body:
+          'I often get stuck on small-but-real choices: buy or wait, keep or quit, rest or push. ChatGPT can answer once, then the thread disappears. What I needed was a process that records the dilemma, forces a low-regret action, and makes later review possible.',
+      },
+      solution: {
+        eyebrow: 'Product',
+        title: 'Not a smarter chatbot — a decision loop.',
+        body:
+          'Decision Assistant wraps a warm “little-lamb” shell around a fixed loop: speak the dilemma, get a structured draft, take a low-regret action, then review. Over time, those records can become an observable decision profile.',
+        steps: [
+          'Pour out the dilemma in one breath',
+          'AI drafts options, risks, and a low-regret action',
+          'Save the record and review it later',
+        ],
+      },
+      decisions: {
+        eyebrow: 'Key calls',
+        title: 'Three product judgments that shaped the build.',
+        items: [
+          {
+            title: 'Advise, don’t decide',
+            description:
+              'The product never picks for you. It turns a messy dilemma into options, risks, and one low-regret next step — so the user still owns the choice, just with less rumination.',
+          },
+          {
+            title: 'Process over one-shot answers',
+            description:
+              'The gap versus ChatGPT is not a stronger model. It is a durable loop: draft → act → review → profile. Without review, it is just another suggestion box.',
+          },
+          {
+            title: 'Pour-out first, forms later',
+            description:
+              'V1 asked for title, category, options, fears, mood. That made an already anxious person fill a spreadsheet. The default became a single freeform dump; structure is inferred afterward, and the first screen leads with the conclusion.',
+          },
+        ],
+      },
+      stack: {
+        eyebrow: 'Scope',
+        title: 'What I owned end to end.',
+        body:
+          'From positioning and prompt design to Web/Android delivery: product judgment first, then shipping with AI-assisted engineering.',
+        items: ['Product / PRD', 'LLM prompts & workflow', 'Web app', 'Android build', 'Deploy & iteration'],
+      },
+      outcome: {
+        eyebrow: 'Outcome',
+        title: 'A real demo, and a clearer bar for what is worth building.',
+        body:
+          'The product is live on Web and Android. More importantly, the build reset my bar: in an AI-agent era, code gets cheaper, judgment gets more expensive. The next filter is habit — will I open this instead of ChatGPT when I am actually stuck?',
+      },
+      cta: {
+        eyebrow: 'Next',
+        title: 'Want something similar shipped?',
+        body:
+          'I help turn fuzzy ideas into usable AI tools: workflow design, prototypes, LLM integration, and lightweight product delivery.',
+      },
+    },
     writingChannels: [
       {
         title: 'Blog',
@@ -285,14 +361,83 @@ export const copy = {
       {
         title: '决策助手',
         status: '已上线',
+        slug: 'decision-assistant',
         href: 'https://decision.koocuu.com',
         description:
           '一个带“小羊暖外壳”的 AI 低后悔决策工具：把一段纠结拆成选项、风险和低后悔行动，再通过事后复盘，让个人决策逐步沉淀成可观察的画像。',
         note:
           '它不替用户做选择，而是把“想太多”变成一个可记录、可复盘的决策流程。',
         access: '已正式上线，可直接 Web 在线体验，也可下载 Android 包。',
+        visitLabel: '访问',
+        caseLabel: '看案例',
       },
     ],
+    decisionCase: {
+      title: '决策助手',
+      description: '案例：一个把纠结变成可记录、可复盘流程的 AI 低后悔决策工具。',
+      eyebrow: '项目案例',
+      heading: '决策助手',
+      lede:
+        '一个已上线的日常决策工具：把脑子里的乱麻倒出来，收敛成低后悔行动，再事后复盘——让决策不再消失在聊天记录里。',
+      status: '已上线',
+      liveUrl: 'https://decision.koocuu.com',
+      blogSlug: '我用 AI Agent 做了一个低后悔决策助手，但我发现最难的不是代码',
+      tryLabel: '体验产品',
+      blogLabel: '阅读完整复盘',
+      contactLabel: '聊聊合作',
+      backLabel: '返回首页',
+      problem: {
+        eyebrow: '问题',
+        title: '难的不是更多信息，而是如何收敛。',
+        body:
+          '我经常卡在那些真实却琐碎的选择上：买还是等、留还是走、休息还是硬撑。ChatGPT 能答一次，但对话会散掉。我需要的是一套能记录纠结、逼出低后悔行动、并支持事后复盘的流程。',
+      },
+      solution: {
+        eyebrow: '产品',
+        title: '不是更聪明的聊天机器人，而是决策闭环。',
+        body:
+          '决策助手用“小羊暖外壳”包住一套固定循环：倾诉纠结 → 得到结构化草稿 → 采取低后悔行动 → 事后复盘。时间久了，这些记录可以沉淀成可观察的决策画像。',
+        steps: ['一句话把纠结倒出来', 'AI 整理选项、风险和低后悔行动', '保存记录，之后回来复盘'],
+      },
+      decisions: {
+        eyebrow: '关键取舍',
+        title: '决定产品形状的三个判断。',
+        items: [
+          {
+            title: '给建议，不替你做决定',
+            description:
+              '产品从不替用户拍板。它只是把一团纠结整理成选项、风险和一步低后悔行动——选择权仍在用户手里，只是少一些内耗。',
+          },
+          {
+            title: '流程优先于一次性回答',
+            description:
+              '和 ChatGPT 的差距不在模型更强，而在可延续的闭环：草稿 → 行动 → 复盘 → 画像。没有复盘，它就只是又一个建议盒子。',
+          },
+          {
+            title: '先倾诉，再结构化',
+            description:
+              '第一版要求填标题、分类、选项、害怕结果、情绪。本来就纠结的人，更不想填表。默认入口改成自由倾诉，结构由 AI 解析；分析页也改成先结论、后展开。',
+          },
+        ],
+      },
+      stack: {
+        eyebrow: '范围',
+        title: '我端到端负责的部分。',
+        body: '从定位和 Prompt 设计，到 Web / Android 交付：先做产品判断，再用 AI 辅助工程把东西真正上线。',
+        items: ['产品 / PRD', 'LLM Prompt 与工作流', 'Web 应用', 'Android 包', '部署与迭代'],
+      },
+      outcome: {
+        eyebrow: '结果',
+        title: '一个真实 Demo，以及更高的“值不值得做”门槛。',
+        body:
+          '产品已在 Web 和 Android 上线。更重要的是，这次构建重置了我的标准：AI Agent 时代，代码越来越便宜，判断越来越贵。下一步的检验是习惯——真纠结时，我会打开它，而不是再开一次 ChatGPT 吗？',
+      },
+      cta: {
+        eyebrow: '下一步',
+        title: '想把类似的想法做成可用产品？',
+        body: '我可以帮忙把模糊想法做成可用的 AI 工具：工作流设计、原型验证、LLM 接入，以及轻量产品交付。',
+      },
+    },
     writingChannels: [
       {
         title: 'Blog',

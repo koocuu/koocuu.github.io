@@ -633,6 +633,90 @@ h3 {
   color: var(--accent-strong);
 }
 
+.project-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px 18px;
+}
+
+.case-title .project-status {
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+.case-title .text-link {
+  display: inline-flex;
+  margin-bottom: 18px;
+}
+
+.case-hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.case-steps {
+  counter-reset: case-step;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.case-steps li {
+  position: relative;
+  padding: 12px 14px 12px 48px;
+  border: 1px solid #d8e3df;
+  border-radius: var(--radius-sm);
+  background: #f4f9f7;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.case-steps li::before {
+  content: counter(case-step);
+  counter-increment: case-step;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-cta-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: 24px;
+  align-items: end;
+  padding: 30px 32px;
+  border: 1px solid #d8e3df;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(238, 247, 244, 0.95), rgba(255, 255, 255, 0.88));
+  box-shadow: var(--shadow-card);
+}
+
+.case-cta-band .section-intro {
+  margin-bottom: 0;
+}
+
+.case-cta-band .case-hero-cta {
+  margin-top: 0;
+  justify-content: flex-end;
+}
+
 .section-header {
   display: flex;
   align-items: end;
@@ -1344,7 +1428,8 @@ a.writing-item {
   .split-section,
   .contact-section,
   .principle-grid,
-  .post-grid {
+  .post-grid,
+  .case-cta-band {
     grid-template-columns: 1fr;
   }
 
@@ -1415,6 +1500,18 @@ a.writing-item {
 
   .page-lede {
     margin-bottom: 0;
+  }
+
+  .case-cta-band {
+    padding: 24px;
+  }
+
+  .case-cta-band .case-hero-cta {
+    justify-content: flex-start;
+  }
+
+  .project-card-links {
+    justify-content: flex-start;
   }
 }
 
