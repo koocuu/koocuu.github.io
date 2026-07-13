@@ -23,6 +23,7 @@ const c = t.lvlvCase;
       <p class="page-lede">{c.lede}</p>
       <div class="case-hero-cta">
         <a class="button primary" href={c.liveUrl} target="_blank" rel="noreferrer">{c.tryLabel}</a>
+        <a class="button ghost" href={`/${lang}/blog/${c.blogSlug}/`} data-astro-prefetch="hover">{c.blogLabel}</a>
         <a class="button ghost" href={c.repoUrl} target="_blank" rel="noreferrer">{c.repoLabel}</a>
       </div>
     </section>
