@@ -1,0 +1,45 @@
+---
+import SiteNav from '@components/SiteNav.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { copy, normalizeLang } from '@data/i18n';
+import { loadNowPage } from '../../lib/now';
+
+export function getStaticPaths() {
+  // MVP: Chinese only. English nav does not link here.
+  return [{ params: { lang: 'zh' } }];
+}
+
+const lang = normalizeLang(Astro.params.lang);
+const t = copy[lang];
+const now = loadNowPage();
+const title = now.ok ? `Now · ${now.season}` : t.now.title;
+const description = now.ok
+  ? `Cu 此刻 · ${now.season}`
+  : t.now.description;
+---
+
+<BaseLayout lang={lang} title={title} description={description}>
+  <SiteNav lang={lang} />
+  <main>
+    <section class="page-title section-shell now-title">
+      <p class="eyebrow">{t.now.eyebrow}</p>
+      <h1>{now.ok ? `Now · ${now.season}` : t.now.heading}</h1>
+      {!now.ok && <p class="page-lede">{t.now.fallback}</p>}
+    </section>
+
+    {now.ok && (
+      <div class="now-sections">
+        {now.sections.map((section) => (
+          <section class="section-shell now-block">
+            <h2>{section.title}</h2>
+            <div class="now-body">
+              {section.body.split(/\n\n+/).map((para) => (
+                <p>{para}</p>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    )}
+  </main>
+</BaseLayout>

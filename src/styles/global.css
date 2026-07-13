@@ -717,6 +717,37 @@ h3 {
   justify-content: flex-end;
 }
 
+.now-title h1 {
+  font-family: var(--display);
+}
+
+.now-sections {
+  display: grid;
+  gap: 0;
+}
+
+.now-block {
+  max-width: 720px;
+}
+
+.now-block h2 {
+  margin-bottom: 14px;
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+  font-weight: 550;
+}
+
+.now-body p {
+  margin: 0 0 1em;
+  color: #3e3b35;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.now-body p:last-child {
+  margin-bottom: 0;
+}
+
 .section-header {
   display: flex;
   align-items: end;

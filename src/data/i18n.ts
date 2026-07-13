@@ -16,6 +16,7 @@ export const copy = {
       blog: 'Blog',
       about: 'About',
       contact: 'Contact',
+      now: 'Now',
       switch: '中文',
     },
     home: {
@@ -71,6 +72,13 @@ export const copy = {
       heading: 'Say hi, trade notes, or send a good song.',
       lede:
         'I am usually happy to talk about Android, full-stack building, AI applications, travel plans, astronomy, or whatever thought refuses to leave your head.',
+    },
+    now: {
+      title: 'Now',
+      description: 'What Cu is doing lately.',
+      eyebrow: 'Now',
+      heading: 'Now',
+      fallback: 'This page is being updated. Check back soon.',
     },
     principles: [
       {
@@ -265,6 +273,7 @@ export const copy = {
       blog: '博客',
       about: '关于',
       contact: '联系',
+      now: '此刻',
       switch: 'EN',
     },
     home: {
@@ -316,6 +325,13 @@ export const copy = {
       eyebrow: '联系',
       heading: '打个招呼，交换想法，或者分享一首好歌。',
       lede: '我通常很愿意聊 Android、全栈构建、AI 应用、旅行计划、天文，或者任何在你脑子里挥之不去的想法。',
+    },
+    now: {
+      title: '此刻',
+      description: 'Cu 最近在做什么。',
+      eyebrow: '此刻',
+      heading: '此刻',
+      fallback: '这一页正在更新，稍后再来看看。',
     },
     principles: [
       {
