@@ -26,7 +26,7 @@ let chIndex = 0;
 const heroTokens = mergedTokens.map((tok) => (/^\s+$/.test(tok) ? { tok, i: -1 } : { tok, i: chIndex++ }));
 ---
 
-<BaseLayout lang={lang} title="Cu" description={lang === 'zh' ? 'Cu 的个人网站和博客。' : 'Cu personal website and blog.'}>
+<BaseLayout lang={lang} title="Cu" description={lang === 'zh' ? '代码越来越便宜，判断越来越贵。Cu 的个人网站与博客。' : 'Code is getting cheaper. Judgment is getting more expensive. Cu’s personal site and blog.'}>
   <SiteNav lang={lang} />
   <main>
     <section class="hero section-shell">
