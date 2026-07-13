@@ -133,6 +133,19 @@ export const copy = {
     ],
     projects: [
       {
+        title: 'Lülü',
+        status: 'Live',
+        slug: 'lvlv',
+        href: 'https://mind.koocuu.com',
+        description:
+          'A brain-dump and mind-map tool: pour everything into one box — todos, feelings, dilemmas, noise — and AI sorts it, finds hidden links, then returns an interactive map so the mess becomes readable at a glance.',
+        note:
+          'Not a notes app or a to-do center — a quiet sorter that turns chaos into a relationship graph.',
+        access: 'Live on the Web — guest mode keeps everything in your browser.',
+        visitLabel: 'Visit',
+        caseLabel: 'Case study',
+      },
+      {
         title: 'Decision Assistant',
         status: 'Live',
         slug: 'decision-assistant',
@@ -146,6 +159,85 @@ export const copy = {
         caseLabel: 'Case study',
       },
     ],
+    lvlvCase: {
+      title: 'Lülü',
+      description:
+        'Case study: a brain-dump tool that turns messy thoughts into an interactive mind map with hidden links surfaced by AI.',
+      eyebrow: 'Project case',
+      heading: 'Lülü',
+      lede:
+        'A shipped mind-clearing tool: dump whatever is in your head, let AI sort and connect it, and get back an interactive map — so the tangle becomes something you can see in five seconds.',
+      status: 'Live',
+      liveUrl: 'https://mind.koocuu.com',
+      repoUrl: 'https://github.com/koocuu/lvlvMind',
+      tryLabel: 'Try the product',
+      repoLabel: 'View source',
+      contactLabel: 'Talk about a build',
+      backLabel: 'Back to home',
+      problem: {
+        eyebrow: 'Problem',
+        title: 'The hard part is not listing things — it is seeing how they tangle.',
+        body:
+          'At night the brain won’t stop: todos, guilt, half-decisions, random noise, all mixed. ChatGPT can spit out a list, then the thread vanishes. What I needed was one dump box that returns a picture of the mess — especially the links between a feeling and the thing causing it.',
+      },
+      solution: {
+        eyebrow: 'Product',
+        title: 'Not another notes app — a sorter that draws relationships.',
+        body:
+          'Lülü wraps a quiet shell around a fixed loop: pour everything out, AI extracts six kinds of items and cross-type links, then React Flow renders an interactive map you can click, check off, and export.',
+        steps: [
+          'Dump freely — voice or text, no format required',
+          'AI sorts into todos, emotions, dilemmas, and more — then finds links',
+          'Interact on the map, save locally, export PNG or Markdown',
+        ],
+      },
+      decisions: {
+        eyebrow: 'Key calls',
+        title: 'Three product judgments that shaped the build.',
+        items: [
+          {
+            title: 'Graph over lists',
+            description:
+              'Competitors return categorized lists. The soul of this product is the edge: anxiety ← caused by → unfinished report. Without real links, it is just another sorting box.',
+          },
+          {
+            title: 'Zero-friction dump first',
+            description:
+              'Guest mode, no signup, no forms. When the brain is noisy, typing into fields is the barrier. One big box plus voice; structure is inferred afterward.',
+          },
+          {
+            title: 'Quiet, not preachy',
+            description:
+              'Copy and prompt stay non-judgmental: a sorting tool, not therapy. Wrong associations destroy trust faster than missing ones — edges stay sparse and explainable.',
+          },
+        ],
+      },
+      stack: {
+        eyebrow: 'Scope',
+        title: 'What I owned end to end.',
+        body:
+          'From positioning and the analysis prompt to the React Flow canvas and local-first history: product judgment first, then a shippable web MVP.',
+        items: [
+          'Product / PRD',
+          'LLM extraction & link prompts',
+          'React Flow mind map',
+          'Local guest history',
+          'Export & deploy',
+        ],
+      },
+      outcome: {
+        eyebrow: 'Outcome',
+        title: 'A live dump → map loop, and a clearer bar for “worth building.”',
+        body:
+          'The product is live at mind.koocuu.com. The next filter is habit: when the head is noisy, will I open Lülü instead of another ChatGPT thread? Later work can connect extracted todos into the koocuu dashboard loop.',
+      },
+      cta: {
+        eyebrow: 'Next',
+        title: 'Want something similar shipped?',
+        body:
+          'I help turn fuzzy ideas into usable AI tools: workflow design, prototypes, LLM integration, and lightweight product delivery.',
+      },
+    },
     decisionCase: {
       title: 'Decision Assistant',
       description:
@@ -377,6 +469,19 @@ export const copy = {
     ],
     projects: [
       {
+        title: '捋捋',
+        status: '已上线',
+        slug: 'lvlv',
+        href: 'https://mind.koocuu.com',
+        description:
+          '一个脑内倾倒与思维整理工具：把 todo、情绪、纠结、碎念一股脑倒进输入框，AI 分拣并找出隐藏关联，再用可交互思维导图还给你一个清醒的脑子。',
+        note:
+          '不是笔记软件，也不是待办中心——安静接住一团乱麻，整理成能一眼看懂的关系图。',
+        access: '已上线 Web，游客模式内容只存在本机浏览器。',
+        visitLabel: '访问',
+        caseLabel: '看案例',
+      },
+      {
         title: '决策助手',
         status: '已上线',
         slug: 'decision-assistant',
@@ -390,6 +495,72 @@ export const copy = {
         caseLabel: '看案例',
       },
     ],
+    lvlvCase: {
+      title: '捋捋',
+      description: '案例：一个把脑子里的乱麻倒出来、整理成可交互思维导图的工具。',
+      eyebrow: '项目案例',
+      heading: '捋捋',
+      lede:
+        '一个已上线的脑内整理工具：把脑子里的一切倒进一个输入框，AI 分拣并发现隐藏关联，用思维导图还你一个清醒的脑子。',
+      status: '已上线',
+      liveUrl: 'https://mind.koocuu.com',
+      repoUrl: 'https://github.com/koocuu/lvlvMind',
+      tryLabel: '体验产品',
+      repoLabel: '查看源码',
+      contactLabel: '聊聊合作',
+      backLabel: '返回首页',
+      problem: {
+        eyebrow: '问题',
+        title: '难的不是列清单，而是看清它们怎么缠在一起。',
+        body:
+          '睡前脑子停不下来：待办、愧疚、半截纠结、碎念搅成一团。ChatGPT 能吐出一列清单，对话又散掉。我需要的是一个倾倒入口，还给我一张图——尤其是「这份焦虑 ← 来源于 → 那件没做完的事」。',
+      },
+      solution: {
+        eyebrow: '产品',
+        title: '不是又一个笔记软件，而是会画关联的整理器。',
+        body:
+          '捋捋用安静的外壳包住一套固定循环：自由倾倒 → AI 提取六类事项并发现跨类型关联 → React Flow 渲染可交互导图 → 本地保存与导出。',
+        steps: ['语音或文字随便倒，无格式要求', 'AI 分拣待办、情绪、纠结等，并连出关联', '在图上勾选、点开详情，导出 PNG / Markdown'],
+      },
+      decisions: {
+        eyebrow: '关键取舍',
+        title: '决定产品形状的三个判断。',
+        items: [
+          {
+            title: '关系图优先于分类列表',
+            description:
+              '竞品多半输出分类清单。本产品的灵魂是连线：情绪归因到具体事项、多个 todo 归到同一条线。没有真关联，它就只是又一个分拣盒子。',
+          },
+          {
+            title: '先倾倒，零摩擦',
+            description:
+              '游客模式、不注册、不填表。脑子乱时，表单本身就是障碍。默认就是一个大输入框加语音；结构交给 AI 事后解析。',
+          },
+          {
+            title: '安静接住，不说教',
+            description:
+              '文案与 Prompt 明确：整理工具，不是心理咨询。错误关联比没有关联更伤信任——连线宁缺毋滥，且每条可解释。',
+          },
+        ],
+      },
+      stack: {
+        eyebrow: '范围',
+        title: '我端到端负责的部分。',
+        body: '从定位与分析 Prompt，到 React Flow 画布与本地历史：先做产品判断，再把 Web MVP 真正上线。',
+        items: ['产品 / PRD', 'LLM 提取与关联 Prompt', 'React Flow 导图', '游客本地历史', '导出与部署'],
+      },
+      outcome: {
+        eyebrow: '结果',
+        title: '一条可用的「倾倒 → 出图」闭环，以及更高的验证门槛。',
+        body:
+          '产品已在 mind.koocuu.com 上线。下一步的检验是习惯——脑子乱时，我会打开捋捋，而不是再开一次 ChatGPT 吗？后续可把提取出的 todo 接到 koocuu dashboard 闭环。',
+      },
+      cta: {
+        eyebrow: '下一步',
+        title: '想把类似的想法做成可用产品？',
+        body: '我可以帮忙把模糊想法做成可用的 AI 工具：工作流设计、原型验证、LLM 接入，以及轻量产品交付。',
+      },
+    },
     decisionCase: {
       title: '决策助手',
       description: '案例：一个把纠结变成可记录、可复盘流程的 AI 低后悔决策工具。',
