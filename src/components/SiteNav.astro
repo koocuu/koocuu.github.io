@@ -15,12 +15,8 @@ const otherHref =
     ? `/${otherLang}/`
     : `/${otherLang}${currentPath}`;
 const navItems = [
-  ...(lang === 'zh'
-    ? [
-        { href: `/${lang}/now/`, label: t.nav.now },
-        { href: `/${lang}/travel/`, label: '足迹' },
-      ]
-    : []),
+  { href: '/zh/now/', label: t.nav.now },
+  { href: '/zh/travel/', label: t.nav.travel },
   { href: `/${lang}/about/`, label: t.nav.about },
   { href: `/${lang}/blog/`, label: t.nav.blog },
   { href: `/${lang}/contact/`, label: t.nav.contact },

@@ -17,6 +17,7 @@ export const copy = {
       about: 'About',
       contact: 'Contact',
       now: 'Now',
+      travel: 'Travel',
       switch: '中文',
     },
     home: {
@@ -368,6 +369,7 @@ export const copy = {
       about: '关于',
       contact: '联系',
       now: '此刻',
+      travel: '足迹',
       switch: 'EN',
     },
     home: {

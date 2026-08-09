@@ -12,7 +12,10 @@ const { places } = Astro.props;
 const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
 ---
 
-<div id="travel-map" class="travel-map" aria-label="足迹地图"></div>
+<div class="travel-map-frame">
+  <div id="travel-map" class="travel-map" aria-label="足迹地图"></div>
+  <button id="travel-map-show-all" class="travel-map-show-all" type="button">看全部</button>
+</div>
 <script id="travel-map-data" type="application/json" set:html={serializedPlaces} is:inline></script>
 
 <script>
@@ -40,6 +43,27 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
       '"': '&quot;',
     })[character] ?? character);
 
+  const distanceInKilometers = (a: MapPlace, b: MapPlace) => {
+    const toRadians = (degrees: number) => degrees * Math.PI / 180;
+    const earthRadius = 6371;
+    const latitudeDelta = toRadians(b.lat - a.lat);
+    const longitudeDelta = toRadians(b.lng - a.lng);
+    const latitudeA = toRadians(a.lat);
+    const latitudeB = toRadians(b.lat);
+    const haversine = Math.sin(latitudeDelta / 2) ** 2
+      + Math.cos(latitudeA) * Math.cos(latitudeB) * Math.sin(longitudeDelta / 2) ** 2;
+    return earthRadius * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
+  };
+
+  const findDensestRegion = (places: MapPlace[]) => {
+    if (places.length < 2) return places;
+    const regionRadius = 280;
+    return places.reduce<MapPlace[]>((densest, center) => {
+      const nearby = places.filter((place) => distanceInKilometers(center, place) <= regionRadius);
+      return nearby.length > densest.length ? nearby : densest;
+    }, [places[0]]);
+  };
+
   let map: L.Map | undefined;
   let listeners: AbortController | undefined;
 
@@ -52,7 +76,8 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
     const root = document.querySelector<HTMLElement>('[data-travel-page]');
     const mapElement = document.querySelector<HTMLElement>('#travel-map');
     const dataElement = document.querySelector<HTMLScriptElement>('#travel-map-data');
-    if (!root || !mapElement || !dataElement) return;
+    const showAllButton = document.querySelector<HTMLButtonElement>('#travel-map-show-all');
+    if (!root || !mapElement || !dataElement || !showAllButton) return;
 
     const tabButtons = root.querySelectorAll<HTMLButtonElement>('[role="tab"]');
     const panels = root.querySelectorAll<HTMLElement>('[role="tabpanel"]');
@@ -105,13 +130,24 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
                 <span>${escapeHtml(place.city)} · ${escapeHtml(place.country)}</span>
                 <p>${escapeHtml(place.note)}</p>
               </article>`;
-            clusters.addLayer(L.marker([place.lat, place.lng], { icon }).bindPopup(popup, { maxWidth: 280 }));
+            clusters.addLayer(L.marker([place.lat, place.lng], { icon }).bindPopup(popup, {
+              maxWidth: Math.min(320, Math.floor(window.innerWidth * 0.9)),
+            }));
           });
 
           map.addLayer(clusters);
-          if (places.length === 1) map.setView([places[0].lat, places[0].lng], 10);
-          else if (places.length > 1) map.fitBounds(clusters.getBounds(), { padding: [36, 36], maxZoom: 13 });
+          const allBounds = clusters.getBounds();
+          const densestRegion = findDensestRegion(places);
+          const regionBounds = L.latLngBounds(densestRegion.map((place) => [place.lat, place.lng]));
+          showAllButton.hidden = places.length <= densestRegion.length;
+
+          if (densestRegion.length === 1) map.setView([densestRegion[0].lat, densestRegion[0].lng], 7);
+          else if (densestRegion.length > 1) map.fitBounds(regionBounds, { padding: [48, 48], maxZoom: 7 });
           else map.setView([30, 10], 2);
+
+          showAllButton.addEventListener('click', () => {
+            if (allBounds.isValid()) map?.fitBounds(allBounds, { padding: [40, 40], maxZoom: 6 });
+          }, { signal: listeners?.signal });
         }
         requestAnimationFrame(() => map?.invalidateSize());
       }
@@ -128,6 +164,9 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
         showPanel(next);
       }, { signal: listeners?.signal });
     });
+
+    const selectedTab = root.querySelector<HTMLButtonElement>('[role="tab"][aria-selected="true"]');
+    if (selectedTab) showPanel(selectedTab);
   };
 
   document.addEventListener('astro:page-load', initializeTravelPage);

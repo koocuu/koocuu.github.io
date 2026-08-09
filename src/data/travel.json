@@ -2,6 +2,30 @@
   "schema_version": 1,
   "places": [
     {
+      "id": "beijing-2017",
+      "name": "北京",
+      "city": "北京",
+      "country": "中国",
+      "lat": 39.9042,
+      "lng": 116.4074,
+      "visited": "2017-07",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2017 年夏天到访北京。"
+    },
+    {
+      "id": "shanghai-internship",
+      "name": "上海",
+      "city": "上海",
+      "country": "中国",
+      "lat": 31.2304,
+      "lng": 121.4737,
+      "visited": "2022-07",
+      "date_precision": "month",
+      "kind": "work",
+      "note": "第一次来上海实习。"
+    },
+    {
       "id": "paris-notre-dame",
       "name": "巴黎圣母院",
       "city": "巴黎",
@@ -12,6 +36,30 @@
       "date_precision": "month",
       "kind": "travel",
       "note": "第一次出国的第一站。走出地铁，双眼收尽圣母院。"
+    },
+    {
+      "id": "naples-2024",
+      "name": "那不勒斯",
+      "city": "那不勒斯",
+      "country": "意大利",
+      "lat": 40.8518,
+      "lng": 14.2681,
+      "visited": "2024-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2024 年 9 月的意大利旅行。"
+    },
+    {
+      "id": "capri-2024",
+      "name": "卡普里",
+      "city": "卡普里",
+      "country": "意大利",
+      "lat": 40.5507,
+      "lng": 14.2222,
+      "visited": "2024-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2024 年 9 月的意大利旅行。"
     },
     {
       "id": "rome-colosseum-night",
@@ -38,6 +86,114 @@
       "kind": "travel",
       "note": "走出博物馆时，竟又遇见前一天在罗马认识的朋友。",
       "photo": "/images/blog/rome-vatican.webp"
+    },
+    {
+      "id": "florence-2024",
+      "name": "佛罗伦萨",
+      "city": "佛罗伦萨",
+      "country": "意大利",
+      "lat": 43.7696,
+      "lng": 11.2558,
+      "visited": "2024-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2024 年 9 月的意大利旅行。"
+    },
+    {
+      "id": "milan-2024",
+      "name": "米兰",
+      "city": "米兰",
+      "country": "意大利",
+      "lat": 45.4642,
+      "lng": 9.19,
+      "visited": "2024-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2024 年 9 月的意大利旅行。"
+    },
+    {
+      "id": "huizhou-2025",
+      "name": "惠州",
+      "city": "惠州",
+      "country": "中国",
+      "lat": 23.1115,
+      "lng": 114.4168,
+      "visited": "2025-04",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2025 年春天到访惠州。"
+    },
+    {
+      "id": "shenzhen-2025",
+      "name": "深圳",
+      "city": "深圳",
+      "country": "中国",
+      "lat": 22.5431,
+      "lng": 114.0579,
+      "visited": "2025-04",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2025 年春天到访深圳。"
+    },
+    {
+      "id": "hong-kong-2025",
+      "name": "香港",
+      "city": "香港",
+      "country": "中国",
+      "lat": 22.3193,
+      "lng": 114.1694,
+      "visited": "2025-04",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2025 年春天到访香港。"
+    },
+    {
+      "id": "hanoi-2025",
+      "name": "河内",
+      "city": "河内",
+      "country": "越南",
+      "lat": 21.0278,
+      "lng": 105.8342,
+      "visited": "2025-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2025 年 9 月到访河内。"
+    },
+    {
+      "id": "ho-chi-minh-city-2025",
+      "name": "胡志明市",
+      "city": "胡志明市",
+      "country": "越南",
+      "lat": 10.8231,
+      "lng": 106.6297,
+      "visited": "2025-11",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2025 年 11 月到访胡志明市。"
+    },
+    {
+      "id": "pattaya-2026",
+      "name": "芭提雅",
+      "city": "芭提雅",
+      "country": "泰国",
+      "lat": 12.9236,
+      "lng": 100.8825,
+      "visited": "2026-04",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2026 年春天的泰国旅行。"
+    },
+    {
+      "id": "bangkok-2026",
+      "name": "曼谷",
+      "city": "曼谷",
+      "country": "泰国",
+      "lat": 13.7563,
+      "lng": 100.5018,
+      "visited": "2026-04",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2026 年春天的泰国旅行。"
     }
   ]
 }
