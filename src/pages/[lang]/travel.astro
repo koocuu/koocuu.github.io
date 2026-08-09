@@ -3,7 +3,7 @@ import SiteNav from '@components/SiteNav.astro';
 import TravelMap from '@components/TravelMap.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { normalizeLang } from '@data/i18n';
-import { mappableTravelPlaces, travelPlaces, travelPlacesByYear, type TravelKind } from '../../lib/travel';
+import { hometownPlaces, mappableTravelPlaces, travelPlaces, travelPlacesByYear, type TravelKind } from '../../lib/travel';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'zh' } }];
@@ -18,7 +18,7 @@ const kindLabels: Record<TravelKind, string> = {
 };
 const countries = new Set(travelPlaces.map((place) => place.country)).size;
 const cities = new Set(travelPlaces.map((place) => `${place.country}/${place.city}`)).size;
-const earliestYear = travelPlaces.at(-1)?.visited.slice(0, 4) ?? '—';
+const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
 ---
 
 <BaseLayout lang={lang} title="足迹" description="我在哪些地方留下过时间。Cu 的个人时间地图。">
@@ -42,6 +42,24 @@ const earliestYear = travelPlaces.at(-1)?.visited.slice(0, 4) ?? '—';
 
       <div id="timeline-panel" class="travel-panel" role="tabpanel" aria-labelledby="timeline-tab">
         <div class="travel-years">
+          {hometownPlaces.length > 0 && (
+            <section class="travel-year travel-hometowns" aria-labelledby="hometown-title">
+              <h2 id="hometown-title">家乡</h2>
+              <div class="travel-year-places">
+                {hometownPlaces.map((place) => (
+                  <article id={place.id} class:list={['travel-entry', 'kind-live']}>
+                    <div class="travel-entry-date">
+                      <span>家乡</span>
+                    </div>
+                    <div class="travel-entry-copy">
+                      <h3>{place.city} · {place.country}</h3>
+                      {place.note && <p>{place.note}</p>}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
           {travelPlacesByYear.map(([year, places]) => (
             <section class="travel-year" aria-labelledby={`year-${year}`}>
               <h2 id={`year-${year}`}>{year}</h2>

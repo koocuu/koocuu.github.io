@@ -2,6 +2,28 @@
   "schema_version": 1,
   "places": [
     {
+      "id": "nantong-hometown",
+      "name": "南通",
+      "city": "南通",
+      "country": "中国",
+      "lat": 31.9802,
+      "lng": 120.8943,
+      "kind": "live",
+      "hometown": true,
+      "note": ""
+    },
+    {
+      "id": "chongqing-hometown",
+      "name": "重庆",
+      "city": "重庆",
+      "country": "中国",
+      "lat": 29.563,
+      "lng": 106.5516,
+      "kind": "live",
+      "hometown": true,
+      "note": ""
+    },
+    {
       "id": "beijing-2017",
       "name": "北京",
       "city": "北京",
@@ -208,16 +230,16 @@
       "note": "2020 年 10 月到访成都。"
     },
     {
-      "id": "nantong-2022",
-      "name": "南通",
-      "city": "南通",
+      "id": "changzhou-2022",
+      "name": "常州",
+      "city": "常州",
       "country": "中国",
-      "lat": 31.9802,
-      "lng": 120.8943,
+      "lat": 31.8107,
+      "lng": 119.9741,
       "visited": "2022-09",
       "date_precision": "month",
       "kind": "travel",
-      "note": "2022 年 9 月到访江苏南通。"
+      "note": "2022 年 9 月到访江苏常州。"
     },
     {
       "id": "wuhan-2023",

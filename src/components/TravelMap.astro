@@ -29,7 +29,7 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
     country: string;
     lat: number;
     lng: number;
-    visited: string;
+    visited?: string;
     note: string;
     photo?: string;
   };
@@ -101,10 +101,13 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
             const photo = place.photo
               ? `<img src="${escapeHtml(place.photo)}" alt="" loading="lazy" />`
               : '';
+            const date = place.visited
+              ? `<p class="travel-popup-date">${escapeHtml(place.visited)}</p>`
+              : '';
             const popup = `
               <article class="travel-popup">
                 ${photo}
-                <p class="travel-popup-date">${escapeHtml(place.visited)}</p>
+                ${date}
                 <strong>${escapeHtml(place.name)}</strong>
                 <span>${escapeHtml(place.city)} · ${escapeHtml(place.country)}</span>
                 <p>${escapeHtml(place.note)}</p>

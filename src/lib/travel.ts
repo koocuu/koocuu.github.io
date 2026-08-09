@@ -12,12 +12,15 @@ export interface TravelPlace {
   country: string;
   lat?: number;
   lng?: number;
-  visited: string;
-  date_precision: DatePrecision;
+  visited?: string;
+  date_precision?: DatePrecision;
   kind: TravelKind;
   note: string;
   photo?: string;
+  hometown?: boolean;
 }
+
+export type DatedTravelPlace = TravelPlace & { visited: string; date_precision: DatePrecision };
 
 interface TravelSource {
   schema_version?: unknown;
@@ -38,14 +41,17 @@ const validPrecisions = new Set<DatePrecision>(['day', 'month', 'year']);
 function parsePlace(value: unknown): TravelPlace | null {
   if (!value || typeof value !== 'object') return null;
   const place = value as Record<string, unknown>;
-  const required = ['id', 'name', 'city', 'country', 'visited', 'note'] as const;
+  const required = ['id', 'name', 'city', 'country', 'note'] as const;
 
   if (required.some((key) => typeof place[key] !== 'string')) {
     console.warn('[travel] Skipping a record with missing required text fields.');
     return null;
   }
 
-  if (!validKinds.has(place.kind as TravelKind) || !validPrecisions.has(place.date_precision as DatePrecision)) {
+  const isHometown = place.hometown === true;
+  const hasDate = typeof place.visited === 'string' && validPrecisions.has(place.date_precision as DatePrecision);
+
+  if (!validKinds.has(place.kind as TravelKind) || (!isHometown && !hasDate)) {
     console.warn(`[travel] Skipping ${String(place.id)} because kind or date_precision is invalid.`);
     return null;
   }
@@ -57,22 +63,32 @@ function parsePlace(value: unknown): TravelPlace | null {
     name: place.name as string,
     city: place.city as string,
     country: place.country as string,
-    visited: place.visited as string,
-    date_precision: place.date_precision as DatePrecision,
     kind: place.kind as TravelKind,
     note: place.note as string,
+    ...(hasDate ? {
+      visited: place.visited as string,
+      date_precision: place.date_precision as DatePrecision,
+    } : {}),
     ...(hasCoordinates ? { lat: place.lat as number, lng: place.lng as number } : {}),
     ...(typeof place.photo === 'string' ? { photo: place.photo } : {}),
+    ...(isHometown ? { hometown: true } : {}),
   };
 }
 
 export const travelPlaces = (Array.isArray(source.places) ? source.places : [])
   .map(parsePlace)
   .filter((place): place is TravelPlace => place !== null)
-  .sort((a, b) => b.visited.localeCompare(a.visited));
+  .sort((a, b) => Number(Boolean(b.hometown)) - Number(Boolean(a.hometown))
+    || (b.visited ?? '').localeCompare(a.visited ?? ''));
+
+export const hometownPlaces = travelPlaces.filter((place) => place.hometown);
+
+const datedTravelPlaces = travelPlaces.filter(
+  (place): place is DatedTravelPlace => typeof place.visited === 'string' && place.date_precision !== undefined,
+);
 
 export const travelPlacesByYear = Object.entries(
-  travelPlaces.reduce<Record<string, TravelPlace[]>>((years, place) => {
+  datedTravelPlaces.reduce<Record<string, DatedTravelPlace[]>>((years, place) => {
     const year = place.visited.slice(0, 4) || '未知';
     (years[year] ??= []).push(place);
     return years;
