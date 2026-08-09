@@ -1,0 +1,134 @@
+---
+import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import type { TravelPlace } from '../lib/travel';
+
+interface Props {
+  places: Array<TravelPlace & { lat: number; lng: number }>;
+}
+
+const { places } = Astro.props;
+const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
+---
+
+<div id="travel-map" class="travel-map" aria-label="足迹地图"></div>
+<script id="travel-map-data" type="application/json" set:html={serializedPlaces} is:inline></script>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet.markercluster';
+
+  type MapPlace = {
+    id: string;
+    name: string;
+    city: string;
+    country: string;
+    lat: number;
+    lng: number;
+    visited: string;
+    note: string;
+    photo?: string;
+  };
+
+  const escapeHtml = (value: string) =>
+    value.replace(/[&<>'"]/g, (character) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;',
+    })[character] ?? character);
+
+  let map: L.Map | undefined;
+  let listeners: AbortController | undefined;
+
+  const initializeTravelPage = () => {
+    map?.remove();
+    map = undefined;
+    listeners?.abort();
+    listeners = new AbortController();
+
+    const root = document.querySelector<HTMLElement>('[data-travel-page]');
+    const mapElement = document.querySelector<HTMLElement>('#travel-map');
+    const dataElement = document.querySelector<HTMLScriptElement>('#travel-map-data');
+    if (!root || !mapElement || !dataElement) return;
+
+    const tabButtons = root.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+    const panels = root.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
+    const showPanel = (selected: HTMLButtonElement) => {
+      tabButtons.forEach((button) => {
+        const active = button === selected;
+        button.setAttribute('aria-selected', String(active));
+        button.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.id !== selected.getAttribute('aria-controls');
+      });
+
+      if (selected.dataset.view === 'map') {
+        if (!map) {
+          const places = JSON.parse(dataElement.textContent || '[]') as MapPlace[];
+          map = L.map(mapElement, {
+            scrollWheelZoom: false,
+            zoomControl: true,
+          });
+
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+            maxZoom: 19,
+          }).addTo(map);
+
+          const clusters = L.markerClusterGroup({
+            showCoverageOnHover: false,
+            maxClusterRadius: 44,
+          });
+
+          places.forEach((place) => {
+            const icon = L.divIcon({
+              className: 'travel-marker-shell',
+              html: '<span class="travel-marker-dot"></span>',
+              iconSize: [24, 24],
+              iconAnchor: [12, 12],
+              popupAnchor: [0, -10],
+            });
+            const photo = place.photo
+              ? `<img src="${escapeHtml(place.photo)}" alt="" loading="lazy" />`
+              : '';
+            const popup = `
+              <article class="travel-popup">
+                ${photo}
+                <p class="travel-popup-date">${escapeHtml(place.visited)}</p>
+                <strong>${escapeHtml(place.name)}</strong>
+                <span>${escapeHtml(place.city)} · ${escapeHtml(place.country)}</span>
+                <p>${escapeHtml(place.note)}</p>
+              </article>`;
+            clusters.addLayer(L.marker([place.lat, place.lng], { icon }).bindPopup(popup, { maxWidth: 280 }));
+          });
+
+          map.addLayer(clusters);
+          if (places.length === 1) map.setView([places[0].lat, places[0].lng], 10);
+          else if (places.length > 1) map.fitBounds(clusters.getBounds(), { padding: [36, 36], maxZoom: 13 });
+          else map.setView([30, 10], 2);
+        }
+        requestAnimationFrame(() => map?.invalidateSize());
+      }
+    };
+
+    tabButtons.forEach((button, index) => {
+      button.addEventListener('click', () => showPanel(button), { signal: listeners?.signal });
+      button.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        const direction = event.key === 'ArrowRight' ? 1 : -1;
+        const next = tabButtons[(index + direction + tabButtons.length) % tabButtons.length];
+        next.focus();
+        showPanel(next);
+      }, { signal: listeners?.signal });
+    });
+  };
+
+  document.addEventListener('astro:page-load', initializeTravelPage);
+  initializeTravelPage();
+</script>
