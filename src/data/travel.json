@@ -194,6 +194,114 @@
       "date_precision": "month",
       "kind": "travel",
       "note": "2026 年春天的泰国旅行。"
+    },
+    {
+      "id": "chengdu-2020",
+      "name": "成都",
+      "city": "成都",
+      "country": "中国",
+      "lat": 30.5728,
+      "lng": 104.0668,
+      "visited": "2020-10",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2020 年 10 月到访成都。"
+    },
+    {
+      "id": "nantong-2022",
+      "name": "南通",
+      "city": "南通",
+      "country": "中国",
+      "lat": 31.9802,
+      "lng": 120.8943,
+      "visited": "2022-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2022 年 9 月到访江苏南通。"
+    },
+    {
+      "id": "wuhan-2023",
+      "name": "武汉",
+      "city": "武汉",
+      "country": "中国",
+      "lat": 30.5928,
+      "lng": 114.3055,
+      "visited": "2023-03",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2023 年 3 月到访武汉。"
+    },
+    {
+      "id": "dali-2024",
+      "name": "大理",
+      "city": "大理",
+      "country": "中国",
+      "lat": 25.6065,
+      "lng": 100.2676,
+      "visited": "2024-05",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2024 年 5 月到访大理。"
+    },
+    {
+      "id": "kunming-2024",
+      "name": "昆明",
+      "city": "昆明",
+      "country": "中国",
+      "lat": 25.0389,
+      "lng": 102.7183,
+      "visited": "2024-05",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2024 年 5 月到访昆明。"
+    },
+    {
+      "id": "huzhou-2025",
+      "name": "湖州",
+      "city": "湖州",
+      "country": "中国",
+      "lat": 30.8925,
+      "lng": 120.0868,
+      "visited": "2025-02",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2025 年 2 月到访湖州。"
+    },
+    {
+      "id": "suzhou-2025",
+      "name": "苏州",
+      "city": "苏州",
+      "country": "中国",
+      "lat": 31.2989,
+      "lng": 120.5853,
+      "visited": "2025-03",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2025 年 3 月到访苏州。"
+    },
+    {
+      "id": "hangzhou-2025",
+      "name": "杭州",
+      "city": "杭州",
+      "country": "中国",
+      "lat": 30.2741,
+      "lng": 120.1551,
+      "visited": "2025-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2025 年 9 月到访杭州。"
+    },
+    {
+      "id": "jinan-2026",
+      "name": "济南",
+      "city": "济南",
+      "country": "中国",
+      "lat": 36.6512,
+      "lng": 117.1201,
+      "visited": "2026-04",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2026 年 4 月到访济南。"
     }
   ]
 }
