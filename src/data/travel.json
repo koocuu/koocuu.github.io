@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "places": [
+    {
+      "id": "paris-notre-dame",
+      "name": "巴黎圣母院",
+      "city": "巴黎",
+      "country": "法国",
+      "lat": 48.853,
+      "lng": 2.3499,
+      "visited": "2024-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "第一次出国的第一站。走出地铁，双眼收尽圣母院。"
+    },
+    {
+      "id": "rome-piazza-navona",
+      "name": "纳沃纳广场",
+      "city": "罗马",
+      "country": "意大利",
+      "lat": 41.8992,
+      "lng": 12.4731,
+      "visited": "2024-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "在石凳上小憩，和一对画画的波兰情侣意外相识。",
+      "photo": "/images/blog/rome-navona.webp"
+    },
+    {
+      "id": "vatican-museums",
+      "name": "梵蒂冈博物馆",
+      "city": "梵蒂冈城",
+      "country": "梵蒂冈",
+      "lat": 41.9065,
+      "lng": 12.4536,
+      "visited": "2024-09",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "走出博物馆时，竟又遇见前一天在罗马认识的朋友。",
+      "photo": "/images/blog/rome-vatican.webp"
+    }
+  ]
+}

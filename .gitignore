@@ -2,3 +2,5 @@ node_modules/
 dist/
 .astro/
 *.log
+src/data/travel.private.json
+public/data/travel.json
