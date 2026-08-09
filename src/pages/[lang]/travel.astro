@@ -27,20 +27,20 @@ const earliestYear = travelPlaces.at(-1)?.visited.slice(0, 4) ?? '—';
     <section class="travel-hero section-shell">
       <p class="eyebrow">足迹</p>
       <h1>我在哪些地方<br />留下过时间</h1>
-      <p class="page-lede">不是点亮过多少国家，而是一些地方、一些月份，和我仍然记得的事。</p>
+      <p class="page-lede">一些地方、一些月份，和我仍然记得的事。</p>
     </section>
 
     <section class="section-shell travel-explorer" aria-label="足迹浏览">
       <div class="travel-tabs" role="tablist" aria-label="切换足迹视图">
-        <button id="timeline-tab" type="button" role="tab" aria-selected="false" aria-controls="timeline-panel" data-view="timeline" tabindex="-1">
+        <button id="timeline-tab" type="button" role="tab" aria-selected="true" aria-controls="timeline-panel" data-view="timeline">
           时间轴
         </button>
-        <button id="map-tab" type="button" role="tab" aria-selected="true" aria-controls="map-panel" data-view="map">
+        <button id="map-tab" type="button" role="tab" aria-selected="false" aria-controls="map-panel" data-view="map" tabindex="-1">
           地图
         </button>
       </div>
 
-      <div id="timeline-panel" class="travel-panel" role="tabpanel" aria-labelledby="timeline-tab" hidden>
+      <div id="timeline-panel" class="travel-panel" role="tabpanel" aria-labelledby="timeline-tab">
         <div class="travel-years">
           {travelPlacesByYear.map(([year, places]) => (
             <section class="travel-year" aria-labelledby={`year-${year}`}>
@@ -53,8 +53,14 @@ const earliestYear = travelPlaces.at(-1)?.visited.slice(0, 4) ?? '—';
                       <span>{kindLabels[place.kind]}</span>
                     </div>
                     <div class="travel-entry-copy">
-                      <p class="travel-entry-place">{place.city} · {place.country}</p>
-                      <h3>{place.name}</h3>
+                      {place.name === place.city ? (
+                        <h3>{place.city} · {place.country}</h3>
+                      ) : (
+                        <>
+                          <p class="travel-entry-place">{place.city} · {place.country}</p>
+                          <h3>{place.name}</h3>
+                        </>
+                      )}
                       <p>{place.note}</p>
                     </div>
                   </article>
@@ -65,7 +71,7 @@ const earliestYear = travelPlaces.at(-1)?.visited.slice(0, 4) ?? '—';
         </div>
       </div>
 
-      <div id="map-panel" class="travel-panel" role="tabpanel" aria-labelledby="map-tab">
+      <div id="map-panel" class="travel-panel" role="tabpanel" aria-labelledby="map-tab" hidden>
         <p class="travel-map-note">地图只标出有坐标的记录；缺坐标的地方仍会留在时间轴里。</p>
         <TravelMap places={mappableTravelPlaces} />
       </div>

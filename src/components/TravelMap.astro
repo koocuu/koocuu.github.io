@@ -43,27 +43,6 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
       '"': '&quot;',
     })[character] ?? character);
 
-  const distanceInKilometers = (a: MapPlace, b: MapPlace) => {
-    const toRadians = (degrees: number) => degrees * Math.PI / 180;
-    const earthRadius = 6371;
-    const latitudeDelta = toRadians(b.lat - a.lat);
-    const longitudeDelta = toRadians(b.lng - a.lng);
-    const latitudeA = toRadians(a.lat);
-    const latitudeB = toRadians(b.lat);
-    const haversine = Math.sin(latitudeDelta / 2) ** 2
-      + Math.cos(latitudeA) * Math.cos(latitudeB) * Math.sin(longitudeDelta / 2) ** 2;
-    return earthRadius * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
-  };
-
-  const findDensestRegion = (places: MapPlace[]) => {
-    if (places.length < 2) return places;
-    const regionRadius = 280;
-    return places.reduce<MapPlace[]>((densest, center) => {
-      const nearby = places.filter((place) => distanceInKilometers(center, place) <= regionRadius);
-      return nearby.length > densest.length ? nearby : densest;
-    }, [places[0]]);
-  };
-
   let map: L.Map | undefined;
   let listeners: AbortController | undefined;
 
@@ -137,12 +116,9 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
 
           map.addLayer(clusters);
           const allBounds = clusters.getBounds();
-          const densestRegion = findDensestRegion(places);
-          const regionBounds = L.latLngBounds(densestRegion.map((place) => [place.lat, place.lng]));
-          showAllButton.hidden = places.length <= densestRegion.length;
+          showAllButton.hidden = places.length < 2;
 
-          if (densestRegion.length === 1) map.setView([densestRegion[0].lat, densestRegion[0].lng], 7);
-          else if (densestRegion.length > 1) map.fitBounds(regionBounds, { padding: [48, 48], maxZoom: 7 });
+          if (allBounds.isValid()) map.fitBounds(allBounds, { padding: [40, 40], maxZoom: 6 });
           else map.setView([30, 10], 2);
 
           showAllButton.addEventListener('click', () => {
