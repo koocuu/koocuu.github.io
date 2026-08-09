@@ -53,14 +53,7 @@ const earliestYear = travelPlaces.at(-1)?.visited.slice(0, 4) ?? '—';
                       <span>{kindLabels[place.kind]}</span>
                     </div>
                     <div class="travel-entry-copy">
-                      {place.name === place.city ? (
-                        <h3>{place.city} · {place.country}</h3>
-                      ) : (
-                        <>
-                          <p class="travel-entry-place">{place.city} · {place.country}</p>
-                          <h3>{place.name}</h3>
-                        </>
-                      )}
+                      <h3>{place.city} · {place.country}</h3>
                       <p>{place.note}</p>
                     </div>
                   </article>

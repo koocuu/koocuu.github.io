@@ -1966,6 +1966,10 @@ a.writing-item {
     gap: 6px;
   }
 
+  .travel-entry::before {
+    display: none;
+  }
+
   .travel-entry-date {
     flex-direction: row;
     align-items: center;
