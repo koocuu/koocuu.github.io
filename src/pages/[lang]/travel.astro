@@ -42,24 +42,6 @@ const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
 
       <div id="timeline-panel" class="travel-panel" role="tabpanel" aria-labelledby="timeline-tab">
         <div class="travel-years">
-          {hometownPlaces.length > 0 && (
-            <section class="travel-year travel-hometowns" aria-labelledby="hometown-title">
-              <h2 id="hometown-title">家乡</h2>
-              <div class="travel-year-places">
-                {hometownPlaces.map((place) => (
-                  <article id={place.id} class:list={['travel-entry', 'kind-live']}>
-                    <div class="travel-entry-date">
-                      <span>家乡</span>
-                    </div>
-                    <div class="travel-entry-copy">
-                      <h3>{place.city} · {place.country}</h3>
-                      {place.note && <p>{place.note}</p>}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
           {travelPlacesByYear.map(([year, places]) => (
             <section class="travel-year" aria-labelledby={`year-${year}`}>
               <h2 id={`year-${year}`}>{year}</h2>
@@ -79,6 +61,24 @@ const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
               </div>
             </section>
           ))}
+          {hometownPlaces.length > 0 && (
+            <section class="travel-year travel-hometowns" aria-labelledby="hometown-title">
+              <h2 id="hometown-title">家乡</h2>
+              <div class="travel-year-places">
+                {hometownPlaces.map((place) => (
+                  <article id={place.id} class:list={['travel-entry', 'kind-live']}>
+                    <div class="travel-entry-date">
+                      <span>家乡</span>
+                    </div>
+                    <div class="travel-entry-copy">
+                      <h3>{place.city} · {place.country}</h3>
+                      {place.note && <p>{place.note}</p>}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </div>
 

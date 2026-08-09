@@ -324,6 +324,18 @@
       "date_precision": "month",
       "kind": "travel",
       "note": "2026 年 4 月到访济南。"
+    },
+    {
+      "id": "xian-2026",
+      "name": "西安",
+      "city": "西安",
+      "country": "中国",
+      "lat": 34.3416,
+      "lng": 108.9398,
+      "visited": "2026-07",
+      "date_precision": "month",
+      "kind": "travel",
+      "note": "2026 年 7 月到访西安。"
     }
   ]
 }
