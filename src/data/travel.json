@@ -14,16 +14,16 @@
       "note": "第一次出国的第一站。走出地铁，双眼收尽圣母院。"
     },
     {
-      "id": "rome-piazza-navona",
-      "name": "纳沃纳广场",
+      "id": "rome-colosseum-night",
+      "name": "罗马斗兽场",
       "city": "罗马",
       "country": "意大利",
-      "lat": 41.8992,
-      "lng": 12.4731,
+      "lat": 41.8902,
+      "lng": 12.4922,
       "visited": "2024-09",
       "date_precision": "month",
       "kind": "travel",
-      "note": "在石凳上小憩，和一对画画的波兰情侣意外相识。",
+      "note": "夜里走到斗兽场，暖黄色的灯光把古老石墙从城市夜色里照了出来。",
       "photo": "/images/blog/rome-navona.webp"
     },
     {
