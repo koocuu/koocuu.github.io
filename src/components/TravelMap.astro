@@ -75,7 +75,7 @@ const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
         if (!map) {
           const places = JSON.parse(dataElement.textContent || '[]') as MapPlace[];
           map = L.map(mapElement, {
-            scrollWheelZoom: false,
+            scrollWheelZoom: true,
             zoomControl: true,
           });
 

@@ -842,22 +842,7 @@ h3 {
 }
 
 .travel-entry::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 24px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.travel-entry.kind-live::before,
-.travel-entry.kind-work::before {
-  width: 8px;
-  height: 16px;
-  border-radius: 4px;
-  background: var(--warm);
+  display: none;
 }
 
 .travel-entry-date {
@@ -1964,10 +1949,6 @@ a.writing-item {
   .travel-entry {
     grid-template-columns: 1fr;
     gap: 6px;
-  }
-
-  .travel-entry::before {
-    display: none;
   }
 
   .travel-entry-date {
