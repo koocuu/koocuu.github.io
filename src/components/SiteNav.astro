@@ -9,14 +9,14 @@ const lang = normalizeLang(Astro.props.lang);
 const t = copy[lang];
 const otherLang = alternateLang(lang);
 const currentPath = Astro.url.pathname.replace(/^\/(en|zh)/, '') || '/';
-const chineseOnlyPath = ['/now', '/now/', '/travel', '/travel/'].includes(currentPath);
+const chineseOnlyPath = ['/now', '/now/'].includes(currentPath);
 const otherHref =
   chineseOnlyPath
     ? `/${otherLang}/`
     : `/${otherLang}${currentPath}`;
 const navItems = [
   { href: '/zh/now/', label: t.nav.now },
-  { href: '/zh/travel/', label: t.nav.travel },
+  { href: `/${lang}/travel/`, label: t.nav.travel },
   { href: `/${lang}/about/`, label: t.nav.about },
   { href: `/${lang}/blog/`, label: t.nav.blog },
   { href: `/${lang}/contact/`, label: t.nav.contact },

@@ -2,41 +2,92 @@
 import SiteNav from '@components/SiteNav.astro';
 import TravelMap from '@components/TravelMap.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { normalizeLang } from '@data/i18n';
+import { normalizeLang, type Lang } from '@data/i18n';
 import { hometownPlaces, mappableTravelPlaces, travelPlaces, travelPlacesByYear, type TravelKind } from '../../lib/travel';
 
 export function getStaticPaths() {
-  return [{ params: { lang: 'zh' } }];
+  return [{ params: { lang: 'en' } }, { params: { lang: 'zh' } }];
 }
 
 const lang = normalizeLang(Astro.params.lang);
-const kindLabels: Record<TravelKind, string> = {
-  travel: '旅行',
-  live: '生活',
-  work: '工作',
-  transit: '途经',
-};
+const travelCopy = {
+  en: {
+    title: 'Travel',
+    description: 'A personal map of the places where I have spent time.',
+    eyebrow: 'Travel',
+    headingTop: 'Where I have spent',
+    headingBottom: 'some of my time',
+    lede: 'Some places, some months, and the things I still remember.',
+    explorerLabel: 'Browse travel memories',
+    tabsLabel: 'Switch travel view',
+    timeline: 'Timeline',
+    map: 'Map',
+    hometowns: 'Hometowns',
+    hometown: 'Home',
+    mapNote: 'The map only shows records with coordinates; places without coordinates remain in the timeline.',
+    mapLabel: 'Travel map',
+    showAll: 'Show all',
+    statsLabel: 'Travel overview',
+    countries: 'countries and regions',
+    cities: 'cities',
+    earliest: 'earliest record',
+    kindLabels: {
+      travel: 'Travel',
+      live: 'Life',
+      work: 'Work',
+      transit: 'Transit',
+    } satisfies Record<TravelKind, string>,
+  },
+  zh: {
+    title: '足迹',
+    description: '我在哪些地方留下过时间。Cu 的个人时间地图。',
+    eyebrow: '足迹',
+    headingTop: '我在哪些地方',
+    headingBottom: '留下过时间',
+    lede: '一些地方、一些月份，和我仍然记得的事。',
+    explorerLabel: '足迹浏览',
+    tabsLabel: '切换足迹视图',
+    timeline: '时间轴',
+    map: '地图',
+    hometowns: '家乡',
+    hometown: '家乡',
+    mapNote: '地图只标出有坐标的记录；缺坐标的地方仍会留在时间轴里。',
+    mapLabel: '足迹地图',
+    showAll: '看全部',
+    statsLabel: '足迹概览',
+    countries: '个国家与地区',
+    cities: '座城市',
+    earliest: '最早一条记录',
+    kindLabels: {
+      travel: '旅行',
+      live: '生活',
+      work: '工作',
+      transit: '途经',
+    } satisfies Record<TravelKind, string>,
+  },
+} satisfies Record<Lang, Record<string, unknown>>;
+const t = travelCopy[lang];
 const countries = new Set(travelPlaces.map((place) => place.country)).size;
 const cities = new Set(travelPlaces.map((place) => `${place.country}/${place.city}`)).size;
 const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
 ---
 
-<BaseLayout lang={lang} title="足迹" description="我在哪些地方留下过时间。Cu 的个人时间地图。">
+<BaseLayout lang={lang} title={t.title} description={t.description}>
   <SiteNav lang={lang} />
   <main class="travel-page" data-travel-page>
     <section class="travel-hero section-shell">
-      <p class="eyebrow">足迹</p>
-      <h1>我在哪些地方<br />留下过时间</h1>
-      <p class="page-lede">一些地方、一些月份，和我仍然记得的事。</p>
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h1>{t.headingTop}<br />{t.headingBottom}</h1>
+      <p class="page-lede">{t.lede}</p>
     </section>
 
-    <section class="section-shell travel-explorer" aria-label="足迹浏览">
-      <div class="travel-tabs" role="tablist" aria-label="切换足迹视图">
+    <section class="section-shell travel-explorer" aria-label={t.explorerLabel}>
+      <div class="travel-tabs" role="tablist" aria-label={t.tabsLabel}>
         <button id="timeline-tab" type="button" role="tab" aria-selected="true" aria-controls="timeline-panel" data-view="timeline">
-          时间轴
+          {t.timeline}
         </button>
         <button id="map-tab" type="button" role="tab" aria-selected="false" aria-controls="map-panel" data-view="map" tabindex="-1">
-          地图
+          {t.map}
         </button>
       </div>
 
@@ -50,7 +101,7 @@ const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
                   <article id={place.id} class:list={['travel-entry', `kind-${place.kind}`]}>
                     <div class="travel-entry-date">
                       <time datetime={place.visited}>{place.visited.slice(5) || place.visited}</time>
-                      <span>{kindLabels[place.kind]}</span>
+                      <span>{t.kindLabels[place.kind]}</span>
                     </div>
                     <div class="travel-entry-copy">
                       <h3>{place.city} · {place.country}</h3>
@@ -63,12 +114,12 @@ const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
           ))}
           {hometownPlaces.length > 0 && (
             <section class="travel-year travel-hometowns" aria-labelledby="hometown-title">
-              <h2 id="hometown-title">家乡</h2>
+              <h2 id="hometown-title">{t.hometowns}</h2>
               <div class="travel-year-places">
                 {hometownPlaces.map((place) => (
                   <article id={place.id} class:list={['travel-entry', 'kind-live']}>
                     <div class="travel-entry-date">
-                      <span>家乡</span>
+                      <span>{t.hometown}</span>
                     </div>
                     <div class="travel-entry-copy">
                       <h3>{place.city} · {place.country}</h3>
@@ -83,15 +134,15 @@ const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
       </div>
 
       <div id="map-panel" class="travel-panel" role="tabpanel" aria-labelledby="map-tab" hidden>
-        <p class="travel-map-note">地图只标出有坐标的记录；缺坐标的地方仍会留在时间轴里。</p>
-        <TravelMap places={mappableTravelPlaces} />
+        <p class="travel-map-note">{t.mapNote}</p>
+        <TravelMap places={mappableTravelPlaces} mapLabel={t.mapLabel} showAllLabel={t.showAll} />
       </div>
     </section>
 
-    <section class="section-shell travel-stats" aria-label="足迹概览">
-      <div><strong>{countries}</strong><span>个国家与地区</span></div>
-      <div><strong>{cities}</strong><span>座城市</span></div>
-      <div><strong>{earliestYear}</strong><span>最早一条记录</span></div>
+    <section class="section-shell travel-stats" aria-label={t.statsLabel}>
+      <div><strong>{countries}</strong><span>{t.countries}</span></div>
+      <div><strong>{cities}</strong><span>{t.cities}</span></div>
+      <div><strong>{earliestYear}</strong><span>{t.earliest}</span></div>
     </section>
   </main>
 </BaseLayout>

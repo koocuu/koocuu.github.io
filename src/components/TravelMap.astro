@@ -6,15 +6,17 @@ import type { TravelPlace } from '../lib/travel';
 
 interface Props {
   places: Array<TravelPlace & { lat: number; lng: number }>;
+  mapLabel?: string;
+  showAllLabel?: string;
 }
 
-const { places } = Astro.props;
+const { places, mapLabel = '足迹地图', showAllLabel = '看全部' } = Astro.props;
 const serializedPlaces = JSON.stringify(places).replace(/</g, '\\u003c');
 ---
 
 <div class="travel-map-frame">
-  <div id="travel-map" class="travel-map" aria-label="足迹地图"></div>
-  <button id="travel-map-show-all" class="travel-map-show-all" type="button">看全部</button>
+  <div id="travel-map" class="travel-map" aria-label={mapLabel}></div>
+  <button id="travel-map-show-all" class="travel-map-show-all" type="button">{showAllLabel}</button>
 </div>
 <script id="travel-map-data" type="application/json" set:html={serializedPlaces} is:inline></script>
 
