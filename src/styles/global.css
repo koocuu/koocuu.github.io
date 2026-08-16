@@ -1081,8 +1081,10 @@ html[lang='en'] .travel-hometowns > h2 {
 .travel-stats div {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 3px;
   padding: 24px 8px;
+  text-align: center;
 }
 
 .travel-stats strong {
