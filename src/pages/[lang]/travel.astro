@@ -76,9 +76,25 @@ const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
   <SiteNav lang={lang} />
   <main class="travel-page" data-travel-page>
     <section class="travel-hero section-shell">
-      <p class="eyebrow">{t.eyebrow}</p>
-      <h1>{t.headingTop}<br />{t.headingBottom}</h1>
-      <p class="page-lede">{t.lede}</p>
+      <div class="travel-hero-copy">
+        <p class="eyebrow">{t.eyebrow}</p>
+        <h1>{t.headingTop}<br />{t.headingBottom}</h1>
+        <p class="page-lede">{t.lede}</p>
+      </div>
+      <dl class="travel-hero-stats" aria-label={t.statsLabel}>
+        <div>
+          <dt>{t.countries}</dt>
+          <dd>{countries}</dd>
+        </div>
+        <div>
+          <dt>{t.cities}</dt>
+          <dd>{cities}</dd>
+        </div>
+        <div>
+          <dt>{t.earliest}</dt>
+          <dd>{earliestYear}</dd>
+        </div>
+      </dl>
     </section>
 
     <section class="section-shell travel-explorer" aria-label={t.explorerLabel}>
@@ -137,12 +153,6 @@ const earliestYear = travelPlacesByYear.at(-1)?.[0] ?? '—';
         <p class="travel-map-note">{t.mapNote}</p>
         <TravelMap places={mappableTravelPlaces} mapLabel={t.mapLabel} showAllLabel={t.showAll} />
       </div>
-    </section>
-
-    <section class="section-shell travel-stats" aria-label={t.statsLabel}>
-      <div><strong>{countries}</strong><span>{t.countries}</span></div>
-      <div><strong>{cities}</strong><span>{t.cities}</span></div>
-      <div><strong>{earliestYear}</strong><span>{t.earliest}</span></div>
     </section>
   </main>
 </BaseLayout>

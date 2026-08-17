@@ -16,7 +16,6 @@ export const copy = {
       blog: 'Blog',
       about: 'About',
       contact: 'Contact',
-      now: 'Now',
       travel: 'Travel',
       switch: '中文',
     },
@@ -25,24 +24,16 @@ export const copy = {
       eyebrow: 'Full-stack / AI / Writing',
       headline: 'Code is getting cheaper. Judgment is getting more expensive.',
       note:
-        'I came up through Android, and now ship full-stack and AI tools myself — small products that go live, public retrospectives, and notes that shouldn’t only live in chat history.',
-      readBlog: 'Read Blog',
-      viewProfile: 'About Me',
-      servicesEyebrow: 'Work with me',
-      servicesTitle: 'If the need is real, I’ll help you ship it.',
-      servicesIntro:
-        'I care about products with real friction: clear product judgment, solid client-side engineering, and AI workflows that cut repetitive work.',
-      projectsEyebrow: 'Projects',
-      projectsTitle: 'Small products, real problems.',
-      projectsIntro:
-        'Tools I build myself: AI-native experiments, product ideas, and workflows that turn vague friction into something usable.',
-      writingEyebrow: 'Writing',
-      writingTitle: 'Writing and public notes',
-      writingIntro:
-        'Besides code and projects, I keep a few long-running places for ideas: technical notes, real-world observations, and AI-assisted fiction experiments.',
+        'I came up through Android, and now ship AI products that actually go live — plus the judgment, engineering, and life behind them.',
+      viewWork: 'See what I built',
+      readBlog: 'Read the latest',
+      nowFallback: 'What I’m doing, writing, and thinking lately',
+      projectsEyebrow: 'Selected work',
+      projectsTitle: 'Selected work',
+      recentEyebrow: 'Recently written',
+      recentTitle: 'Recently written',
       allPosts: 'All posts',
-      about: 'About',
-      contact: 'Contact',
+      contactCta: 'Want to talk product, engineering, or a collaboration? Get in touch',
     },
     about: {
       title: 'About',
@@ -73,6 +64,8 @@ export const copy = {
       heading: 'Say hi, trade notes, or send a good song.',
       lede:
         'I am usually happy to talk about Android, full-stack building, AI applications, travel plans, astronomy, or whatever thought refuses to leave your head.',
+      channelsEyebrow: 'Also writing',
+      channelsTitle: 'WeChat accounts',
     },
     now: {
       title: 'Now',
@@ -80,6 +73,7 @@ export const copy = {
       eyebrow: 'Now',
       heading: 'Now',
       fallback: 'This page is being updated. Check back soon.',
+      back: 'Back to home',
     },
     principles: [
       {
@@ -102,12 +96,12 @@ export const copy = {
       {
         title: 'Developer base',
         description:
-          'Android, TV, Compose, performance, and cross-end engineering on large-scale consumer products.',
+          'Android, TV, Compose, performance optimization, and cross-end engineering on large-scale consumer products.',
       },
       {
         title: 'Deepening direction',
         description:
-          'Full-stack delivery and AI application building: web, lightweight backend, LLM workflows, and product delivery for real pain points.',
+          'RAG, MCP, agents, and AI application development: retrieval, tool protocols, and agent workflows, shipped as products for real pain points.',
       },
       {
         title: 'Long-term signal',
@@ -139,7 +133,7 @@ export const copy = {
         slug: 'lvlv',
         href: 'https://mind.koocuu.com',
         description:
-          'A brain-dump and mind-map tool: pour everything into one box — todos, feelings, dilemmas, noise — and AI sorts it, finds hidden links, then returns an interactive map so the mess becomes readable at a glance.',
+          'Dump the mess; AI turns it into a readable relationship map.',
         note:
           'Not a notes app or a to-do center — a quiet sorter that turns chaos into a relationship graph.',
         access: 'Live on the Web — guest mode keeps everything in your browser.',
@@ -152,7 +146,7 @@ export const copy = {
         slug: 'decision-assistant',
         href: 'https://decision.koocuu.com',
         description:
-          'An AI low-regret decision tool with a warm, friendly "little-lamb" shell: it breaks a dilemma into options, risks, and a low-regret action, then lets you review it afterward, so personal decisions gradually settle into an observable profile.',
+          'Turn a dilemma into options, risks, and a low-regret next step you can review later.',
         note:
           'It does not choose for you — it turns overthinking into a recordable, reviewable decision process.',
         access: 'Officially live — try it on the Web, or download the Android build.',
@@ -368,7 +362,6 @@ export const copy = {
       blog: '博客',
       about: '关于',
       contact: '联系',
-      now: '此刻',
       travel: '足迹',
       switch: 'EN',
     },
@@ -376,22 +369,16 @@ export const copy = {
       title: 'Cu',
       eyebrow: '全栈 / AI / 写作',
       headline: '代码越来越便宜，判断越来越贵。',
-      note:
-        '我从 Android 做到全栈和 AI 小产品：能上线的工具、公开的复盘，以及一些不想只存在聊天记录里的想法。',
-      readBlog: '读博客',
-      viewProfile: '关于我',
-      servicesEyebrow: '可以合作',
-      servicesTitle: '有真实需求，才值得做成产品。',
-      servicesIntro: '我关注有真实摩擦的问题：清晰的产品判断、扎实的客户端工程，以及能减少重复劳动的 AI 工作流。',
-      projectsEyebrow: '项目',
-      projectsTitle: '小产品，解决真实问题。',
-      projectsIntro: '这里放我自己做的工具：AI 原生实验、产品想法，以及把模糊痛点整理成可用流程的小系统。',
-      writingEyebrow: '写作',
-      writingTitle: '内容创作与公开记录',
-      writingIntro: '除了代码和项目，我也在写一些长期内容：技术笔记、现实观察，以及 AI 共创的幻想实验。',
-      allPosts: '全部文章',
-      about: '关于',
-      contact: '联系',
+      note: '从 Android 出发，做真正上线的 AI 产品，也记录产品背后的判断、工程和生活。',
+      viewWork: '看我做的东西',
+      readBlog: '读最新文章',
+      nowFallback: '最近在做、写、想什么',
+      projectsEyebrow: '精选作品',
+      projectsTitle: '精选作品',
+      recentEyebrow: '最近写下',
+      recentTitle: '最近写下',
+      allPosts: '查看全部文章',
+      contactCta: '想聊产品、工程或合作？联系我',
     },
     about: {
       title: '关于',
@@ -421,6 +408,8 @@ export const copy = {
       eyebrow: '联系',
       heading: '打个招呼，交换想法，或者分享一首好歌。',
       lede: '我通常很愿意聊 Android、全栈构建、AI 应用、旅行计划、天文，或者任何在你脑子里挥之不去的想法。',
+      channelsEyebrow: '也在写',
+      channelsTitle: '公众号',
     },
     now: {
       title: '此刻',
@@ -428,6 +417,7 @@ export const copy = {
       eyebrow: '此刻',
       heading: '此刻',
       fallback: '这一页正在更新，稍后再来看看。',
+      back: '返回首页',
     },
     principles: [
       {
@@ -446,11 +436,11 @@ export const copy = {
     aboutCards: [
       {
         title: '开发者底色',
-        description: 'Android、TV、Compose、性能和跨端工程，来自真实大规模消费产品的长期训练。',
+        description: 'Android、TV、Compose、性能优化和跨端工程，来自真实大规模消费产品的长期训练。',
       },
       {
         title: '深耕方向',
-        description: '全栈交付和 AI 应用构建：Web、轻量后端、LLM 工作流，以及能解决真实痛点的产品落地。',
+        description: 'RAG、MCP、Agent 和 AI 应用开发：把检索增强、工具协议和应用工作流，做成能解决真实痛点的产品。',
       },
       {
         title: '长期信号',
@@ -477,8 +467,7 @@ export const copy = {
         status: '已上线',
         slug: 'lvlv',
         href: 'https://mind.koocuu.com',
-        description:
-          '一个脑内倾倒与思维整理工具：把 todo、情绪、纠结、碎念一股脑倒进输入框，AI 分拣并找出隐藏关联，再用可交互思维导图还给你一个清醒的脑子。',
+        description: '把一团乱麻倒进去，AI 整理成能一眼看懂的关系图。',
         note:
           '不是笔记软件，也不是待办中心——安静接住一团乱麻，整理成能一眼看懂的关系图。',
         access: '已上线 Web，游客模式内容只存在本机浏览器。',
@@ -490,8 +479,7 @@ export const copy = {
         status: '已上线',
         slug: 'decision-assistant',
         href: 'https://decision.koocuu.com',
-        description:
-          '一个带“小羊暖外壳”的 AI 低后悔决策工具：把一段纠结拆成选项、风险和低后悔行动，再通过事后复盘，让个人决策逐步沉淀成可观察的画像。',
+        description: '把纠结拆成选项、风险和低后悔行动，再事后复盘。',
         note:
           '它不替用户做选择，而是把“想太多”变成一个可记录、可复盘的决策流程。',
         access: '已正式上线，可直接 Web 在线体验，也可下载 Android 包。',

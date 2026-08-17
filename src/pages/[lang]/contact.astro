@@ -1,5 +1,6 @@
 ---
 import SiteNav from '@components/SiteNav.astro';
+import WritingChannels from '@components/WritingChannels.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { profile, socialLinks } from '@data/profile';
 import { copy, languages, normalizeLang } from '@data/i18n';
@@ -50,5 +51,11 @@ const wechatIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="tr
         </div>
       </div>
     </section>
+
+    <WritingChannels
+      channels={t.writingChannels}
+      eyebrow={t.contact.channelsEyebrow}
+      title={t.contact.channelsTitle}
+    />
   </main>
 </BaseLayout>

@@ -5,12 +5,15 @@ export interface NowSection {
 
 export interface NowPageData {
   season: string;
+  /** Optional one-liner for the homepage Now strip. Missing = show i18n fallback. */
+  headline: string;
   sections: NowSection[];
   ok: boolean;
 }
 
 const FALLBACK: NowPageData = {
   season: '',
+  headline: '',
   sections: [],
   ok: false,
 };
@@ -60,9 +63,10 @@ export function loadNowPage(): NowPageData {
     if (!raw || typeof raw !== 'string') return FALLBACK;
     const { data, body } = parseFrontmatter(raw);
     const season = data.season?.trim() ?? '';
+    const headline = data.headline?.trim() ?? '';
     const sections = parseSections(body);
     if (!season || sections.length === 0) return FALLBACK;
-    return { season, sections, ok: true };
+    return { season, headline, sections, ok: true };
   } catch {
     return FALLBACK;
   }

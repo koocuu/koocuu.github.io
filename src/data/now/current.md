@@ -1,5 +1,6 @@
 ---
 season: 2026 夏
+headline: 让个人系统稳定产出，而不是继续加零件
 sync_test: v2
 ---
 

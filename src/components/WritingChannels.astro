@@ -1,0 +1,45 @@
+---
+interface Channel {
+  title: string;
+  label: string;
+  description: string;
+  action: string;
+  href?: string;
+  qr?: string;
+}
+
+interface Props {
+  channels: Channel[];
+  eyebrow: string;
+  title: string;
+}
+
+const { channels, eyebrow, title } = Astro.props;
+const items = channels.filter((channel) => Boolean(channel.qr));
+---
+
+{items.length > 0 && (
+  <section class="section-shell writing-section">
+    <div class="section-header compact">
+      <div>
+        <p class="eyebrow">{eyebrow}</p>
+        <h2>{title}</h2>
+      </div>
+    </div>
+    <div class="writing-list">
+      {items.map((channel) => (
+        <article class="writing-item">
+          <div class="writing-item-body">
+            <p class="channel-label">{channel.label}</p>
+            <h3>{channel.title}</h3>
+            <p class="writing-item-desc">{channel.description}</p>
+          </div>
+          <span class="channel-action has-qr">
+            {channel.action}
+            <img class="channel-qr" src={channel.qr} alt={`${channel.title} QR code`} loading="lazy" />
+          </span>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
